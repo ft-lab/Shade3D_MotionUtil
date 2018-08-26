@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\..\..\include\sxcore\com.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\include\sxcore\debug.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\include\sxcore\vectors.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\main.cpp">
+      <Filter>mysources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\MorphTargetsCtrl.cpp">
+      <Filter>mysources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\MorphWindowInterface.cpp">
+      <Filter>mysources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\UIWidgets\uiSliderWidget.cpp">
+      <Filter>mysources\UIWidgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\StreamCtrl.cpp">
+      <Filter>mysources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\BoneUtil.cpp">
+      <Filter>mysources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\MeshUtil.cpp">
+      <Filter>mysources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\HiddenBoneUtilInterface.cpp">
+      <Filter>mysources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\HiddenMorphTargetsInterface.cpp">
+      <Filter>mysources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\MotionExternalAccess.cpp">
+      <Filter>mysources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\UIWidgets\GraphicUtil.cpp">
+      <Filter>mysources\UIWidgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\UIWidgets\uiMorphTargetGroupWidget.cpp">
+      <Filter>mysources\UIWidgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\UIWidgets\uiMorphTargetsWidget.cpp">
+      <Filter>mysources\UIWidgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\BSPPoint.cpp">
+      <Filter>mysources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\RenameDialog.cpp">
+      <Filter>mysources</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="..\source\GlobalHeader.h">
+      <Filter>mysources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\MorphTargetsCtrl.h">
+      <Filter>mysources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\MorphWindowInterface.h">
+      <Filter>mysources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\UIWidgets\uiSliderWidget.h">
+      <Filter>mysources\UIWidgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\StreamCtrl.h">
+      <Filter>mysources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\BoneUtil.h">
+      <Filter>mysources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\MeshUtil.h">
+      <Filter>mysources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\HiddenBoneUtilInterface.h">
+      <Filter>mysources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\HiddenMorphTargetsInterface.h">
+      <Filter>mysources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\MotionExternalAccess.h">
+      <Filter>mysources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\UIWidgets\GraphicUtil.h">
+      <Filter>mysources\UIWidgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\UIWidgets\uiMorphTargetGroupWidget.h">
+      <Filter>mysources\UIWidgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\UIWidgets\uiMorphTargetsWidget.h">
+      <Filter>mysources\UIWidgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\BSPPoint.h">
+      <Filter>mysources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\RenameDialog.h">
+      <Filter>mysources</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="script2.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\source\resources\zh_CN.lproj\sxuls\text.sxul">
+      <Filter>SXUL</Filter>
+    </None>
+    <None Include="..\source\resources\zh_CN.lproj\sxuls\strings.sxul">
+      <Filter>SXUL</Filter>
+    </None>
+    <None Include="..\source\resources\ja.lproj\sxuls\strings.sxul">
+      <Filter>SXUL</Filter>
+    </None>
+    <None Include="..\source\resources\en.lproj\sxuls\strings.sxul">
+      <Filter>SXUL</Filter>
+    </None>
+    <None Include="..\source\resources\ja.lproj\sxuls\text.sxul">
+      <Filter>SXUL</Filter>
+    </None>
+    <None Include="..\source\resources\en.lproj\sxuls\text.sxul">
+      <Filter>SXUL</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="sources">
+      <UniqueIdentifier>{708d3699-5387-498c-9ce4-0d4b3e3b0e97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SXUL">
+      <UniqueIdentifier>{1888daaa-a0a7-41e9-ad2a-9e4e8bdc318b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mysources">
+      <UniqueIdentifier>{337909e2-677d-4ef0-89b9-ff6bbef94434}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mysources\UIWidgets">
+      <UniqueIdentifier>{2a2dadff-df7c-456c-84ad-cff83f38878d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

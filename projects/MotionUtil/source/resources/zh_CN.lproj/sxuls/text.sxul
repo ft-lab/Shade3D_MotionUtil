@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<strings>
+	<string id="product_name" value="MotionUtil"/>
+	<string id="author" value="ft-lab."/>
+	<string id="company" value="ft-lab."/>
+	<string id="comments" value="MotionUtil"/>
+
+	<string id="title" value="title"/>
+	<string id="morph_targets_title" value="Morph Targets"/>
+	<string id="morph_window_title" value="Morph Targets"/>
+	<string id="boneutil_title" value="Bone Util"/>
+
+	<string id="msg_no_modify_vertex_mode" value="形状編集モード＋頂点選択モードで操作するようにしてください。"/>
+	<string id="msg_no_selected_vertices" value="頂点を選択するようにしてください。"/>
+	<string id="msg_no_selected_polygonmesh" value="ポリゴンメッシュを選択するようにしてください。"/>
+</strings>

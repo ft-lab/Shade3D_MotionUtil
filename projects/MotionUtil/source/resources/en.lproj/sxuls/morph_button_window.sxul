@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<palette xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../sxul.palettes.xsd" layout="true">
+	<vbox>
+		<control size='2 4'/>
+		<push-button id="setup_target_but" label="Morph Target情報を割り当て" />
+		<hbox>
+			<push-button id="append_target_but" label="Morph Target情報を追加登録" />
+			<control size='4 4'/>
+			<editable-text id="target_name" label="Target名" size="120 16" />
+		</hbox>
+		<push-button id="select_target_vertices_but" label="Morph Target対象の頂点を選択" />
+		<hbox>
+			<push-button id="remove_target_but" label="Morph Target情報を削除" />
+			<control size='4 4'/>
+			<checkbox id="remove_target_restore_check" label="頂点を戻す" />
+		</hbox>
+		<control size='200 4'/>
+	</vbox>
+</palette>
