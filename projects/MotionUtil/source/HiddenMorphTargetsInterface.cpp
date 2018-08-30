@@ -177,9 +177,9 @@ void CHiddenMorphTargetsInterface::setZeroAllWeight ()
  * 重複頂点をマージする.
  * ポリゴンメッシュの「sxsdk::polygon_mesh_class::cleanup_redundant_vertices」と同等で、Morph Targetsも考慮したもの.
  */
-bool CHiddenMorphTargetsInterface::cleanupRedundantVertices ()
+bool CHiddenMorphTargetsInterface::cleanupRedundantVertices (sxsdk::shape_class& shape)
 {
-	return m_morphTargetsData.cleanupRedundantVertices();
+	return m_morphTargetsData.cleanupRedundantVertices(shape);
 }
 
 /**

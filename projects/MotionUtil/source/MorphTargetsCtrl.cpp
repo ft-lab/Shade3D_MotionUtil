@@ -250,9 +250,16 @@ void CMorphTargetsCtrl::removeMorphTargets (const bool restoreVertices)
  * 重複頂点をマージする.
  * ポリゴンメッシュの「sxsdk::polygon_mesh_class::cleanup_redundant_vertices」と同等で、Morph Targetsも考慮したもの.
  */
-bool CMorphTargetsCtrl::cleanupRedundantVertices ()
+bool CMorphTargetsCtrl::cleanupRedundantVertices (sxsdk::shape_class& shape)
 {
-	if (!m_pTargetShape || (m_pTargetShape->get_type() != sxsdk::enums::polygon_mesh)) return false;
+	if (m_pTargetShape && m_pTargetShape->get_type() != sxsdk::enums::polygon_mesh) return false;
+	if (shape.get_type() != sxsdk::enums::polygon_mesh) return false;
+
+	if (!m_pTargetShape) {
+		sxsdk::polygon_mesh_class& pMesh = shape.get_polygon_mesh();
+		pMesh.cleanup_redundant_vertices();
+		return false;
+	}
 
 	try {
 		compointer<sxsdk::scene_interface> scene(m_pTargetShape->get_scene_interface());

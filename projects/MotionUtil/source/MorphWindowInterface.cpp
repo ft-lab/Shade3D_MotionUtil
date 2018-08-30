@@ -591,6 +591,10 @@ void CMorphWindowInterface::removeMorphTarget (const int index)
 {
 	sxsdk::shape_class* shape = MeshUtil::getActivePolygonMesh(shade);
 	if (shape) {
+		// 一度ウエイト値を0に戻す.
+		m_morphTargetsData.setTargetWeight(index, 0.0f);
+		m_morphTargetsData.updateMesh();
+
 		if (m_morphTargetsData.removeTarget(index)) {
 			StreamCtrl::writeMorphTargetsData(*shape, m_morphTargetsData);
 			m_updateUI();

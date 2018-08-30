@@ -1,6 +1,6 @@
-/**
- * Morph Targets§ŒäƒNƒ‰ƒX.
- * ƒtƒFƒCƒVƒƒƒ‹ƒAƒjƒ[ƒVƒ‡ƒ“‚È‚Ç‚Ìƒ|ƒŠƒSƒ“ƒƒbƒVƒ…‚Ì’¸“_•ÏŒ`‚ÌƒTƒ|[ƒg.
+ï»¿/**
+ * Morph Targetsåˆ¶å¾¡ã‚¯ãƒ©ã‚¹.
+ * ãƒ•ã‚§ã‚¤ã‚·ãƒ£ãƒ«ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ãªã©ã®ãƒãƒªã‚´ãƒ³ãƒ¡ãƒƒã‚·ãƒ¥ã®é ‚ç‚¹å¤‰å½¢ã®ã‚µãƒãƒ¼ãƒˆ.
  */
 #ifndef _MORPHTARGETS_CTRL_H
 #define _MORPHTARGETS_CTRL_H
@@ -12,12 +12,12 @@
 class CMorphTargetsData
 {
 public:
-	std::string name;						// target–¼.
-	std::vector<int> vIndices;				// ‘Î‰‚·‚é’¸“_ƒCƒ“ƒfƒbƒNƒX.
-	std::vector<sxsdk::vec3> vertices;		// ’¸“_À•W.
-	std::vector<sxsdk::vec3> normals;		// –@ü.
+	std::string name;						// targetå.
+	std::vector<int> vIndices;				// å¯¾å¿œã™ã‚‹é ‚ç‚¹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹.
+	std::vector<sxsdk::vec3> vertices;		// é ‚ç‚¹åº§æ¨™.
+	std::vector<sxsdk::vec3> normals;		// æ³•ç·š.
 
-	float weight;							// ƒEƒGƒCƒg’l.
+	float weight;							// ã‚¦ã‚¨ã‚¤ãƒˆå€¤.
 
 public:
 	CMorphTargetsData ();
@@ -29,12 +29,12 @@ public:
 class CMorphTargetsCtrl
 {
 private:
-	sxsdk::shape_class* m_pTargetShape;						// ƒ^[ƒQƒbƒg‚Æ‚È‚éƒ|ƒŠƒSƒ“ƒƒbƒVƒ…Œ`ó.
-	std::vector<sxsdk::vec3> m_orgVertices;					// ƒIƒŠƒWƒiƒ‹‚Ì‚·‚×‚Ä‚Ì’¸“_À•W.
+	sxsdk::shape_class* m_pTargetShape;						// ã‚¿ãƒ¼ã‚²ãƒƒãƒˆã¨ãªã‚‹ãƒãƒªã‚´ãƒ³ãƒ¡ãƒƒã‚·ãƒ¥å½¢çŠ¶.
+	std::vector<sxsdk::vec3> m_orgVertices;					// ã‚ªãƒªã‚¸ãƒŠãƒ«ã®ã™ã¹ã¦ã®é ‚ç‚¹åº§æ¨™.
 
-	std::vector<CMorphTargetsData> m_morphTargetsData;		// MorphTargets‚ÌƒŠƒXƒg.
+	std::vector<CMorphTargetsData> m_morphTargetsData;		// MorphTargetsã®ãƒªã‚¹ãƒˆ.
 
-	int m_selectTargetIndex;								// ‘I‘ğ‚³‚ê‚Ä‚¢‚éTarget”Ô†.
+	int m_selectTargetIndex;								// é¸æŠã•ã‚Œã¦ã„ã‚‹Targetç•ªå·.
 
 public:
 	CMorphTargetsCtrl ();
@@ -42,150 +42,150 @@ public:
 	void clear ();
 
 	//---------------------------------------------------------------.
-	// “o˜^/•ÒW—p.
+	// ç™»éŒ²/ç·¨é›†ç”¨.
 	//---------------------------------------------------------------.
 	/**
-	 * ‘ÎÛŒ`ó‚Ìƒ|ƒCƒ“ƒ^‚ğæ“¾.
+	 * å¯¾è±¡å½¢çŠ¶ã®ãƒã‚¤ãƒ³ã‚¿ã‚’å–å¾—.
 	 */
 	sxsdk::shape_class* getTargetShape () { return m_pTargetShape; }
 
 	/**
-	 * ƒIƒŠƒWƒiƒ‹‚Ì’¸“_À•W‚ğæ“¾.
+	 * ã‚ªãƒªã‚¸ãƒŠãƒ«ã®é ‚ç‚¹åº§æ¨™ã‚’å–å¾—.
 	 */
 	const std::vector<sxsdk::vec3>& getOrgVertices () const { return m_orgVertices;  }
 
 	/**
-	 * Morph Target‚Ìî•ñ‚ğæ“¾.
+	 * Morph Targetã®æƒ…å ±ã‚’å–å¾—.
 	 */
 	const CMorphTargetsData& getMorphTargetData (const int tIndex) const { return m_morphTargetsData[tIndex]; }
 
 	/**
-	 * ‘ÎÛ‚Ìƒ|ƒŠƒSƒ“ƒƒbƒVƒ…Œ`óƒNƒ‰ƒX‚ğ“n‚·.
-	 * ‚±‚ê‚Í•ÏŒ`‘O‚Ì‚à‚Ì‚ÅA‚±‚ê‚ğŒÄ‚Ño‚µ‚½Œã‚ÉˆÊ’uˆÚ“®‚µ‚½‘I‘ğ’¸“_‚ğtarget‚Æ‚µ‚Ä“o˜^‚µ‚Ä‚¢‚­.
-	 * @param[in] pShaoe   ‘ÎÛŒ`ó.
+	 * å¯¾è±¡ã®ãƒãƒªã‚´ãƒ³ãƒ¡ãƒƒã‚·ãƒ¥å½¢çŠ¶ã‚¯ãƒ©ã‚¹ã‚’æ¸¡ã™.
+	 * ã“ã‚Œã¯å¤‰å½¢å‰ã®ã‚‚ã®ã§ã€ã“ã‚Œã‚’å‘¼ã³å‡ºã—ãŸå¾Œã«ä½ç½®ç§»å‹•ã—ãŸé¸æŠé ‚ç‚¹ã‚’targetã¨ã—ã¦ç™»éŒ²ã—ã¦ã„ã.
+	 * @param[in] pShaoe   å¯¾è±¡å½¢çŠ¶.
 	 */
 	bool setupShape (sxsdk::shape_class* pShape);
 
 	/**
-	 * base‚Ì’¸“_À•W‚ğŠi”[Bstream‚©‚ç‚Ì“Ç‚İ‚İ‚ÉŒÄ‚Î‚ê‚é.
+	 * baseã®é ‚ç‚¹åº§æ¨™ã‚’æ ¼ç´ã€‚streamã‹ã‚‰ã®èª­ã¿è¾¼ã¿æ™‚ã«å‘¼ã°ã‚Œã‚‹.
 	 */
 	void setOrgVertices (const std::vector<sxsdk::vec3>& vertices);
 
 	/**
-	 * ‘I‘ğ’¸“_À•W‚ğMorphTargets‚Ì’¸“_‚Æ‚µ‚Ä’Ç‰Á.
-	 * @param[in] name      target–¼.
-	 * @param[in] indices   “o˜^‚·‚é’¸“_ƒCƒ“ƒfƒbƒNƒX (‘I‘ğ‚³‚ê‚½’¸“_).
-	 * @param[in] vertices  “o˜^‚·‚é’¸“_À•W.
-	 * @return Morph Targets”Ô†.
+	 * é¸æŠé ‚ç‚¹åº§æ¨™ã‚’MorphTargetsã®é ‚ç‚¹ã¨ã—ã¦è¿½åŠ .
+	 * @param[in] name      targetå.
+	 * @param[in] indices   ç™»éŒ²ã™ã‚‹é ‚ç‚¹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ (é¸æŠã•ã‚ŒãŸé ‚ç‚¹).
+	 * @param[in] vertices  ç™»éŒ²ã™ã‚‹é ‚ç‚¹åº§æ¨™.
+	 * @return Morph Targetsç•ªå·.
 	 */
 	int appendTargetVertices (const std::string& name, const std::vector<int>& indices, const std::vector<sxsdk::vec3>& vertices);
 
 	/**
-	 * ‘I‘ğ’¸“_À•W‚ğMorphTargets‚Ì’¸“_‚Æ‚µ‚ÄXV.
-	 * XV‚Ì’¸“_‚ÍƒEƒGƒCƒg’l1.0‚Æ‚·‚é.
-	 * @param[in] indices   XV‚·‚é’¸“_ƒCƒ“ƒfƒbƒNƒX (‘I‘ğ‚³‚ê‚½’¸“_).
-	 * @param[in] vertices  XV‚·‚é’¸“_À•W.
-	 * @return Morph Targets”Ô†.
+	 * é¸æŠé ‚ç‚¹åº§æ¨™ã‚’MorphTargetsã®é ‚ç‚¹ã¨ã—ã¦æ›´æ–°.
+	 * æ›´æ–°æ™‚ã®é ‚ç‚¹ã¯ã‚¦ã‚¨ã‚¤ãƒˆå€¤1.0ã¨ã™ã‚‹.
+	 * @param[in] indices   æ›´æ–°ã™ã‚‹é ‚ç‚¹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ (é¸æŠã•ã‚ŒãŸé ‚ç‚¹).
+	 * @param[in] vertices  æ›´æ–°ã™ã‚‹é ‚ç‚¹åº§æ¨™.
+	 * @return Morph Targetsç•ªå·.
 	 */
 	int updateTargetVertices (const int tIndex, const std::vector<int>& indices, const std::vector<sxsdk::vec3>& vertices);
 
 	/**
-	 * Morph Targets‚Ì”.
+	 * Morph Targetsã®æ•°.
 	 */
 	int getTargetsCount () const;
 
 	/**
-	 * Morph Target‚Ì–¼‘O‚ğæ“¾.
-	 * @param[in]  tIndex    Morph Targets”Ô†.
+	 * Morph Targetã®åå‰ã‚’å–å¾—.
+	 * @param[in]  tIndex    Morph Targetsç•ªå·.
 	 */
 	const std::string getTargetName (const int tIndex) const;
 
 	/**
-	 * Morph Target‚Ì–¼‘O‚ğw’è.
-	 * @param[in]  tIndex    Morph Targets”Ô†.
-	 * @param[in]  name      –¼‘O.
+	 * Morph Targetã®åå‰ã‚’æŒ‡å®š.
+	 * @param[in]  tIndex    Morph Targetsç•ªå·.
+	 * @param[in]  name      åå‰.
 	 */
 	void setTargetName (const int tIndex, const std::string& name);
 
 	/**
-	 * Morph Targets‚Ì’¸“_À•W‚ğæ“¾.
-	 * @param[in]  tIndex    Morph Targets”Ô†.
-	 * @param[out] indices   ’¸“_ƒCƒ“ƒfƒbƒNƒX‚ª•Ô‚é.
-	 * @param[out] vertices  ’¸“_À•W‚ª•Ô‚é.
+	 * Morph Targetsã®é ‚ç‚¹åº§æ¨™ã‚’å–å¾—.
+	 * @param[in]  tIndex    Morph Targetsç•ªå·.
+	 * @param[out] indices   é ‚ç‚¹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãŒè¿”ã‚‹.
+	 * @param[out] vertices  é ‚ç‚¹åº§æ¨™ãŒè¿”ã‚‹.
 	 */
 	bool getTargetVertices (const int tIndex, std::vector<int>& indices, std::vector<sxsdk::vec3>& vertices);
 
 	/**
-	 * Morph Targets‚ÌƒEƒGƒCƒg’l‚ğw’è.
-	 * @param[in]  tIndex    Morph Targets”Ô†.
-	 * @param[in]  weight    ƒEƒGƒCƒg’l(0.0 - 1.0).
+	 * Morph Targetsã®ã‚¦ã‚¨ã‚¤ãƒˆå€¤ã‚’æŒ‡å®š.
+	 * @param[in]  tIndex    Morph Targetsç•ªå·.
+	 * @param[in]  weight    ã‚¦ã‚¨ã‚¤ãƒˆå€¤(0.0 - 1.0).
 	 */
 	bool setTargetWeight (const int tIndex, const float weight);
 
 	/**
-	 * Morph Targets‚ÌƒEƒGƒCƒg’l‚ğæ“¾.
-	 * @param[in]  tIndex    Morph Targets”Ô†.
-	 * @return ƒEƒGƒCƒg’l.
+	 * Morph Targetsã®ã‚¦ã‚¨ã‚¤ãƒˆå€¤ã‚’å–å¾—.
+	 * @param[in]  tIndex    Morph Targetsç•ªå·.
+	 * @return ã‚¦ã‚¨ã‚¤ãƒˆå€¤.
 	 */
 	float getTargetWeight (const int tIndex) const;
 
 	/**
-	 * w’è‚ÌMorph Targetî•ñ‚ğíœ.
-	 * @param[in]  tIndex    Morph Targets”Ô†.
+	 * æŒ‡å®šã®Morph Targetæƒ…å ±ã‚’å‰Šé™¤.
+	 * @param[in]  tIndex    Morph Targetsç•ªå·.
 	 */
 	bool removeTarget (const int tIndex);
 
 	/**
-	 * Morph Targetsî•ñ‚ğíœ‚µ‚ÄAŒ³‚Ì’¸“_‚É–ß‚·.
-	 * @param[in] restoreVertices  ’¸“_‚ğŒ³‚É–ß‚·ê‡‚Ítrue.
+	 * Morph Targetsæƒ…å ±ã‚’å‰Šé™¤ã—ã¦ã€å…ƒã®é ‚ç‚¹ã«æˆ»ã™.
+	 * @param[in] restoreVertices  é ‚ç‚¹ã‚’å…ƒã«æˆ»ã™å ´åˆã¯true.
 	 */
 	void removeMorphTargets (const bool restoreVertices = true);
 
 	/**
-	 * ‚·‚×‚Ä‚ÌƒEƒGƒCƒg’l‚ğ0‚É‚·‚éB.
-	 * ‚±‚ÌŒã‚ÉupdateMesh‚ğŒÄ‚Ô‚ÆAƒEƒGƒCƒg‘O‚Ì’¸“_‚Æ‚È‚é.
+	 * ã™ã¹ã¦ã®ã‚¦ã‚¨ã‚¤ãƒˆå€¤ã‚’0ã«ã™ã‚‹ã€‚.
+	 * ã“ã®å¾Œã«updateMeshã‚’å‘¼ã¶ã¨ã€ã‚¦ã‚¨ã‚¤ãƒˆå‰ã®é ‚ç‚¹ã¨ãªã‚‹.
 	 */
 	void setZeroAllWeight ();
 
 	/**
-	 * d•¡’¸“_‚ğƒ}[ƒW‚·‚é.
-	 * ƒ|ƒŠƒSƒ“ƒƒbƒVƒ…‚Ìusxsdk::polygon_mesh_class::cleanup_redundant_verticesv‚Æ“¯“™‚ÅAMorph Targets‚àl—¶‚µ‚½‚à‚Ì.
+	 * é‡è¤‡é ‚ç‚¹ã‚’ãƒãƒ¼ã‚¸ã™ã‚‹.
+	 * ãƒãƒªã‚´ãƒ³ãƒ¡ãƒƒã‚·ãƒ¥ã®ã€Œsxsdk::polygon_mesh_class::cleanup_redundant_verticesã€ã¨åŒç­‰ã§ã€Morph Targetsã‚‚è€ƒæ…®ã—ãŸã‚‚ã®.
 	 */
-	bool cleanupRedundantVertices ();
+	bool cleanupRedundantVertices (sxsdk::shape_class& shape);
 
 	/**
-	 * Morph Targets‚Ìî•ñ‚æ‚èAm_pTargetShape‚Ìƒ|ƒŠƒSƒ“ƒƒbƒVƒ…‚ğXV.
+	 * Morph Targetsã®æƒ…å ±ã‚ˆã‚Šã€m_pTargetShapeã®ãƒãƒªã‚´ãƒ³ãƒ¡ãƒƒã‚·ãƒ¥ã‚’æ›´æ–°.
 	 */
 	void updateMesh ();
 
 	//---------------------------------------------------------------.
-	// Stream•Û‘¶/“Ç‚İ‚İ—p.
+	// Streamä¿å­˜/èª­ã¿è¾¼ã¿ç”¨.
 	//---------------------------------------------------------------.
 	/**
-	 * Morph Targetsî•ñ‚ğ‚Â‚©.
+	 * Morph Targetsæƒ…å ±ã‚’æŒã¤ã‹.
 	 */
 	bool hasMorphTargets (sxsdk::shape_class& shape);
 
 	/**
-	 * Œ»İ‚ÌMorph Targetsî•ñ‚ğstream‚É•Û‘¶.
+	 * ç¾åœ¨ã®Morph Targetsæƒ…å ±ã‚’streamã«ä¿å­˜.
 	 */
 	void writeMorphTargetsData ();
 
 	/**
-	 * Morph Targetsî•ñ‚ğstream‚©‚ç“Ç‚İ‚İ.
+	 * Morph Targetsæƒ…å ±ã‚’streamã‹ã‚‰èª­ã¿è¾¼ã¿.
 	 */
 	bool readMorphTargetsData (sxsdk::shape_class& shape);
 
 	//---------------------------------------------------------------.
-	// UI—p.
+	// UIç”¨.
 	//---------------------------------------------------------------.
 	/**
-	 * w’è‚ÌTarget‚ğ‘I‘ğó‘Ô‚É‚·‚éB-1‚Ìê‡‚Í‘I‘ğ‚È‚µ.
+	 * æŒ‡å®šã®Targetã‚’é¸æŠçŠ¶æ…‹ã«ã™ã‚‹ã€‚-1ã®å ´åˆã¯é¸æŠãªã—.
 	 */
 	void setSelectTargetIndex (const int tIndex = -1);
 
 	/**
-	 * ‘I‘ğ‚³‚ê‚Ä‚¢‚éTarget”Ô†‚ğæ“¾.
+	 * é¸æŠã•ã‚Œã¦ã„ã‚‹Targetç•ªå·ã‚’å–å¾—.
 	 */
 	int getSelectTargetIndex () const;
 

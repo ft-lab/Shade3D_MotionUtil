@@ -156,7 +156,7 @@ public:
 	 * 重複頂点をマージする.
 	 * ポリゴンメッシュの「sxsdk::polygon_mesh_class::cleanup_redundant_vertices」と同等で、Morph Targetsも考慮したもの.
 	 */
-	bool cleanupRedundantVertices ();
+	bool cleanupRedundantVertices (sxsdk::shape_class& shape);
 
 	/**
 	 * Morph Targetsの情報より、m_pTargetShapeのポリゴンメッシュを更新.
