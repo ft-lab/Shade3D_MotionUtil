@@ -8,7 +8,9 @@
 	<string id="title" value="title"/>
 	<string id="morph_targets_title" value="Morph Targets"/>
 	<string id="morph_window_title" value="Morph Targets"/>
+	<string id="motion_window_title" value="Motion Window 2"/>
 	<string id="boneutil_title" value="Bone Util"/>
+	<string id="test_text" value="漢字の表示 (test Text)"/>
 
 	<string id="msg_no_modify_vertex_mode" value="形状編集モード＋頂点選択モードで操作するようにしてください。"/>
 	<string id="msg_no_selected_vertices" value="頂点を選択するようにしてください。"/>

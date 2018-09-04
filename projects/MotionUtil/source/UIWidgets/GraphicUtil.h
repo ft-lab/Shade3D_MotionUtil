@@ -5,6 +5,7 @@
 #define _GRAPHICUTIL_H
 
 #include "../GlobalHeader.h"
+#include "../MotionExternalAccess.h"
 
 /**
  * 位置揃え.
@@ -19,8 +20,106 @@ enum WIDGET_ALIGN {
 	WIDGET_ALIGN_CENTER   = 0x0004 | 0x0020,
 };
 
-namespace GraphicUtil
+//------------------------------------------------------------.
+/**
+ * グラフィック描画クラス.
+ * これは描画イベント内で作成/破棄すること.
+ * 矩形クリッピングなども含む.
+ */
+class CGraphicUtil
 {
+private:
+	sxsdk::graphic_context_interface &gc;
+
+	sx::rectangle_class m_clippingRect;				// クリッピング領域.
+	std::vector<sxsdk::rgb_class> m_colorList;		// 色を指定した場合の格納バッファ.
+	float m_lineSize;								// ラインの太さ.
+
+public:
+	CGraphicUtil (sxsdk::graphic_context_interface &gc);
+	~CGraphicUtil ();
+
+	/**
+	 * 色を指定.
+	 */
+	void setColor (const sxsdk::rgb_class& col);
+
+	/**
+	 * ラインのサイズを指定.
+	 */
+	void setLineSize (const float size) { m_lineSize = size; }
+
+	/**
+	 * ラインのサイズを取得.
+	 */
+	float getLineSize () const { return m_lineSize; }
+
+	/**
+	 * クリッピング領域をクリア.
+	 */
+	void clearClippingRect ();
+
+	/**
+	 * クリッピング領域を指定.
+	 * @param[in] rect  この領域内を描画範囲とする.
+	 */
+	void setClippingRect (const sx::rectangle_class& rect);
+
+	/**
+	 * ポリゴンを描画 (クリッピング処理あり).
+	 */
+	void drawPolygon (const std::vector<sxsdk::vec2>& points);
+
+	/**
+	 * テキストを描画する (位置揃え機能あり).
+	 * @param[in]  str    描画するテキスト.
+	 * @param[in]  rect   描画領域.
+	 * @param[in]  align  テキストの配置指定.
+	 */
+	void drawText (const std::string& str, const sx::rectangle_class& rect, const int align = WIDGET_ALIGN_CENTER);
+
+	/**
+	 * テキストのサイズを取得.
+	 * @param[in]  str    描画するテキスト.
+	 */
+	sx::vec<int,2> getTextSize (const std::string& str);
+
+	/**
+	 * ラインを描画 (クリッピング処理あり).
+	 * @param[in]  posA   ラインのポイント.
+	 */
+	void drawLine (const std::vector<sxsdk::vec2>& posA);
+
+	/**
+	 * ベジェ曲線を描画 (クリッピング処理あり).
+	 * @param[in] points  ベジェを構成するポイント情報.
+	 * @param[in] divCou  分割数.
+	 */
+	void drawBezier (const std::vector<CBezierPoint2D>& points, const int divCou = 20);
+
+	/**
+	 * スプライン曲線を描画 (クリッピング処理あり).
+	 * @param[in] points  スプラインを構成するポイント情報.
+	 * @param[in] divCou  分割数.
+	 */
+	void drawSpline (const std::vector<sxsdk::vec2>& points, const int divCou = 20);
+
+	/**
+	 * 四角形の枠を描画 (クリッピング処理あり).
+	 */
+	void drawFrame (const sx::rectangle_class& rec);
+
+	/**
+	 * 四角形を塗りつぶし描画 (クリッピング処理あり).
+	 */
+	void paintRectangle (const sx::rectangle_class& rec);
+};
+
+//------------------------------------------------------------.
+/*
+ * 描画関数群.
+ */
+namespace GraphicUtil {
 	/**
 	 * テキストを描画する (位置揃え機能あり).
 	 * @param[in]  gc     graphic context.
@@ -28,7 +127,14 @@ namespace GraphicUtil
 	 * @param[in]  rect   描画領域.
 	 * @param[in]  align  テキストの配置指定.
 	 */
-	void drawText (sxsdk::graphic_context_interface &gc, const std::string& str, const sx::rectangle_class& rect, const WIDGET_ALIGN align = WIDGET_ALIGN_CENTER);
+	void drawText (sxsdk::graphic_context_interface &gc, const std::string& str, const sx::rectangle_class& rect, const int align = WIDGET_ALIGN_CENTER);
+
+	/**
+	 * テキストのサイズを取得.
+	 * @param[in]  gc     graphic context.
+	 * @param[in]  str    描画するテキスト.
+	 */
+	sx::vec<int,2> getTextSize (sxsdk::graphic_context_interface &gc, const std::string& str);
 
 	/**
 	 * 太さと色を指定したラインを描画.
@@ -91,5 +197,7 @@ namespace GraphicUtil
 	 * 指定のイメージのアルファ値を1.0にする.
 	 */
 	void clearImageAlphaOne (sxsdk::image_interface* image);
+
 }
+
 #endif

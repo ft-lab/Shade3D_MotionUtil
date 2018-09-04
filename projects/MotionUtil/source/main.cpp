@@ -16,6 +16,7 @@
 #include "HiddenMorphTargetsInterface.h"
 #include "HiddenBoneUtilInterface.h"
 #include "MorphWindowInterface.h"
+#include "MotionWindowInterface.h"
 #include "RenameDialog.h"
 
 //**************************************************//
@@ -39,6 +40,8 @@ extern "C" SXSDKEXPORT void STDCALL create_interface (const IID &iid, int i, voi
 	if (iid == window_iid) {
 		if (i == 0) {
 			u = new CMorphWindowInterface(*shade);
+		} else if (i == 1) {
+			u = new CMotionWindowInterface(*shade);
 		}
 	}
 
@@ -54,7 +57,7 @@ extern "C" SXSDKEXPORT void STDCALL create_interface (const IID &iid, int i, voi
 extern "C" SXSDKEXPORT int STDCALL has_interface (const IID &iid, sxsdk::shade_interface *shade) {
 
 	if (iid == attribute_iid) return 3;
-	if (iid == window_iid) return 1;
+	if (iid == window_iid) return 2;
 
 	return 0;
 }
@@ -76,6 +79,8 @@ extern "C" SXSDKEXPORT const char * STDCALL get_name (const IID &iid, int i, sxs
 	if (iid == window_iid) {
 		if (i == 0) {
 			return CMorphWindowInterface::name(shade);
+		} else if (i == 1) {
+			return CMotionWindowInterface::name(shade);
 		}
 	}
 
@@ -98,6 +103,8 @@ extern "C" SXSDKEXPORT sx::uuid_class STDCALL get_uuid (const IID &iid, int i, v
 	if (iid == window_iid) {
 		if (i == 0) {
 			return MORPH_WINDOW_INTERFACE_ID;
+		} else if (i == 1) {
+			return MOTION_WINDOW_INTERFACE_ID;
 		}
 	}
 

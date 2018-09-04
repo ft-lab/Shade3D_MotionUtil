@@ -46,7 +46,7 @@ void CUISliderWidget::mouseDownEvent (const sx::vec<int,2>& p, const bool double
  */
 CUIMorphTargetGroupWidget::CUIMorphTargetGroupWidget (const int index, CUIMorphTargetsWidget* parent, const int control_id, const std::string title) : m_morphTargetsWidget(parent), sxsdk::window_interface(*parent, 0), m_control_id(control_id), m_index(index)
 {
-	m_sliderTextWidth = 120;
+	m_sliderTextWidth = 200;
 	m_pSlider = new CUISliderWidget(*this, 1, title, m_sliderTextWidth, 40);
 	m_select = false;
 	m_selectUpdateButton = select_button_none;
