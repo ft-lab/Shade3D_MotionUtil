@@ -16,7 +16,7 @@ void StreamCtrl::removeMorphTargetsData (sxsdk::shape_class& shape)
 /**
  * Morph Targets情報を保存.
  */
-void StreamCtrl::writeMorphTargetsData (sxsdk::shape_class& shape, CMorphTargetsCtrl& data)
+void StreamCtrl::writeMorphTargetsData (sxsdk::shape_class& shape, const CMorphTargetsCtrl& data)
 {
 	try {
 		compointer<sxsdk::stream_interface> stream(shape.create_attribute_stream_interface_with_uuid(MORPH_TARGETS_STREAM_ID));

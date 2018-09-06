@@ -13,7 +13,8 @@ namespace MotionUtil
 	 * キーフレームの形状による種類.
 	 */
 	enum MOTION_KEYFRAME_TYPE {
-		keyframe_type_ball_bone_joint = 0,		// ボールまたはボーンジョイント.
+		keyframe_type_none = 0,					// 未指定.
+		keyframe_type_ball_bone_joint,			// ボールまたはボーンジョイント.
 		keyframe_type_morph_targets,			// Morph Targets.
 	};
 
@@ -73,7 +74,7 @@ namespace MotionUtil
 														// shapes[0]のジョイントの子が格納される.
 
 	public:
-
+		CMotionGroup ();
 	};
 }
 

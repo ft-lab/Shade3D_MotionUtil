@@ -138,9 +138,15 @@ void CMorphWindowInterface::initialize (void *)
 	m_pButtonsWidget = new CButtonsWidget(this);
 	m_pButtonsWidget->load_sxul("morph_button_window");
 
-	this->set_client_size(get_layout_bounds().size());
 	this->set_title(CMorphWindowInterface::name(&shade));
-	this->set_minimum_size(sx::vec<int,2>(300, 280));
+
+	const int minWidth  = 300;
+	const int minHeight = 280;
+	this->set_minimum_size(sx::vec<int,2>(minWidth, minHeight));
+	sx::vec<int,2> size = get_layout_bounds().size();
+	if (size.x < minWidth) size.x = minWidth;
+	if (size.y < minHeight) size.y = minHeight;
+	this->set_client_size(size);
 }
 
 /**

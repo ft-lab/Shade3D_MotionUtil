@@ -143,6 +143,17 @@ int CMorphTargetsCtrl::getTargetsCount () const
 }
 
 /**
+ * Morph Targetsの頂点数を取得.
+ * @param[in]  tIndex    Morph Targets番号.
+ */
+int CMorphTargetsCtrl::getTargetVerticesCount (const int tIndex) const
+{
+	if (tIndex < 0 || tIndex >= (int)m_morphTargetsData.size()) return 0;
+	const CMorphTargetsData& targetData = m_morphTargetsData[tIndex];
+	return targetData.vIndices.size();
+}
+
+/**
  * Morph Targetsの頂点座標を取得.
  * @param[in]  tIndex    Morph Targets番号.
  * @param[out] indices   頂点インデックスが返る.

@@ -108,6 +108,12 @@ public:
 	void setTargetName (const int tIndex, const std::string& name);
 
 	/**
+	 * Morph Targetsの頂点数を取得.
+	 * @param[in]  tIndex    Morph Targets番号.
+	 */
+	int getTargetVerticesCount (const int tIndex) const;
+
+	/**
 	 * Morph Targetsの頂点座標を取得.
 	 * @param[in]  tIndex    Morph Targets番号.
 	 * @param[out] indices   頂点インデックスが返る.

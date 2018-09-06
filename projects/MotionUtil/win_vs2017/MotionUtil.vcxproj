@@ -279,6 +279,8 @@
     <ClCompile Include="..\..\..\include\sxcore\vectors.cpp" />
     <ClCompile Include="..\source\BoneUtil.cpp" />
     <ClCompile Include="..\source\BSPPoint.cpp" />
+    <ClCompile Include="..\source\MathUtil.cpp" />
+    <ClCompile Include="..\source\MotionData.cpp" />
     <ClCompile Include="..\source\MotionExternalAccess.cpp" />
     <ClCompile Include="..\source\HiddenBoneUtilInterface.cpp" />
     <ClCompile Include="..\source\main.cpp" />
@@ -286,16 +288,20 @@
     <ClCompile Include="..\source\MorphTargetsCtrl.cpp" />
     <ClCompile Include="..\source\HiddenMorphTargetsInterface.cpp" />
     <ClCompile Include="..\source\MorphWindowInterface.cpp" />
+    <ClCompile Include="..\source\MotionWindowInterface.cpp" />
     <ClCompile Include="..\source\RenameDialog.cpp" />
     <ClCompile Include="..\source\StreamCtrl.cpp" />
     <ClCompile Include="..\source\UIWidgets\GraphicUtil.cpp" />
     <ClCompile Include="..\source\UIWidgets\uiMorphTargetGroupWidget.cpp" />
     <ClCompile Include="..\source\UIWidgets\uiMorphTargetsWidget.cpp" />
+    <ClCompile Include="..\source\UIWidgets\uiPanelWidget.cpp" />
     <ClCompile Include="..\source\UIWidgets\uiSliderWidget.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\BoneUtil.h" />
     <ClInclude Include="..\source\BSPPoint.h" />
+    <ClInclude Include="..\source\MathUtil.h" />
+    <ClInclude Include="..\source\MotionData.h" />
     <ClInclude Include="..\source\MotionExternalAccess.h" />
     <ClInclude Include="..\source\HiddenBoneUtilInterface.h" />
     <ClInclude Include="..\source\GlobalHeader.h" />
@@ -303,11 +309,13 @@
     <ClInclude Include="..\source\MorphTargetsCtrl.h" />
     <ClInclude Include="..\source\HiddenMorphTargetsInterface.h" />
     <ClInclude Include="..\source\MorphWindowInterface.h" />
+    <ClInclude Include="..\source\MotionWindowInterface.h" />
     <ClInclude Include="..\source\RenameDialog.h" />
     <ClInclude Include="..\source\StreamCtrl.h" />
     <ClInclude Include="..\source\UIWidgets\GraphicUtil.h" />
     <ClInclude Include="..\source\UIWidgets\uiMorphTargetGroupWidget.h" />
     <ClInclude Include="..\source\UIWidgets\uiMorphTargetsWidget.h" />
+    <ClInclude Include="..\source\UIWidgets\uiPanelWidget.h" />
     <ClInclude Include="..\source\UIWidgets\uiSliderWidget.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>

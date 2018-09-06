@@ -51,11 +51,23 @@ sxsdk::shape_class* CHiddenMorphTargetsInterface::getTargetShape ()
 }
 
 /**
+ * オリジナルの頂点座標数を取得.
+ */
+int CHiddenMorphTargetsInterface::getOrgVerticesCount () const
+{
+	const std::vector<sxsdk::vec3>& vers = m_morphTargetsData.getOrgVertices();
+	return (int)vers.size();
+}
+
+/**
  * オリジナルの頂点座標を取得.
  */
-const std::vector<sxsdk::vec3>& CHiddenMorphTargetsInterface::getOrgVertices () const
+int CHiddenMorphTargetsInterface::getOrgVertices (sxsdk::vec3* vertices) const
 {
-	return m_morphTargetsData.getOrgVertices();
+	const std::vector<sxsdk::vec3>& vers = m_morphTargetsData.getOrgVertices();
+	const int vCou = (int)vers.size();
+	for (int i = 0; i < vCou; ++i)  vertices[i] = vers[i];
+	return vCou;
 }
 
 /**
@@ -71,21 +83,34 @@ bool CHiddenMorphTargetsInterface::setupShape (sxsdk::shape_class* pShape)
 /**
  * baseの頂点座標を格納。streamからの読み込み時に呼ばれる.
  */
-void CHiddenMorphTargetsInterface::setOrgVertices (const std::vector<sxsdk::vec3>& vertices)
+void CHiddenMorphTargetsInterface::setOrgVertices (const int vCou, const sxsdk::vec3* vertices)
 {
-	m_morphTargetsData.setOrgVertices(vertices);
+	std::vector<sxsdk::vec3> vers;
+	vers.resize(vCou);
+	for (int i = 0; i < vCou; ++i) vers[i] = vertices[i];
+	m_morphTargetsData.setOrgVertices(vers);
 }
 
 /**
  * 選択頂点座標をMorphTargetsの頂点として追加.
  * @param[in] name      target名.
+ * @param[in] vCou      頂点数.
  * @param[in] indices   登録する頂点インデックス (選択された頂点).
  * @param[in] vertices  登録する頂点座標.
  * @return Morph Targets番号.
  */
-int CHiddenMorphTargetsInterface::appendTargetVertices (const std::string& name, const std::vector<int>& indices, const std::vector<sxsdk::vec3>& vertices)
+int CHiddenMorphTargetsInterface::appendTargetVertices (const char* name, const int vCou, const int* indices, const sxsdk::vec3* vertices)
 {
-	return m_morphTargetsData.appendTargetVertices(name, indices, vertices);
+	if (vCou <= 0) return -1;
+	std::vector<int> indices2;
+	std::vector<sxsdk::vec3> vertices2;
+	indices2.resize(vCou);
+	vertices2.resize(vCou);
+	for (int i = 0; i < vCou; ++i) {
+		indices2[i]  = indices[i];
+		vertices2[i] = vertices[i];
+	}
+	return m_morphTargetsData.appendTargetVertices(name, indices2, vertices2);
 }
 
 /**
@@ -99,10 +124,13 @@ int CHiddenMorphTargetsInterface::getTargetsCount () const
 /**
  * Morph Targetの名前を取得.
  * @param[in]  tIndex    Morph Targets番号.
+ * @param[out] name      名前が入る.
  */
-const std::string CHiddenMorphTargetsInterface::getTargetName (const int tIndex) const
+bool CHiddenMorphTargetsInterface::getTargetName (const int tIndex, char* name) const
 {
-	return m_morphTargetsData.getTargetName(tIndex);
+	const std::string nameS = m_morphTargetsData.getTargetName(tIndex);
+	std::strcpy(name, nameS.c_str());
+	return true;
 }
 
 /**
@@ -110,9 +138,18 @@ const std::string CHiddenMorphTargetsInterface::getTargetName (const int tIndex)
  * @param[in]  tIndex    Morph Targets番号.
  * @param[in]  name      名前.
  */
-void CHiddenMorphTargetsInterface::setTargetName (const int tIndex, const std::string& name)
+void CHiddenMorphTargetsInterface::setTargetName (const int tIndex, const char* name)
 {
 	m_morphTargetsData.setTargetName(tIndex, name);
+}
+
+/**
+ * Morph Targetsの頂点数を取得.
+ * @param[in]  tIndex    Morph Targets番号.
+ */
+int CHiddenMorphTargetsInterface::getTargetVerticesCount (const int tIndex)
+{
+	return m_morphTargetsData.getTargetVerticesCount(tIndex);
 }
 
 /**
@@ -121,9 +158,19 @@ void CHiddenMorphTargetsInterface::setTargetName (const int tIndex, const std::s
  * @param[out] indices   頂点インデックスが返る.
  * @param[out] vertices  頂点座標が返る.
  */
-bool CHiddenMorphTargetsInterface::getTargetVertices (const int tIndex, std::vector<int>& indices, std::vector<sxsdk::vec3>& vertices)
+bool CHiddenMorphTargetsInterface::getTargetVertices (const int tIndex, int* indices, sxsdk::vec3* vertices)
 {
-	return m_morphTargetsData.getTargetVertices(tIndex, indices, vertices);
+	std::vector<int> indices2;
+	std::vector<sxsdk::vec3> vertices2;
+
+	if (!m_morphTargetsData.getTargetVertices(tIndex, indices2, vertices2)) return false;
+	const int vCou = (int)indices2.size();
+	for (int i = 0; i < vCou; ++i) {
+		indices[i]  = indices2[i];
+		vertices[i] = vertices2[i];
+	}
+
+	return true;
 }
 
 /**

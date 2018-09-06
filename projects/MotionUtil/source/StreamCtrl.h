@@ -13,7 +13,7 @@ namespace StreamCtrl
 	/**
 	 * Morph Targets情報を保存.
 	 */
-	void writeMorphTargetsData (sxsdk::shape_class& shape, CMorphTargetsCtrl& data);
+	void writeMorphTargetsData (sxsdk::shape_class& shape, const CMorphTargetsCtrl& data);
 
 	/**
 	 * Morph Targets情報を読み込み.
