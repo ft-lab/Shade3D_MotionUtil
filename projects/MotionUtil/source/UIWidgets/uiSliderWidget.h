@@ -135,6 +135,11 @@ public:
 	virtual void mouseDownEvent (const sx::vec<int,2>& p, const bool doubleClick) = 0;
 
 	/**
+	 * pの位置がウィンドウ内かチェック.
+	 */
+	virtual bool chkInner (const sx::vec<int,2>& p) = 0;
+
+	/**
 	 * 識別用のIDを取得.
 	 */
 	int get_control_id () { return m_control_id; }

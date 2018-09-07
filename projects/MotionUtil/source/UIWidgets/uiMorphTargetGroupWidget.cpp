@@ -29,6 +29,9 @@ void CUISliderWidget::changedValue (float value, bool dragged)
  */
 void CUISliderWidget::mouseDownEvent (const sx::vec<int,2>& p, const bool doubleClick)
 {
+	// Morph Targetsのウィンドウの外が選択されている場合はスキップ.
+	if (!chkInnerMorphTargetsList(p)) return;
+
 	// 名前変更ダイアログの表示.
 	if (doubleClick) {
 		if (p.x >= 2 && p.x <= 2 + m_textWidth) {
@@ -37,6 +40,25 @@ void CUISliderWidget::mouseDownEvent (const sx::vec<int,2>& p, const bool double
 	}
 
 	m_pParent->setSelect(true, true);
+}
+
+/**
+ * 指定の位置が表示されているMorph Targetsウィンドウ内かチェック.
+ * mouse_downイベントから呼ばれる.
+ * @param[in] p   クリック位置.
+ */
+bool CUISliderWidget::chkInnerMorphTargetsList (const sx::vec<int,2>& p)
+{
+	const sx::vec<int,2> framePos = this->get_frame_position();
+	return m_pParent->chkInnerMorphTargetsList(framePos + p);
+}
+
+/**
+ * pの位置がウィンドウ内かチェック.
+ */
+bool CUISliderWidget::chkInner (const sx::vec<int,2>& p)
+{
+	return chkInnerMorphTargetsList(p);
 }
 
 //-----------------------------------------------------------------.
@@ -112,10 +134,26 @@ void CUIMorphTargetGroupWidget::resize (int x, int y, bool remake, void*)
 }
 
 /**
+ * 指定の位置が表示されているMorph Targetsウィンドウ内かチェック.
+ * mouse_downイベントから呼ばれる.
+ * @param[in] p   クリック位置.
+ */
+bool CUIMorphTargetGroupWidget::chkInnerMorphTargetsList (const sx::vec<int,2>& p)
+{
+	return m_morphTargetsWidget->chkInnerMorphTargetsList(m_index, p);
+}
+
+/**
  * マウスプッシュイベント.
  */
 bool CUIMorphTargetGroupWidget::mouse_down (int button, sx::ivec2 p, int key_down, int time, bool double_click, void*)
 {
+	// ウィンドウ外がクリックされた場合はスキップ.
+	if (!chkInnerMorphTargetsList(p)) return false;
+
+	const sx::vec<int,2> size = this->get_client_size();
+	if (p.x < 0 || p.y < 0 || p.x > size.x || p.y > size.y) return false;
+
 	// マウス位置がボタン上にあるかチェック.
 	m_selectUpdateButton = m_selectDeleteButton = select_button_none;
 	bool updateBut, deleteBut;
@@ -140,10 +178,14 @@ void CUIMorphTargetGroupWidget::mouse_move (sx::vec<int, 2> p, void *)
 	const SELECT_BUTTON_TYPE oldUpdateBut = m_selectUpdateButton;
 	const SELECT_BUTTON_TYPE oldDeleteBut = m_selectDeleteButton;
 	m_selectUpdateButton = m_selectDeleteButton = select_button_none;
-	bool updateBut, deleteBut;
-	m_checkMouseButton(p, updateBut, deleteBut);
-	m_selectUpdateButton = updateBut ? select_button_mouseover : select_button_none;
-	m_selectDeleteButton = deleteBut ? select_button_mouseover : select_button_none;
+
+	// ウィンドウ内かチェック.
+	if (chkInnerMorphTargetsList(p)) {
+		bool updateBut, deleteBut;
+		m_checkMouseButton(p, updateBut, deleteBut);
+		m_selectUpdateButton = updateBut ? select_button_mouseover : select_button_none;
+		m_selectDeleteButton = deleteBut ? select_button_mouseover : select_button_none;
+	}
 	if (oldUpdateBut != m_selectUpdateButton || oldDeleteBut != m_selectDeleteButton) {
 		invalidate();
 	}

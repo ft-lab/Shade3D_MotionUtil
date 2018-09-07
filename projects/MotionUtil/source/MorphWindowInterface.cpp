@@ -204,19 +204,25 @@ void CMorphWindowInterface::resize (int x, int y, bool remake, void *)
 }
 
 /**
+ * 指定の位置が表示されているMorph Targetsウィンドウ内かチェック.
+ * mouse_downイベントから呼ばれる.
+ * @param[in] p   クリック位置.
+ */
+bool CMorphWindowInterface::chkInnerMorphTargetsList (const sx::vec<int,2>& p)
+{
+	if (!m_pMorphTargetsWidget) return false;
+	const sx::rectangle_class rec = m_pMorphTargetsWidget->get_client_rectangle(true);
+	if (p.x < rec.min.x || p.y < rec.min.y || p.x > rec.max.x || p.y > rec.max.y) return false;
+	return true;
+}
+
+/**
  * シーンが変更されたときに呼ばれる.
  */
 void CMorphWindowInterface::active_scene_changed (bool &b, sxsdk::scene_interface *scene, void *)
 {
-	if (!this->is_shown()) return;
-
-	if (!scene) {
-		m_morphTargetsData.clear();
-		m_updateUI();
-		return;
-	}
-
 	// streamより、カレント形状のMorph Targets情報を遅延で取得.
+	// Morph Targetsウィンドウが非表示の場合は、idle内で表示された段階で更新される.
 	setNeedLoadMorph();
 }
 
@@ -225,18 +231,9 @@ void CMorphWindowInterface::active_scene_changed (bool &b, sxsdk::scene_interfac
  */
 void CMorphWindowInterface::active_shapes_changed (bool &b, sxsdk::scene_interface *scene, int old_n, sxsdk::shape_class *const *old_shapes, int n, sxsdk::shape_class *const *shapes, void *)
 {
-	if (!this->is_shown()) return;
-
-	if (!scene) {
-		m_morphTargetsData.clear();
-		m_updateUI();
-		return;
-	}
-
-	if (n > 0 && shapes) {
-		// streamより、カレント形状のMorph Targets情報を遅延で取得.
-		setNeedLoadMorph();
-	}
+	// streamより、カレント形状のMorph Targets情報を遅延で取得.
+	// Morph Targetsウィンドウが非表示の場合は、idle内で表示された段階で更新される.
+	setNeedLoadMorph();
 }
 
 //------------------------------------------.
@@ -502,6 +499,8 @@ void CMorphWindowInterface::m_selectTargetVertices ()
  */
 void CMorphWindowInterface::idle_task (bool &b, sxsdk::scene_interface *scene, void *)
 {
+	if (!this->is_shown()) return;
+
 	if (m_needUpdateMorph) {
 		updateMorph();
 	}

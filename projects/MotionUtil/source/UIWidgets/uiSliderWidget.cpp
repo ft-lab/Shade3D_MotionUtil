@@ -154,6 +154,9 @@ bool CUISliderWidgetBase::m_SliderPos (sx::vec<int,2>& mousePos, float& retValue
  */
 bool CUISliderWidgetBase::mouse_down (int button, sx::ivec2 p, int key_down, int time, bool double_click, void*)
 {
+	// ウィンドウ外の場合はスキップ.
+	if (!this->chkInner(p)) return false;
+
 	// マウスダウンイベントを呼ぶ.
 	this->mouseDownEvent(p, double_click);
 
@@ -241,6 +244,10 @@ void CUISliderWidgetBase::mouse_move (sx::vec<int, 2> p, void *)
 			m_sliderMouseOver = true;
 		}
 	}
+
+	// ウィンドウ外の場合.
+	if (!this->chkInner(p)) m_sliderMouseOver = false;
+
 	if (oldSliderMouseOver != m_sliderMouseOver) {
 		this->invalidate();
 	}

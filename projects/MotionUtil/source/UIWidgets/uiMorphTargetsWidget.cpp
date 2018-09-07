@@ -83,6 +83,19 @@ void CUIMorphTargetsWidget::resize (int x, int y, bool remake, void*)
 }
 
 /**
+ * 指定の位置が表示されているMorph Targetsウィンドウ内かチェック.
+ * mouse_downイベントから呼ばれる.
+ * @param[in] index   Weightリストでの番号.
+ * @param[in] p   クリック位置.
+ */
+bool CUIMorphTargetsWidget::chkInnerMorphTargetsList (const int index, const sx::vec<int,2>& p)
+{
+	const sx::rectangle_class rect = m_MorphTargetsList[index]->get_frame_rectangle();
+	const sx::vec<int,2> p2 = p + rect.min;
+	return m_morphWindow->chkInnerMorphTargetsList(p2);
+}
+
+/**
  * マウスプッシュイベント.
  */
 bool CUIMorphTargetsWidget::mouse_down (int button, sx::ivec2 p, int key_down, int time, bool double_click, void*)
@@ -91,7 +104,7 @@ bool CUIMorphTargetsWidget::mouse_down (int button, sx::ivec2 p, int key_down, i
 	bool inTargetList = false;
 	const size_t cou = m_MorphTargetsList.size();
 	for (size_t i = 0; i < cou; ++i) {
-		const sx::rectangle_class& rect = m_MorphTargetsList[i]->get_frame_rectangle();
+		const sx::rectangle_class rect = m_MorphTargetsList[i]->get_frame_rectangle();
 		if (p.x >= rect.min.x && p.x <= rect.max.x && p.y >= rect.min.y && p.y <= rect.max.y) {
 			inTargetList = true;
 			break;

@@ -237,6 +237,14 @@ public:
 	 * @param[in] index   Weightリストでの番号.
 	 */
 	bool showRenameDialog (const int index);
+
+	/**
+	 * 指定の位置が表示されているMorph Targetsウィンドウ内かチェック.
+	 * mouse_downイベントから呼ばれる.
+	 * @param[in] p   クリック位置.
+	 */
+	bool chkInnerMorphTargetsList (const sx::vec<int,2>& p);
+
 };
 
 #endif

@@ -50,6 +50,14 @@ public:
 	void clearData ();
 
 	/**
+	 * 指定の位置が表示されているMorph Targetsウィンドウ内かチェック.
+	 * mouse_downイベントから呼ばれる.
+	 * @param[in] index   Weightリストでの番号.
+	 * @param[in] p   クリック位置.
+	 */
+	bool chkInnerMorphTargetsList (const int index, const sx::vec<int,2>& p);
+
+	/**
 	 * 位置とサイズの指定.
 	 */
 	void set_bounds (const sx::vec<int,2>& pos, const sx::vec<int,2>& size);

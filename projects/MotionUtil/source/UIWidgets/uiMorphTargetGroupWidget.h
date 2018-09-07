@@ -22,6 +22,18 @@ public:
 	CUISliderWidget (sxsdk::window_interface &parent, const int control_id, const std::string titleText, const int textWidth, const int numberWidth = 60, const sxsdk::vec2 range = sxsdk::vec2(0.0f, 1.0f));
 
 	/**
+	 * 指定の位置が表示されているMorph Targetsウィンドウ内かチェック.
+	 * mouse_downイベントから呼ばれる.
+	 * @param[in] p   クリック位置.
+	 */
+	bool chkInnerMorphTargetsList (const sx::vec<int,2>& p);
+
+	/**
+	 * pの位置がウィンドウ内かチェック.
+	 */
+	bool chkInner (const sx::vec<int,2>& p);
+
+	/**
 	 * 値が変更された場合に呼ばれる.
 	 * @param[in] value    変更された値.
 	 * @param[in] dragged  スライダでドラッグ中はtrue.
@@ -108,6 +120,13 @@ public:
 	 * @param[in] control_id   識別ID.
 	 */
 	explicit CUIMorphTargetGroupWidget (const int index, CUIMorphTargetsWidget* parent, const int control_id, const std::string title);
+
+	/**
+	 * 指定の位置が表示されているMorph Targetsウィンドウ内かチェック.
+	 * mouse_downイベントから呼ばれる.
+	 * @param[in] p   クリック位置.
+	 */
+	bool chkInnerMorphTargetsList (const sx::vec<int,2>& p);
 
 	/**
 	 * 位置とサイズの指定.
