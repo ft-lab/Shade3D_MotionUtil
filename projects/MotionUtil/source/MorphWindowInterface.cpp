@@ -52,8 +52,6 @@ bool CButtonsWidget::setup_push_button (sxsdk::window_interface::push_button_cla
 		if (!m_pSelectVerticesBut) m_pSelectVerticesBut = &push_button;
 		return true;
 	}
-
-	return m_pParent->setup_push_button(push_button);
 }
 
 bool CButtonsWidget::setup_checkbox (sxsdk::window_interface::checkbox_class &checkbox, void *)
@@ -69,7 +67,23 @@ bool CButtonsWidget::setup_checkbox (sxsdk::window_interface::checkbox_class &ch
 
 void CButtonsWidget::push_button_clicked (sxsdk::window_interface::push_button_class &push_button, void *)
 {
-	m_pParent->push_button_clicked(push_button);
+	const std::string name(push_button.get_control_idname());
+
+	if (name == "setup_target_but") {		// Morph Target情報を割り当て.
+		m_pParent->setupMorphTargetData();
+	}
+
+	if (name == "append_target_but") {		// Morph Target情報を追加登録.
+		m_pParent->appendMorphTargetData();
+	}
+
+	if (name == "remove_target_but") {		// Morph Target情報を削除.
+		m_pParent->removeMorphTargetsData();
+	}
+
+	if (name == "select_target_vertices_but") {		// Morph Target対象の頂点を選択.
+		m_pParent->selectTargetVertices();
+	}
 }
 
 void CButtonsWidget::checkbox_value_changed (sxsdk::window_interface::checkbox_class &checkbox, void *)
@@ -239,60 +253,6 @@ void CMorphWindowInterface::active_shapes_changed (bool &b, sxsdk::scene_interfa
 //------------------------------------------.
 // setup時のコールバック.
 //------------------------------------------.
-bool CMorphWindowInterface::setup_number (sxsdk::window_interface::number_class& number, void*)
-{
-	const std::string name(number.get_control_idname());
-	return false;
-}
-
-bool CMorphWindowInterface::setup_slider (sxsdk::window_interface::slider_class &slider, void *)
-{
-	const std::string name(slider.get_control_idname());
-
-	const int targetsCou = m_morphTargetsData.getTargetsCount();
-	for (int i = 0; i < 8; ++i) {
-		const std::string str = std::string("weight_target") + std::to_string(i + 1);
-		if (name == str) {
-			slider.set_active(targetsCou >= i + 1);
-
-			if (targetsCou >= i + 1) {
-				const float weight = m_morphTargetsData.getTargetWeight(i);
-				slider.set_value(weight);
-			}
-			return true;
-		}
-	}
-	return false;
-}
-
-bool CMorphWindowInterface::setup_push_button (sxsdk::window_interface::push_button_class &push_button, void *)
-{
-	const std::string name(push_button.get_control_idname());
-
-	if (name == "append_target_but" || name == "update_target_but" || name == "select_target_vertices_but") {
-		push_button.set_active(m_morphTargetsData.getTargetShape() != NULL);
-	}
-
-	const int targetsCou = m_morphTargetsData.getTargetsCount();
-	for (int i = 0; i < 8; ++i) {
-		{
-			const std::string str = std::string("update_but") + std::to_string(i + 1);
-			if (name == str) {
-				push_button.set_active(targetsCou >= i + 1) ;
-				return true;
-			}
-		}
-		{
-			const std::string str = std::string("delete_but") + std::to_string(i + 1);
-			if (name == str) {
-				push_button.set_active(targetsCou >= i + 1) ;
-				return true;
-			}
-		}
-	}
-	return false;
-}
-
 bool CMorphWindowInterface::setup_checkbox (sxsdk::window_interface::checkbox_class &checkbox, void *)
 {
 	const std::string name(checkbox.get_control_idname());
@@ -307,54 +267,6 @@ bool CMorphWindowInterface::setup_checkbox (sxsdk::window_interface::checkbox_cl
 //------------------------------------------.
 // イベント処理のコールバック.
 //------------------------------------------.
-void CMorphWindowInterface::number_value_changed (sxsdk::window_interface::number_class& number, void*)
-{
-}
-
-void CMorphWindowInterface::slider_value_changed (sxsdk::window_interface::slider_class &slider, void *)
-{
-	const std::string name(slider.get_control_idname());
-
-	const int targetsCou = m_morphTargetsData.getTargetsCount();
-	for (int i = 0; i < 8; ++i) {
-		const std::string str = std::string("weight_target") + std::to_string(i + 1);
-		if (name == str) {
-			if (targetsCou >= i + 1) {
-				const float weight = slider.get_value();
-				m_morphTargetsData.setTargetWeight(i, weight);
-
-				// streamにMorph Targets情報を保存.
-				sxsdk::shape_class* shape = MeshUtil::getActivePolygonMesh(shade);
-				StreamCtrl::writeMorphTargetsData(*shape, m_morphTargetsData);
-
-				// ウエイト値によりメッシュを更新.
-				m_morphTargetsData.updateMesh();
-			}
-		}
-	}
-}
-
-void CMorphWindowInterface::push_button_clicked (sxsdk::window_interface::push_button_class &push_button, void *)
-{
-	const std::string name(push_button.get_control_idname());
-
-	if (name == "setup_target_but") {		// Morph Target情報を割り当て.
-		m_setupMorphTargetData();
-	}
-
-	if (name == "append_target_but") {		// Morph Target情報を追加登録.
-		m_appendMorphTargetData();
-	}
-
-	if (name == "remove_target_but") {		// Morph Target情報を削除.
-		m_removeMorphTargetsData();
-	}
-
-	if (name == "select_target_vertices_but") {		// Morph Target対象の頂点を選択.
-		m_selectTargetVertices();
-	}
-}
-
 void CMorphWindowInterface::checkbox_value_changed (sxsdk::window_interface::checkbox_class &checkbox, void *)
 {
 	const std::string name(checkbox.get_control_idname());
@@ -368,7 +280,7 @@ void CMorphWindowInterface::checkbox_value_changed (sxsdk::window_interface::che
 /**
  * Morph Target情報を割り当て開始.
  */
-void CMorphWindowInterface::m_setupMorphTargetData ()
+void CMorphWindowInterface::setupMorphTargetData ()
 {
 	// 選択されたポリゴンメッシュ形状を取得.
 	sxsdk::shape_class* shape = MeshUtil::getActivePolygonMesh(shade);
@@ -390,7 +302,7 @@ void CMorphWindowInterface::m_setupMorphTargetData ()
 /**
  * Morph Target情報を新たに追加.
  */
-void CMorphWindowInterface::m_appendMorphTargetData ()
+void CMorphWindowInterface::appendMorphTargetData ()
 {
 	// 選択されたポリゴンメッシュ形状を取得.
 	sxsdk::shape_class* shape = MeshUtil::getActivePolygonMesh(shade);
@@ -440,7 +352,7 @@ void CMorphWindowInterface::m_appendMorphTargetData ()
 /**
  * Morph Targets情報を削除.
  */
-void CMorphWindowInterface::m_removeMorphTargetsData ()
+void CMorphWindowInterface::removeMorphTargetsData ()
 {
 	// カレント形状でのMorph Targets情報を削除.
 	m_morphTargetsData.removeMorphTargets(m_removeRestoreCheck);
@@ -465,7 +377,7 @@ void CMorphWindowInterface::m_updateUI ()
 /**
  * Morph Targetの頂点を選択.
  */
-void CMorphWindowInterface::m_selectTargetVertices ()
+void CMorphWindowInterface::selectTargetVertices ()
 {
 	sxsdk::shape_class* shape = MeshUtil::getActivePolygonMesh(shade);
 	if (!shape) return;
@@ -489,9 +401,10 @@ void CMorphWindowInterface::m_selectTargetVertices ()
 			const int vIndex = vIndices[i];
 			pMesh.vertex(vIndex).set_active(true);
 		}
-
 	} catch (...) { }
 
+	// ボタンを更新するために呼ぶ.
+	m_pButtonsWidget->updateUI();
 }
 
 /**

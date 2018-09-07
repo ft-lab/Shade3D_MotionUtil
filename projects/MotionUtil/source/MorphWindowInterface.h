@@ -141,17 +141,11 @@ public:
 	//------------------------------------------.
 	// setup時のコールバック.
 	//------------------------------------------.
-	virtual bool setup_number (sxsdk::window_interface::number_class& number, void* aux = 0);
-	virtual bool setup_slider (sxsdk::window_interface::slider_class &slider, void *aux=0);
-	virtual bool setup_push_button (sxsdk::window_interface::push_button_class &push_button, void *aux=0);
 	virtual bool setup_checkbox (sxsdk::window_interface::checkbox_class &checkbox, void *aux=0);
 
 	//------------------------------------------.
 	// イベント処理のコールバック.
 	//------------------------------------------.
-	virtual void number_value_changed (sxsdk::window_interface::number_class& number, void* aux = 0);
-	virtual void slider_value_changed (sxsdk::window_interface::slider_class &slider, void *aux=0);
-	virtual void push_button_clicked (sxsdk::window_interface::push_button_class &push_button, void *aux=0);
 	virtual void checkbox_value_changed (sxsdk::window_interface::checkbox_class &checkbox, void *aux=0);
 
 private:
@@ -160,25 +154,26 @@ private:
 	 */
 	void m_updateUI ();
 
+public:
 	/**
 	 * Morph Target情報を割り当て開始.
 	 */
-	void m_setupMorphTargetData ();
+	void setupMorphTargetData ();
 
 	/**
 	 * Morph Target情報を新たに追加.
 	 */
-	void m_appendMorphTargetData ();
+	void appendMorphTargetData ();
 
 	/**
 	 * Morph Targets情報を削除.
 	 */
-	void m_removeMorphTargetsData ();
+	void removeMorphTargetsData ();
 
 	/**
 	 * Morph Targetの頂点を選択.
 	 */
-	void m_selectTargetVertices ();
+	void selectTargetVertices ();
 
 public:
 	explicit CMorphWindowInterface (sxsdk::shade_interface &shade);
