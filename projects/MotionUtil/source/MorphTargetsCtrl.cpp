@@ -17,9 +17,42 @@
 */
 
 //-------------------------------------------------.
+CMorphTargetsWeightCache::CMorphTargetsWeightCache ()
+{
+	clear();
+}
+CMorphTargetsWeightCache::CMorphTargetsWeightCache (const CMorphTargetsWeightCache& v)
+{
+	this->shapeHandle = v.shapeHandle;
+	this->weights     = v.weights;
+}
+CMorphTargetsWeightCache::~CMorphTargetsWeightCache ()
+{
+}
+
+void CMorphTargetsWeightCache::clear ()
+{
+	shapeHandle = NULL;
+	weights.clear();
+}
+
+//-------------------------------------------------.
 CMorphTargetsData::CMorphTargetsData ()
 {
 	clear();
+}
+
+CMorphTargetsData::CMorphTargetsData (const CMorphTargetsData& v)
+{
+	this->name     = v.name;
+	this->vIndices = v.vIndices;
+	this->vertices = v.vertices;
+	this->normals  = v.normals;
+	this->weight   = v.weight;
+}
+
+CMorphTargetsData::~CMorphTargetsData ()
+{
 }
 
 void CMorphTargetsData::clear ()
@@ -32,6 +65,10 @@ void CMorphTargetsData::clear ()
 }
 
 //-------------------------------------------------.
+namespace {
+	std::vector<CMorphTargetsWeightCache> g_shapeWeightCache;	// 形状ごとのMorph Targetsのウエイト値の一時保持用.
+}
+
 CMorphTargetsCtrl::CMorphTargetsCtrl ()
 {
 	clear();
@@ -43,6 +80,28 @@ void CMorphTargetsCtrl::clear ()
 	m_orgVertices.clear();
 	m_morphTargetsData.clear();
 	m_selectTargetIndex = -1;
+}
+
+/**
+ * Morph Targets情報を持つ形状をシーンから再帰的に探して格納.
+ * @param[in]   shape  検索形状.
+ * @param[out]  shapeList  ポリゴンメッシュでMorph Targetsを持つ形状が返る.
+ */
+void CMorphTargetsCtrl::m_findMorphTargetsShape (sxsdk::shape_class* shape, std::vector<sxsdk::shape_class *>& shapeList)
+{
+	if (shape->get_type() == sxsdk::enums::polygon_mesh) {
+		if (StreamCtrl::hasMorphTargetsData(*shape)) {
+			shapeList.push_back(shape);
+		}
+	}
+
+	if (shape->has_son()) {
+		sxsdk::shape_class* pShape = shape->get_son();
+		while (pShape->has_bro()) {
+			pShape = pShape->get_bro();
+			m_findMorphTargetsShape(pShape, shapeList);
+		}
+	}
 }
 
 //---------------------------------------------------------------.
@@ -410,6 +469,79 @@ void CMorphTargetsCtrl::updateMesh ()
 		pMesh.update();
 
 	} catch (...) { }
+}
+
+/**
+ * シーンのすべての形状で、Morph Targets情報を持つ形状のウエイト値を一時保持.
+ * (いったんすべてのウエイト値を0にして戻す、という操作で使用).
+ */
+void CMorphTargetsCtrl::pushAllWeight (sxsdk::scene_interface* scene, const bool setZeroWeight)
+{
+	g_shapeWeightCache.clear();
+	try {
+		// Morph Targets情報を持つ形状を取得.
+		std::vector<sxsdk::shape_class *> shapeList;
+		sxsdk::shape_class& rootShape = scene->get_shape();
+		m_findMorphTargetsShape(&rootShape, shapeList);
+		if (shapeList.empty()) return;
+
+		const size_t shapeCou = shapeList.size();
+		g_shapeWeightCache.resize(shapeCou);
+		for (size_t i = 0; i < shapeCou; ++i) {
+			CMorphTargetsWeightCache& weightC = g_shapeWeightCache[i];
+			weightC.clear();
+			weightC.shapeHandle = shapeList[i]->get_handle();
+
+			CMorphTargetsCtrl targetC;
+			StreamCtrl::readMorphTargetsData(*shapeList[i], targetC);
+			const int tCou = targetC.getTargetsCount();
+			weightC.weights.resize(tCou, 0.0f);
+			for (int j = 0; j < tCou; ++j) {
+				weightC.weights[j] = targetC.getTargetWeight(j);
+			}
+		}
+
+		// ウエイト値を0にする.
+		if (setZeroWeight) {
+			for (size_t i = 0; i < shapeCou; ++i) {
+				const CMorphTargetsWeightCache& weightC = g_shapeWeightCache[i];
+
+				CMorphTargetsCtrl targetC;
+				StreamCtrl::readMorphTargetsData(*shapeList[i], targetC);
+				targetC.setZeroAllWeight();
+				StreamCtrl::writeMorphTargetsData(*shapeList[i], targetC);
+				targetC.updateMesh();
+			}
+		}
+	} catch (...) { }
+}
+
+/**
+ * シーンのすべての形状のMorph Targets情報のウエイト値を戻す.
+ */
+void CMorphTargetsCtrl::popAllWeight (sxsdk::scene_interface* scene)
+{
+	if (g_shapeWeightCache.empty()) return;
+
+	try {
+		const size_t shapeCou = g_shapeWeightCache.size();
+		for (size_t i = 0; i < shapeCou; ++i) {
+			const CMorphTargetsWeightCache& weightC = g_shapeWeightCache[i];
+			sxsdk::shape_class* shape = scene->get_shape_by_handle(weightC.shapeHandle);
+			if (!shape) continue;
+
+			CMorphTargetsCtrl targetC;
+			StreamCtrl::readMorphTargetsData(*shape, targetC);
+			const int tCou = targetC.getTargetsCount();
+			for (int j = 0; j < tCou; ++j) {
+				targetC.setTargetWeight(j, weightC.weights[j]);
+			}
+			StreamCtrl::writeMorphTargetsData(*shape, targetC);
+			targetC.updateMesh();
+		}
+	} catch (...) { }
+
+	g_shapeWeightCache.clear();
 }
 
 //---------------------------------------------------------------.

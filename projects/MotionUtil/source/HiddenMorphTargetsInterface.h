@@ -166,6 +166,17 @@ public:
 	void setZeroAllWeight ();
 
 	/**
+	 * シーンのすべての形状で、Morph Targets情報を持つ形状のウエイト値を一時保持.
+	 * (いったんすべてのウエイト値を0にして戻す、という操作で使用).
+	 */
+	void pushAllWeight (sxsdk::scene_interface* scene, const bool setZeroWeight = false);
+
+	/**
+	 * シーンのすべての形状のMorph Targets情報のウエイト値を戻す.
+	 */
+	void popAllWeight (sxsdk::scene_interface* scene);
+
+	/**
 	 * 重複頂点をマージする.
 	 * ポリゴンメッシュの「sxsdk::polygon_mesh_class::cleanup_redundant_vertices」と同等で、Morph Targetsも考慮したもの.
 	 */

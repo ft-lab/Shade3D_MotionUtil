@@ -9,6 +9,33 @@
 #include <vector>
 
 //-------------------------------------------------.
+/**
+ * Morph Targetsのウエイト情報の一時保持用.
+ */
+class CMorphTargetsWeightCache
+{
+public:
+	void *shapeHandle;				// sxsdk::shape_classのハンドル(形状識別用).
+	std::vector<float> weights;		// ウエイト情報.
+
+public:
+	CMorphTargetsWeightCache ();
+	CMorphTargetsWeightCache (const CMorphTargetsWeightCache& v);
+	~CMorphTargetsWeightCache ();
+
+    CMorphTargetsWeightCache& operator = (const CMorphTargetsWeightCache &v) {
+		this->shapeHandle = v.shapeHandle;
+		this->weights     = v.weights;
+		return (*this);
+	}
+
+	void clear ();
+};
+
+//-------------------------------------------------.
+/**
+ * Morph Targetsの1つの情報.
+ */
 class CMorphTargetsData
 {
 public:
@@ -21,6 +48,17 @@ public:
 
 public:
 	CMorphTargetsData ();
+	CMorphTargetsData (const CMorphTargetsData& v);
+	~CMorphTargetsData ();
+
+    CMorphTargetsData& operator = (const CMorphTargetsData &v) {
+		this->name     = v.name;
+		this->vIndices = v.vIndices;
+		this->vertices = v.vertices;
+		this->normals  = v.normals;
+		this->weight   = v.weight;
+		return (*this);
+	}
 
 	void clear ();
 };
@@ -35,6 +73,14 @@ private:
 	std::vector<CMorphTargetsData> m_morphTargetsData;		// MorphTargetsのリスト.
 
 	int m_selectTargetIndex;								// 選択されているTarget番号.
+
+private:
+	/**
+	 * Morph Targets情報を持つ形状をシーンから再帰的に探して格納.
+	 * @param[in]   shape  検索形状.
+	 * @param[out]  shapeList  ポリゴンメッシュでMorph Targetsを持つ形状が返る.
+	 */
+	void m_findMorphTargetsShape (sxsdk::shape_class* shape, std::vector<sxsdk::shape_class *>& shapeList);
 
 public:
 	CMorphTargetsCtrl ();
@@ -152,6 +198,17 @@ public:
 	 * この後にupdateMeshを呼ぶと、ウエイト前の頂点となる.
 	 */
 	void setZeroAllWeight ();
+
+	/**
+	 * シーンのすべての形状で、Morph Targets情報を持つ形状のウエイト値を一時保持.
+	 * (いったんすべてのウエイト値を0にして戻す、という操作で使用).
+	 */
+	void pushAllWeight (sxsdk::scene_interface* scene, const bool setZeroWeight = false);
+
+	/**
+	 * シーンのすべての形状のMorph Targets情報のウエイト値を戻す.
+	 */
+	void popAllWeight (sxsdk::scene_interface* scene);
 
 	/**
 	 * 重複頂点をマージする.
