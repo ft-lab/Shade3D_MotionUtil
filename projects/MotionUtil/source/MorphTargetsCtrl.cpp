@@ -277,7 +277,10 @@ bool CMorphTargetsCtrl::cleanupRedundantVertices (sxsdk::shape_class& shape)
 
 		const int versCou = (int)m_orgVertices.size();
 		sxsdk::polygon_mesh_class& pMesh = m_pTargetShape->get_polygon_mesh();
-		if (pMesh.get_total_number_of_control_points() != versCou) return false;
+		if (pMesh.get_total_number_of_control_points() != versCou) {
+			pMesh.cleanup_redundant_vertices();
+			return false;
+		}
 
 		// 空間分割クラスに頂点を渡して空間分割を実行.
 		CBSPPoint bspPoint(m_orgVertices);
