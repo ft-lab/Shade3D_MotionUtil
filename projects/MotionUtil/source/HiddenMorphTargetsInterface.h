@@ -177,6 +177,13 @@ public:
 	void popAllWeight (sxsdk::scene_interface* scene);
 
 	/**
+	 * 指定の形状の(Cacheでの)カレントウエイト値を取得.
+	 * @param[in]  tIndex    Morph Targets番号.
+	 * @param[out] weights   targetごとのウエイト値が返る.
+	 */
+	bool getShapeCurrentWeights (const sxsdk::shape_class* shape, float* weights);
+
+	/**
 	 * 重複頂点をマージする.
 	 * ポリゴンメッシュの「sxsdk::polygon_mesh_class::cleanup_redundant_vertices」と同等で、Morph Targetsも考慮したもの.
 	 */

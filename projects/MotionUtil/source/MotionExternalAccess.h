@@ -227,6 +227,13 @@ public:
 	 */
 	virtual void popAllWeight (sxsdk::scene_interface* scene) = 0;
 
+	/**
+	 * 指定の形状の(Cacheでの)カレントウエイト値を取得.
+	 * @param[in]  tIndex    Morph Targets番号.
+	 * @param[out] weights   targetごとのウエイト値が返る.
+	 */
+	virtual bool getShapeCurrentWeights (const sxsdk::shape_class* shape, float* weights) = 0;
+
 };
 
 //----------------------------------------------------------------------.

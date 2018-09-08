@@ -168,6 +168,13 @@ public:
 	bool getTargetVertices (const int tIndex, std::vector<int>& indices, std::vector<sxsdk::vec3>& vertices);
 
 	/**
+	 * 指定の形状の(Cacheでの)カレントウエイト値を取得.
+	 * @param[in]  tIndex    Morph Targets番号.
+	 * @param[out] weights   targetごとのウエイト値が返る.
+	 */
+	bool getShapeCurrentWeights (const sxsdk::shape_class* shape, std::vector<float>& weights);
+
+	/**
 	 * Morph Targetsのウエイト値を指定.
 	 * @param[in]  tIndex    Morph Targets番号.
 	 * @param[in]  weight    ウエイト値(0.0 - 1.0).

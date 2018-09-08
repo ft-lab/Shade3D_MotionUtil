@@ -238,6 +238,19 @@ void CHiddenMorphTargetsInterface::popAllWeight (sxsdk::scene_interface* scene)
 }
 
 /**
+ * 指定の形状の(Cacheでの)カレントウエイト値を取得.
+ * @param[in]  tIndex    Morph Targets番号.
+ * @param[out] weights   targetごとのウエイト値が返る.
+ */
+bool CHiddenMorphTargetsInterface::getShapeCurrentWeights (const sxsdk::shape_class* shape, float* weights)
+{
+	std::vector<float> weight2;
+	if (!m_morphTargetsData.getShapeCurrentWeights(shape, weight2)) return false;
+	for (size_t i = 0; i < weight2.size(); ++i) weights[i] = weight2[i];
+	return true;
+}
+
+/**
  * 重複頂点をマージする.
  * ポリゴンメッシュの「sxsdk::polygon_mesh_class::cleanup_redundant_vertices」と同等で、Morph Targetsも考慮したもの.
  */

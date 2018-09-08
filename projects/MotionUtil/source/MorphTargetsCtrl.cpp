@@ -544,6 +544,35 @@ void CMorphTargetsCtrl::popAllWeight (sxsdk::scene_interface* scene)
 	g_shapeWeightCache.clear();
 }
 
+/**
+ * 指定の形状の(Cacheでの)カレントウエイト値を取得.
+ * @param[in]  tIndex    Morph Targets番号.
+ * @param[out] weights   targetごとのウエイト値が返る.
+ */
+bool CMorphTargetsCtrl::getShapeCurrentWeights (const sxsdk::shape_class* shape, std::vector<float>& weights)
+{
+	if (!shape) return false;
+	if (g_shapeWeightCache.empty()) return false;
+
+	try {
+		bool ret = false;
+		const size_t shapeCou = g_shapeWeightCache.size();
+		for (size_t i = 0; i < shapeCou; ++i) {
+			const CMorphTargetsWeightCache& weightC = g_shapeWeightCache[i];
+			if (shape->get_handle() == weightC.shapeHandle) {
+				const size_t tCou = weightC.weights.size();
+				weights.resize(tCou);
+				for (size_t j = 0; j < tCou; ++j) weights[j] = weightC.weights[j];
+				ret = true;
+				break;
+			}
+		}
+		return ret;
+	} catch (...) { }
+
+	return false;
+}
+
 //---------------------------------------------------------------.
 // Stream保存/読み込み用.
 //---------------------------------------------------------------.
