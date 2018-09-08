@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<dialog default_button="false" title="名前変更">
-	<short-string id="101" label="名前:" />
+<dialog default_button="false" title="Rename">
+	<short-string id="101" label="Name : " />
 </dialog>
