@@ -1,0 +1,630 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9204FC2621442B0100E01791 /* BSPPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9204FC0B21442AFE00E01791 /* BSPPoint.cpp */; };
+		9204FC2721442B0100E01791 /* MotionWindowInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 9204FC0C21442AFE00E01791 /* MotionWindowInterface.h */; };
+		9204FC2821442B0100E01791 /* RenameDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9204FC0D21442AFF00E01791 /* RenameDialog.cpp */; };
+		9204FC2921442B0100E01791 /* BoneUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9204FC0E21442AFF00E01791 /* BoneUtil.cpp */; };
+		9204FC2A21442B0100E01791 /* MotionData.h in Headers */ = {isa = PBXBuildFile; fileRef = 9204FC0F21442AFF00E01791 /* MotionData.h */; };
+		9204FC2B21442B0100E01791 /* MotionExternalAccess.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9204FC1021442AFF00E01791 /* MotionExternalAccess.cpp */; };
+		9204FC2C21442B0100E01791 /* RenameDialog.h in Headers */ = {isa = PBXBuildFile; fileRef = 9204FC1121442AFF00E01791 /* RenameDialog.h */; };
+		9204FC2D21442B0100E01791 /* MorphTargetsCtrl.h in Headers */ = {isa = PBXBuildFile; fileRef = 9204FC1221442AFF00E01791 /* MorphTargetsCtrl.h */; };
+		9204FC2E21442B0100E01791 /* MotionExternalAccess.h in Headers */ = {isa = PBXBuildFile; fileRef = 9204FC1321442AFF00E01791 /* MotionExternalAccess.h */; };
+		9204FC2F21442B0100E01791 /* MathUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 9204FC1421442AFF00E01791 /* MathUtil.h */; };
+		9204FC3021442B0100E01791 /* MotionWindowInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9204FC1521442AFF00E01791 /* MotionWindowInterface.cpp */; };
+		9204FC3121442B0100E01791 /* HiddenMorphTargetsInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 9204FC1621442AFF00E01791 /* HiddenMorphTargetsInterface.h */; };
+		9204FC3221442B0100E01791 /* BSPPoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 9204FC1721442AFF00E01791 /* BSPPoint.h */; };
+		9204FC3321442B0100E01791 /* MathUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9204FC1821442B0000E01791 /* MathUtil.cpp */; };
+		9204FC3421442B0100E01791 /* BoneUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 9204FC1921442B0000E01791 /* BoneUtil.h */; };
+		9204FC3521442B0100E01791 /* MorphWindowInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 9204FC1A21442B0000E01791 /* MorphWindowInterface.h */; };
+		9204FC3621442B0100E01791 /* MotionData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9204FC1B21442B0000E01791 /* MotionData.cpp */; };
+		9204FC3721442B0100E01791 /* MeshUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9204FC1C21442B0000E01791 /* MeshUtil.cpp */; };
+		9204FC3821442B0100E01791 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9204FC1D21442B0000E01791 /* main.cpp */; };
+		9204FC3921442B0100E01791 /* HiddenMorphTargetsInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9204FC1E21442B0000E01791 /* HiddenMorphTargetsInterface.cpp */; };
+		9204FC3A21442B0100E01791 /* GlobalHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 9204FC1F21442B0000E01791 /* GlobalHeader.h */; };
+		9204FC3B21442B0100E01791 /* MorphTargetsCustomList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9204FC2021442B0100E01791 /* MorphTargetsCustomList.cpp */; };
+		9204FC3C21442B0100E01791 /* MorphWindowInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9204FC2121442B0100E01791 /* MorphWindowInterface.cpp */; };
+		9204FC3D21442B0100E01791 /* HiddenBoneUtilInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9204FC2221442B0100E01791 /* HiddenBoneUtilInterface.cpp */; };
+		9204FC3E21442B0100E01791 /* MeshUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 9204FC2321442B0100E01791 /* MeshUtil.h */; };
+		9204FC3F21442B0100E01791 /* HiddenBoneUtilInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 9204FC2421442B0100E01791 /* HiddenBoneUtilInterface.h */; };
+		9204FC4021442B0100E01791 /* MorphTargetsCtrl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9204FC2521442B0100E01791 /* MorphTargetsCtrl.cpp */; };
+		9204FC4E21442B1100E01791 /* StreamCtrl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9204FC4121442B1000E01791 /* StreamCtrl.cpp */; };
+		9204FC4F21442B1100E01791 /* StreamCtrl.h in Headers */ = {isa = PBXBuildFile; fileRef = 9204FC4221442B1000E01791 /* StreamCtrl.h */; };
+		9204FC5021442B1100E01791 /* GraphicUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9204FC4421442B1100E01791 /* GraphicUtil.cpp */; };
+		9204FC5121442B1100E01791 /* GraphicUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 9204FC4521442B1100E01791 /* GraphicUtil.h */; };
+		9204FC5221442B1100E01791 /* uiMorphTargetGroupWidget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9204FC4621442B1100E01791 /* uiMorphTargetGroupWidget.cpp */; };
+		9204FC5321442B1100E01791 /* uiMorphTargetGroupWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = 9204FC4721442B1100E01791 /* uiMorphTargetGroupWidget.h */; };
+		9204FC5421442B1100E01791 /* uiMorphTargetsWidget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9204FC4821442B1100E01791 /* uiMorphTargetsWidget.cpp */; };
+		9204FC5521442B1100E01791 /* uiMorphTargetsWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = 9204FC4921442B1100E01791 /* uiMorphTargetsWidget.h */; };
+		9204FC5621442B1100E01791 /* uiPanelWidget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9204FC4A21442B1100E01791 /* uiPanelWidget.cpp */; };
+		9204FC5721442B1100E01791 /* uiPanelWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = 9204FC4B21442B1100E01791 /* uiPanelWidget.h */; };
+		9204FC5821442B1100E01791 /* uiSliderWidget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9204FC4C21442B1100E01791 /* uiSliderWidget.cpp */; };
+		9204FC5921442B1100E01791 /* uiSliderWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = 9204FC4D21442B1100E01791 /* uiSliderWidget.h */; };
+		92F6FC0A213E409F005655E6 /* MotionUtil.info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 92F6FC09213E409F005655E6 /* MotionUtil.info.plist */; };
+		FFE6EF5D1A6667E60006CB66 /* shdplugin.icns in Resources */ = {isa = PBXBuildFile; fileRef = 16F9E21A0546323A00F09F49 /* shdplugin.icns */; };
+		FFE6EF5E1A6667E60006CB66 /* sxuls in Resources */ = {isa = PBXBuildFile; fileRef = A31F019408BD316A00C322BE /* sxuls */; };
+		FFE6EF611A6667E60006CB66 /* com.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C7BB47841980FA1500C9F408 /* com.cpp */; };
+		FFE6EF6A1A6667E60006CB66 /* vectors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C7BB47861980FA1500C9F408 /* vectors.cpp */; };
+		FFE6EF741A6667E60006CB66 /* debug.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C7BB47851980FA1500C9F408 /* debug.cpp */; };
+		FFE6EF791A6667E60006CB66 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7A45C7D13DFD68B005C78EC /* Foundation.framework */; };
+		FFE6EF7A1A6667E60006CB66 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7A45C8313DFD69F005C78EC /* Cocoa.framework */; };
+		FFE6EF7B1A6667E60006CB66 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7A45CDB13DFD915005C78EC /* SystemConfiguration.framework */; };
+		FFE6EF7C1A6667E60006CB66 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C7A45CE313DFD955005C78EC /* libiconv.dylib */; };
+		FFE6EFE41A6669460006CB66 /* MotionUtil.shdplugin in CopyFiles */ = {isa = PBXBuildFile; fileRef = FFE6EF871A6667E60006CB66 /* MotionUtil.shdplugin */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FF39F5911A667C8A00E09111 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FFE6EF811A6667E60006CB66 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = ../../../../../../builds/mac/plugins;
+			dstSubfolderSpec = 16;
+			files = (
+				FFE6EFE41A6669460006CB66 /* MotionUtil.shdplugin in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		16F9E21A0546323A00F09F49 /* shdplugin.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = shdplugin.icns; path = ../xshade/icns/shdplugin.icns; sourceTree = SOURCE_ROOT; };
+		32DBCF630370AF2F00C91783 /* xplugins_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xplugins_Prefix.pch; sourceTree = "<group>"; };
+		9204FC0B21442AFE00E01791 /* BSPPoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BSPPoint.cpp; path = ../../source/BSPPoint.cpp; sourceTree = "<group>"; };
+		9204FC0C21442AFE00E01791 /* MotionWindowInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MotionWindowInterface.h; path = ../../source/MotionWindowInterface.h; sourceTree = "<group>"; };
+		9204FC0D21442AFF00E01791 /* RenameDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RenameDialog.cpp; path = ../../source/RenameDialog.cpp; sourceTree = "<group>"; };
+		9204FC0E21442AFF00E01791 /* BoneUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BoneUtil.cpp; path = ../../source/BoneUtil.cpp; sourceTree = "<group>"; };
+		9204FC0F21442AFF00E01791 /* MotionData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MotionData.h; path = ../../source/MotionData.h; sourceTree = "<group>"; };
+		9204FC1021442AFF00E01791 /* MotionExternalAccess.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MotionExternalAccess.cpp; path = ../../source/MotionExternalAccess.cpp; sourceTree = "<group>"; };
+		9204FC1121442AFF00E01791 /* RenameDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RenameDialog.h; path = ../../source/RenameDialog.h; sourceTree = "<group>"; };
+		9204FC1221442AFF00E01791 /* MorphTargetsCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MorphTargetsCtrl.h; path = ../../source/MorphTargetsCtrl.h; sourceTree = "<group>"; };
+		9204FC1321442AFF00E01791 /* MotionExternalAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MotionExternalAccess.h; path = ../../source/MotionExternalAccess.h; sourceTree = "<group>"; };
+		9204FC1421442AFF00E01791 /* MathUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MathUtil.h; path = ../../source/MathUtil.h; sourceTree = "<group>"; };
+		9204FC1521442AFF00E01791 /* MotionWindowInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MotionWindowInterface.cpp; path = ../../source/MotionWindowInterface.cpp; sourceTree = "<group>"; };
+		9204FC1621442AFF00E01791 /* HiddenMorphTargetsInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HiddenMorphTargetsInterface.h; path = ../../source/HiddenMorphTargetsInterface.h; sourceTree = "<group>"; };
+		9204FC1721442AFF00E01791 /* BSPPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BSPPoint.h; path = ../../source/BSPPoint.h; sourceTree = "<group>"; };
+		9204FC1821442B0000E01791 /* MathUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MathUtil.cpp; path = ../../source/MathUtil.cpp; sourceTree = "<group>"; };
+		9204FC1921442B0000E01791 /* BoneUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BoneUtil.h; path = ../../source/BoneUtil.h; sourceTree = "<group>"; };
+		9204FC1A21442B0000E01791 /* MorphWindowInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MorphWindowInterface.h; path = ../../source/MorphWindowInterface.h; sourceTree = "<group>"; };
+		9204FC1B21442B0000E01791 /* MotionData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MotionData.cpp; path = ../../source/MotionData.cpp; sourceTree = "<group>"; };
+		9204FC1C21442B0000E01791 /* MeshUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MeshUtil.cpp; path = ../../source/MeshUtil.cpp; sourceTree = "<group>"; };
+		9204FC1D21442B0000E01791 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../../source/main.cpp; sourceTree = "<group>"; };
+		9204FC1E21442B0000E01791 /* HiddenMorphTargetsInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HiddenMorphTargetsInterface.cpp; path = ../../source/HiddenMorphTargetsInterface.cpp; sourceTree = "<group>"; };
+		9204FC1F21442B0000E01791 /* GlobalHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GlobalHeader.h; path = ../../source/GlobalHeader.h; sourceTree = "<group>"; };
+		9204FC2021442B0100E01791 /* MorphTargetsCustomList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MorphTargetsCustomList.cpp; path = ../../source/MorphTargetsCustomList.cpp; sourceTree = "<group>"; };
+		9204FC2121442B0100E01791 /* MorphWindowInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MorphWindowInterface.cpp; path = ../../source/MorphWindowInterface.cpp; sourceTree = "<group>"; };
+		9204FC2221442B0100E01791 /* HiddenBoneUtilInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HiddenBoneUtilInterface.cpp; path = ../../source/HiddenBoneUtilInterface.cpp; sourceTree = "<group>"; };
+		9204FC2321442B0100E01791 /* MeshUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeshUtil.h; path = ../../source/MeshUtil.h; sourceTree = "<group>"; };
+		9204FC2421442B0100E01791 /* HiddenBoneUtilInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HiddenBoneUtilInterface.h; path = ../../source/HiddenBoneUtilInterface.h; sourceTree = "<group>"; };
+		9204FC2521442B0100E01791 /* MorphTargetsCtrl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MorphTargetsCtrl.cpp; path = ../../source/MorphTargetsCtrl.cpp; sourceTree = "<group>"; };
+		9204FC4121442B1000E01791 /* StreamCtrl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StreamCtrl.cpp; path = ../../source/StreamCtrl.cpp; sourceTree = "<group>"; };
+		9204FC4221442B1000E01791 /* StreamCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StreamCtrl.h; path = ../../source/StreamCtrl.h; sourceTree = "<group>"; };
+		9204FC4421442B1100E01791 /* GraphicUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GraphicUtil.cpp; sourceTree = "<group>"; };
+		9204FC4521442B1100E01791 /* GraphicUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphicUtil.h; sourceTree = "<group>"; };
+		9204FC4621442B1100E01791 /* uiMorphTargetGroupWidget.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = uiMorphTargetGroupWidget.cpp; sourceTree = "<group>"; };
+		9204FC4721442B1100E01791 /* uiMorphTargetGroupWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uiMorphTargetGroupWidget.h; sourceTree = "<group>"; };
+		9204FC4821442B1100E01791 /* uiMorphTargetsWidget.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = uiMorphTargetsWidget.cpp; sourceTree = "<group>"; };
+		9204FC4921442B1100E01791 /* uiMorphTargetsWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uiMorphTargetsWidget.h; sourceTree = "<group>"; };
+		9204FC4A21442B1100E01791 /* uiPanelWidget.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = uiPanelWidget.cpp; sourceTree = "<group>"; };
+		9204FC4B21442B1100E01791 /* uiPanelWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uiPanelWidget.h; sourceTree = "<group>"; };
+		9204FC4C21442B1100E01791 /* uiSliderWidget.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = uiSliderWidget.cpp; sourceTree = "<group>"; };
+		9204FC4D21442B1100E01791 /* uiSliderWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uiSliderWidget.h; sourceTree = "<group>"; };
+		92F6FC09213E409F005655E6 /* MotionUtil.info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = MotionUtil.info.plist; path = plists/MotionUtil.info.plist; sourceTree = "<group>"; };
+		A31F019508BD316A00C322BE /* en */ = {isa = PBXFileReference; lastKnownFileType = folder; name = en; path = ../../source/resources/en.lproj/sxuls; sourceTree = SOURCE_ROOT; };
+		A31F01A808BD318900C322BE /* ja */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ja; path = ../../source/resources/ja.lproj/sxuls; sourceTree = SOURCE_ROOT; };
+		A31F01B308BD319F00C322BE /* zh_CN */ = {isa = PBXFileReference; lastKnownFileType = folder; name = zh_CN; path = ../../source/resources/zh_CN.lproj/sxuls; sourceTree = SOURCE_ROOT; };
+		C724213318B32DA30083BD68 /* config.plugins.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = config.plugins.xcconfig; path = ../../../../xcconfig/config.plugins.xcconfig; sourceTree = "<group>"; };
+		C7A45C7D13DFD68B005C78EC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		C7A45C8313DFD69F005C78EC /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		C7A45CDB13DFD915005C78EC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = /System/Library/Frameworks/SystemConfiguration.framework; sourceTree = "<absolute>"; };
+		C7A45CE313DFD955005C78EC /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = /usr/lib/libiconv.dylib; sourceTree = "<absolute>"; };
+		C7BB47841980FA1500C9F408 /* com.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = com.cpp; path = ../../../../include/sxcore/com.cpp; sourceTree = "<group>"; };
+		C7BB47851980FA1500C9F408 /* debug.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = debug.cpp; path = ../../../../include/sxcore/debug.cpp; sourceTree = "<group>"; };
+		C7BB47861980FA1500C9F408 /* vectors.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = vectors.cpp; path = ../../../../include/sxcore/vectors.cpp; sourceTree = "<group>"; };
+		FFE6EF871A6667E60006CB66 /* MotionUtil.shdplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MotionUtil.shdplugin; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FFE6EF781A6667E60006CB66 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFE6EF791A6667E60006CB66 /* Foundation.framework in Frameworks */,
+				FFE6EF7A1A6667E60006CB66 /* Cocoa.framework in Frameworks */,
+				FFE6EF7B1A6667E60006CB66 /* SystemConfiguration.framework in Frameworks */,
+				FFE6EF7C1A6667E60006CB66 /* libiconv.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		089C166AFE841209C02AAC07 /* xplugins */ = {
+			isa = PBXGroup;
+			children = (
+				C724213318B32DA30083BD68 /* config.plugins.xcconfig */,
+				4A3E5BC70B0029410006A4FF /* sources */,
+				B8F429BB04BCB35A00A80009 /* plists */,
+				08FB77AFFE84173DC02AAC07 /* Classes */,
+				32C88E010371C26100C91783 /* include */,
+				089C167CFE841241C02AAC07 /* Resources */,
+				089C1671FE841209C02AAC07 /* Frameworks and Libraries */,
+				19C28FB8FE9D52D311CA2CBB /* Products */,
+			);
+			name = xplugins;
+			sourceTree = "<group>";
+		};
+		089C1671FE841209C02AAC07 /* Frameworks and Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				C7A45C7D13DFD68B005C78EC /* Foundation.framework */,
+				C7A45C8313DFD69F005C78EC /* Cocoa.framework */,
+				C7A45CDB13DFD915005C78EC /* SystemConfiguration.framework */,
+				C7A45CE313DFD955005C78EC /* libiconv.dylib */,
+			);
+			name = "Frameworks and Libraries";
+			sourceTree = "<group>";
+		};
+		089C167CFE841241C02AAC07 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A31F019408BD316A00C322BE /* sxuls */,
+				16F9E21A0546323A00F09F49 /* shdplugin.icns */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		08FB77AFFE84173DC02AAC07 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				C7BB47841980FA1500C9F408 /* com.cpp */,
+				C7BB47851980FA1500C9F408 /* debug.cpp */,
+				C7BB47861980FA1500C9F408 /* vectors.cpp */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		19C28FB8FE9D52D311CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FFE6EF871A6667E60006CB66 /* MotionUtil.shdplugin */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		32C88E010371C26100C91783 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				9204FC4221442B1000E01791 /* StreamCtrl.h */,
+				9204FC1921442B0000E01791 /* BoneUtil.h */,
+				9204FC1721442AFF00E01791 /* BSPPoint.h */,
+				9204FC1F21442B0000E01791 /* GlobalHeader.h */,
+				9204FC2421442B0100E01791 /* HiddenBoneUtilInterface.h */,
+				9204FC1621442AFF00E01791 /* HiddenMorphTargetsInterface.h */,
+				9204FC1421442AFF00E01791 /* MathUtil.h */,
+				9204FC2321442B0100E01791 /* MeshUtil.h */,
+				9204FC1221442AFF00E01791 /* MorphTargetsCtrl.h */,
+				9204FC1A21442B0000E01791 /* MorphWindowInterface.h */,
+				9204FC0F21442AFF00E01791 /* MotionData.h */,
+				9204FC1321442AFF00E01791 /* MotionExternalAccess.h */,
+				9204FC0C21442AFE00E01791 /* MotionWindowInterface.h */,
+				9204FC1121442AFF00E01791 /* RenameDialog.h */,
+				32DBCF630370AF2F00C91783 /* xplugins_Prefix.pch */,
+			);
+			name = include;
+			sourceTree = "<group>";
+		};
+		4A3E5BC70B0029410006A4FF /* sources */ = {
+			isa = PBXGroup;
+			children = (
+				9204FC4121442B1000E01791 /* StreamCtrl.cpp */,
+				9204FC4321442B1100E01791 /* UIWidgets */,
+				9204FC0E21442AFF00E01791 /* BoneUtil.cpp */,
+				9204FC0B21442AFE00E01791 /* BSPPoint.cpp */,
+				9204FC2221442B0100E01791 /* HiddenBoneUtilInterface.cpp */,
+				9204FC1E21442B0000E01791 /* HiddenMorphTargetsInterface.cpp */,
+				9204FC1D21442B0000E01791 /* main.cpp */,
+				9204FC1821442B0000E01791 /* MathUtil.cpp */,
+				9204FC1C21442B0000E01791 /* MeshUtil.cpp */,
+				9204FC2521442B0100E01791 /* MorphTargetsCtrl.cpp */,
+				9204FC2021442B0100E01791 /* MorphTargetsCustomList.cpp */,
+				9204FC2121442B0100E01791 /* MorphWindowInterface.cpp */,
+				9204FC1B21442B0000E01791 /* MotionData.cpp */,
+				9204FC1021442AFF00E01791 /* MotionExternalAccess.cpp */,
+				9204FC1521442AFF00E01791 /* MotionWindowInterface.cpp */,
+				9204FC0D21442AFF00E01791 /* RenameDialog.cpp */,
+			);
+			name = sources;
+			sourceTree = "<group>";
+		};
+		9204FC4321442B1100E01791 /* UIWidgets */ = {
+			isa = PBXGroup;
+			children = (
+				9204FC4421442B1100E01791 /* GraphicUtil.cpp */,
+				9204FC4521442B1100E01791 /* GraphicUtil.h */,
+				9204FC4621442B1100E01791 /* uiMorphTargetGroupWidget.cpp */,
+				9204FC4721442B1100E01791 /* uiMorphTargetGroupWidget.h */,
+				9204FC4821442B1100E01791 /* uiMorphTargetsWidget.cpp */,
+				9204FC4921442B1100E01791 /* uiMorphTargetsWidget.h */,
+				9204FC4A21442B1100E01791 /* uiPanelWidget.cpp */,
+				9204FC4B21442B1100E01791 /* uiPanelWidget.h */,
+				9204FC4C21442B1100E01791 /* uiSliderWidget.cpp */,
+				9204FC4D21442B1100E01791 /* uiSliderWidget.h */,
+			);
+			name = UIWidgets;
+			path = ../../source/UIWidgets;
+			sourceTree = "<group>";
+		};
+		B8F429BB04BCB35A00A80009 /* plists */ = {
+			isa = PBXGroup;
+			children = (
+				92F6FC09213E409F005655E6 /* MotionUtil.info.plist */,
+			);
+			name = plists;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		FFE6EF591A6667E60006CB66 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9204FC3421442B0100E01791 /* BoneUtil.h in Headers */,
+				9204FC2F21442B0100E01791 /* MathUtil.h in Headers */,
+				9204FC2A21442B0100E01791 /* MotionData.h in Headers */,
+				9204FC5121442B1100E01791 /* GraphicUtil.h in Headers */,
+				9204FC3F21442B0100E01791 /* HiddenBoneUtilInterface.h in Headers */,
+				9204FC5721442B1100E01791 /* uiPanelWidget.h in Headers */,
+				9204FC5521442B1100E01791 /* uiMorphTargetsWidget.h in Headers */,
+				9204FC2D21442B0100E01791 /* MorphTargetsCtrl.h in Headers */,
+				9204FC4F21442B1100E01791 /* StreamCtrl.h in Headers */,
+				9204FC2E21442B0100E01791 /* MotionExternalAccess.h in Headers */,
+				9204FC3121442B0100E01791 /* HiddenMorphTargetsInterface.h in Headers */,
+				9204FC2721442B0100E01791 /* MotionWindowInterface.h in Headers */,
+				9204FC3E21442B0100E01791 /* MeshUtil.h in Headers */,
+				9204FC2C21442B0100E01791 /* RenameDialog.h in Headers */,
+				9204FC5321442B1100E01791 /* uiMorphTargetGroupWidget.h in Headers */,
+				9204FC5921442B1100E01791 /* uiSliderWidget.h in Headers */,
+				9204FC3A21442B0100E01791 /* GlobalHeader.h in Headers */,
+				9204FC3221442B0100E01791 /* BSPPoint.h in Headers */,
+				9204FC3521442B0100E01791 /* MorphWindowInterface.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		FFE6EF581A6667E60006CB66 /* MotionUtil */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FFE6EF831A6667E60006CB66 /* Build configuration list for PBXNativeTarget "MotionUtil" */;
+			buildPhases = (
+				FFE6EF591A6667E60006CB66 /* Headers */,
+				FFE6EF5C1A6667E60006CB66 /* Resources */,
+				FFE6EF5F1A6667E60006CB66 /* Sources */,
+				FF39F5911A667C8A00E09111 /* CopyFiles */,
+				FFE6EF781A6667E60006CB66 /* Frameworks */,
+				FFE6EF811A6667E60006CB66 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MotionUtil;
+			productName = multi_plugin;
+			productReference = FFE6EF871A6667E60006CB66 /* MotionUtil.shdplugin */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		089C1669FE841209C02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+			};
+			buildConfigurationList = A31F017D08BD30B100C322BE /* Build configuration list for PBXProject "Template" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+				de,
+				en,
+				es,
+				fr,
+				ja,
+				zh_CN,
+			);
+			mainGroup = 089C166AFE841209C02AAC07 /* xplugins */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FFE6EF581A6667E60006CB66 /* MotionUtil */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FFE6EF5C1A6667E60006CB66 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFE6EF5D1A6667E60006CB66 /* shdplugin.icns in Resources */,
+				FFE6EF5E1A6667E60006CB66 /* sxuls in Resources */,
+				92F6FC0A213E409F005655E6 /* MotionUtil.info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FFE6EF5F1A6667E60006CB66 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9204FC3321442B0100E01791 /* MathUtil.cpp in Sources */,
+				9204FC2621442B0100E01791 /* BSPPoint.cpp in Sources */,
+				9204FC3B21442B0100E01791 /* MorphTargetsCustomList.cpp in Sources */,
+				9204FC5421442B1100E01791 /* uiMorphTargetsWidget.cpp in Sources */,
+				9204FC3821442B0100E01791 /* main.cpp in Sources */,
+				9204FC3021442B0100E01791 /* MotionWindowInterface.cpp in Sources */,
+				9204FC5821442B1100E01791 /* uiSliderWidget.cpp in Sources */,
+				9204FC5021442B1100E01791 /* GraphicUtil.cpp in Sources */,
+				9204FC2921442B0100E01791 /* BoneUtil.cpp in Sources */,
+				FFE6EF611A6667E60006CB66 /* com.cpp in Sources */,
+				9204FC3921442B0100E01791 /* HiddenMorphTargetsInterface.cpp in Sources */,
+				9204FC5621442B1100E01791 /* uiPanelWidget.cpp in Sources */,
+				9204FC3721442B0100E01791 /* MeshUtil.cpp in Sources */,
+				FFE6EF6A1A6667E60006CB66 /* vectors.cpp in Sources */,
+				9204FC4021442B0100E01791 /* MorphTargetsCtrl.cpp in Sources */,
+				9204FC2821442B0100E01791 /* RenameDialog.cpp in Sources */,
+				9204FC5221442B1100E01791 /* uiMorphTargetGroupWidget.cpp in Sources */,
+				9204FC3D21442B0100E01791 /* HiddenBoneUtilInterface.cpp in Sources */,
+				9204FC3621442B0100E01791 /* MotionData.cpp in Sources */,
+				9204FC3C21442B0100E01791 /* MorphWindowInterface.cpp in Sources */,
+				9204FC2B21442B0100E01791 /* MotionExternalAccess.cpp in Sources */,
+				9204FC4E21442B1100E01791 /* StreamCtrl.cpp in Sources */,
+				FFE6EF741A6667E60006CB66 /* debug.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A31F019408BD316A00C322BE /* sxuls */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A31F019508BD316A00C322BE /* en */,
+				A31F01A808BD318900C322BE /* ja */,
+				A31F01B308BD319F00C322BE /* zh_CN */,
+			);
+			name = sxuls;
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A31F017E08BD30B100C322BE /* Development */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C724213318B32DA30083BD68 /* config.plugins.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "libc++";
+				GCC_PREPROCESSOR_DEFINITIONS = "$(MACROS)";
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
+				GCC_WARN_UNUSED_VALUE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(TOOLCHAINPATH)",
+					"$(BOOSTPATH)",
+					"$(INCLUDEPATH)",
+					"$(COMMONPATH)",
+					"$(INCLUDEPATH)/openexr-1.6.1/macos",
+					"$(INCLUDEPATH)/openexr-1.6.1/**",
+				);
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx10.13;
+			};
+			name = Development;
+		};
+		A31F017F08BD30B100C322BE /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C724213318B32DA30083BD68 /* config.plugins.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "libc++";
+				GCC_PREPROCESSOR_DEFINITIONS = "$(MACROS)";
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
+				GCC_WARN_UNUSED_VALUE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(TOOLCHAINPATH)",
+					"$(BOOSTPATH)",
+					"$(INCLUDEPATH)",
+					"$(COMMONPATH)",
+					"$(INCLUDEPATH)/openexr-1.6.1/macos",
+					"$(INCLUDEPATH)/openexr-1.6.1/**",
+				);
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx10.13;
+			};
+			name = Deployment;
+		};
+		A31F018008BD30B100C322BE /* Default */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C724213318B32DA30083BD68 /* config.plugins.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "libc++";
+				GCC_PREPROCESSOR_DEFINITIONS = "$(MACROS)";
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
+				GCC_WARN_UNUSED_VALUE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(TOOLCHAINPATH)",
+					"$(BOOSTPATH)",
+					"$(INCLUDEPATH)",
+					"$(COMMONPATH)",
+					"$(INCLUDEPATH)/openexr-1.6.1/macos",
+					"$(INCLUDEPATH)/openexr-1.6.1/**",
+				);
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = macosx10.13;
+			};
+			name = Default;
+		};
+		FFE6EF841A6667E60006CB66 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				DEBUGGING_SYMBOLS = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
+				GCC_WARN_UNKNOWN_PRAGMAS = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(TOOLCHAINPATH)",
+					"$(BOOSTPATH)",
+					"$(INCLUDEPATH)",
+					"$(COMMONPATH)",
+					"$(INCLUDEPATH)/openexr-1.6.1/macos",
+					"$(INCLUDEPATH)/openexr-1.6.1/**",
+				);
+				INFOPLIST_FILE = plists/MotionUtil.Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_STYLE = Bundle;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = MotionUtil;
+				SDKROOT = macosx10.13;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = "-w";
+				WRAPPER_EXTENSION = shdplugin;
+				ZERO_LINK = NO;
+			};
+			name = Development;
+		};
+		FFE6EF851A6667E60006CB66 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
+				GCC_WARN_UNKNOWN_PRAGMAS = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(TOOLCHAINPATH)",
+					"$(BOOSTPATH)",
+					"$(INCLUDEPATH)",
+					"$(COMMONPATH)",
+					"$(INCLUDEPATH)/openexr-1.6.1/macos",
+					"$(INCLUDEPATH)/openexr-1.6.1/**",
+				);
+				INFOPLIST_FILE = plists/MotionUtil.Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_STYLE = Bundle;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				"MACOSX_DEPLOYMENT_TARGET[arch=i386]" = 10.13;
+				"MACOSX_DEPLOYMENT_TARGET[arch=x86_64]" = 10.11;
+				PRODUCT_NAME = MotionUtil;
+				SDKROOT = macosx10.13;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = "-w";
+				WRAPPER_EXTENSION = shdplugin;
+				ZERO_LINK = NO;
+			};
+			name = Deployment;
+		};
+		FFE6EF861A6667E60006CB66 /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
+				GCC_WARN_UNKNOWN_PRAGMAS = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(TOOLCHAINPATH)",
+					"$(BOOSTPATH)",
+					"$(INCLUDEPATH)",
+					"$(COMMONPATH)",
+					"$(INCLUDEPATH)/openexr-1.6.1/macos",
+					"$(INCLUDEPATH)/openexr-1.6.1/**",
+				);
+				INFOPLIST_FILE = plists/MotionUtil.Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_STYLE = Bundle;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_NAME = MotionUtil;
+				SDKROOT = macosx10.13;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = "-w";
+				WRAPPER_EXTENSION = shdplugin;
+			};
+			name = Default;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A31F017D08BD30B100C322BE /* Build configuration list for PBXProject "Template" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A31F017E08BD30B100C322BE /* Development */,
+				A31F017F08BD30B100C322BE /* Deployment */,
+				A31F018008BD30B100C322BE /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+		FFE6EF831A6667E60006CB66 /* Build configuration list for PBXNativeTarget "MotionUtil" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FFE6EF841A6667E60006CB66 /* Development */,
+				FFE6EF851A6667E60006CB66 /* Deployment */,
+				FFE6EF861A6667E60006CB66 /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 089C1669FE841209C02AAC07 /* Project object */;
+}
