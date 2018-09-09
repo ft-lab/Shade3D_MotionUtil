@@ -235,6 +235,12 @@ bool CMorphWindowInterface::chkInnerMorphTargetsList (const sx::vec<int,2>& p)
  */
 void CMorphWindowInterface::active_scene_changed (bool &b, sxsdk::scene_interface *scene, void *)
 {
+	if (!scene) {
+		m_morphTargetsData.clear();
+		m_updateUI();
+		return;
+	}
+
 	// streamより、カレント形状のMorph Targets情報を遅延で取得.
 	// Morph Targetsウィンドウが非表示の場合は、idle内で表示された段階で更新される.
 	setNeedLoadMorph();
@@ -245,6 +251,12 @@ void CMorphWindowInterface::active_scene_changed (bool &b, sxsdk::scene_interfac
  */
 void CMorphWindowInterface::active_shapes_changed (bool &b, sxsdk::scene_interface *scene, int old_n, sxsdk::shape_class *const *old_shapes, int n, sxsdk::shape_class *const *shapes, void *)
 {
+	if (!scene) {
+		m_morphTargetsData.clear();
+		m_updateUI();
+		return;
+	}
+
 	// streamより、カレント形状のMorph Targets情報を遅延で取得.
 	// Morph Targetsウィンドウが非表示の場合は、idle内で表示された段階で更新される.
 	setNeedLoadMorph();
