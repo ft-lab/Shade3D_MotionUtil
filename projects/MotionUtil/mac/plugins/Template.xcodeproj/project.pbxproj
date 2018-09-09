@@ -28,7 +28,6 @@
 		9204FC3821442B0100E01791 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9204FC1D21442B0000E01791 /* main.cpp */; };
 		9204FC3921442B0100E01791 /* HiddenMorphTargetsInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9204FC1E21442B0000E01791 /* HiddenMorphTargetsInterface.cpp */; };
 		9204FC3A21442B0100E01791 /* GlobalHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 9204FC1F21442B0000E01791 /* GlobalHeader.h */; };
-		9204FC3B21442B0100E01791 /* MorphTargetsCustomList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9204FC2021442B0100E01791 /* MorphTargetsCustomList.cpp */; };
 		9204FC3C21442B0100E01791 /* MorphWindowInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9204FC2121442B0100E01791 /* MorphWindowInterface.cpp */; };
 		9204FC3D21442B0100E01791 /* HiddenBoneUtilInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9204FC2221442B0100E01791 /* HiddenBoneUtilInterface.cpp */; };
 		9204FC3E21442B0100E01791 /* MeshUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 9204FC2321442B0100E01791 /* MeshUtil.h */; };
@@ -105,7 +104,6 @@
 		9204FC1D21442B0000E01791 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../../source/main.cpp; sourceTree = "<group>"; };
 		9204FC1E21442B0000E01791 /* HiddenMorphTargetsInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HiddenMorphTargetsInterface.cpp; path = ../../source/HiddenMorphTargetsInterface.cpp; sourceTree = "<group>"; };
 		9204FC1F21442B0000E01791 /* GlobalHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GlobalHeader.h; path = ../../source/GlobalHeader.h; sourceTree = "<group>"; };
-		9204FC2021442B0100E01791 /* MorphTargetsCustomList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MorphTargetsCustomList.cpp; path = ../../source/MorphTargetsCustomList.cpp; sourceTree = "<group>"; };
 		9204FC2121442B0100E01791 /* MorphWindowInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MorphWindowInterface.cpp; path = ../../source/MorphWindowInterface.cpp; sourceTree = "<group>"; };
 		9204FC2221442B0100E01791 /* HiddenBoneUtilInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HiddenBoneUtilInterface.cpp; path = ../../source/HiddenBoneUtilInterface.cpp; sourceTree = "<group>"; };
 		9204FC2321442B0100E01791 /* MeshUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeshUtil.h; path = ../../source/MeshUtil.h; sourceTree = "<group>"; };
@@ -241,7 +239,6 @@
 				9204FC1821442B0000E01791 /* MathUtil.cpp */,
 				9204FC1C21442B0000E01791 /* MeshUtil.cpp */,
 				9204FC2521442B0100E01791 /* MorphTargetsCtrl.cpp */,
-				9204FC2021442B0100E01791 /* MorphTargetsCustomList.cpp */,
 				9204FC2121442B0100E01791 /* MorphWindowInterface.cpp */,
 				9204FC1B21442B0000E01791 /* MotionData.cpp */,
 				9204FC1021442AFF00E01791 /* MotionExternalAccess.cpp */,
@@ -382,7 +379,6 @@
 			files = (
 				9204FC3321442B0100E01791 /* MathUtil.cpp in Sources */,
 				9204FC2621442B0100E01791 /* BSPPoint.cpp in Sources */,
-				9204FC3B21442B0100E01791 /* MorphTargetsCustomList.cpp in Sources */,
 				9204FC5421442B1100E01791 /* uiMorphTargetsWidget.cpp in Sources */,
 				9204FC3821442B0100E01791 /* main.cpp in Sources */,
 				9204FC3021442B0100E01791 /* MotionWindowInterface.cpp in Sources */,

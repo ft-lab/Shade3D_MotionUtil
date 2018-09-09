@@ -29,18 +29,6 @@ void CUIMorphTargetsWidget::set_bounds (const sx::vec<int,2>& pos, const sx::vec
 	updateUI();
 }
 
-void CUIMorphTargetsWidget::clearData ()
-{
-	// Widgetを解放.
-	if (!m_MorphTargetsList.empty()) {
-		const size_t cou = m_MorphTargetsList.size();
-		for (size_t i = 0; i < cou; ++i) {
-			m_MorphTargetsList[i]->deleteSelf();
-		}
-		m_MorphTargetsList.clear();
-	}
-}
-
 /**
  * UIの更新.
  */
@@ -55,11 +43,10 @@ void CUIMorphTargetsWidget::updateUI (const bool forceUpdate)
 	// Morph Targetsクラスより、targetの要素数を取得.
 	const CMorphTargetsCtrl& morphD = m_morphWindow->getMorphTargetsCtrl();
 	const int targetsCou = morphD.getTargetsCount();
-	if (targetsCou != (int)m_MorphTargetsList.size() || forceUpdate) m_updateUI();
+	m_updateUI();
 
 	if (!m_MorphTargetsList.empty()) {
-		const size_t cou = m_MorphTargetsList.size();
-		for (size_t i = 0; i < cou; ++i) {
+		for (int i = 0; i < targetsCou; ++i) {
 			CUIMorphTargetGroupWidget* widget = m_MorphTargetsList[i];
 			widget->set_bounds(groupPos, groupSize);
 			groupPos.y += groupHeight - 1;
@@ -102,8 +89,11 @@ bool CUIMorphTargetsWidget::mouse_down (int button, sx::ivec2 p, int key_down, i
 {
 	// Targetのグループ内が選択されている場合はスキップ.
 	bool inTargetList = false;
-	const size_t cou = m_MorphTargetsList.size();
-	for (size_t i = 0; i < cou; ++i) {
+
+	const CMorphTargetsCtrl& morphD = m_morphWindow->getMorphTargetsCtrl();
+	const int targetsCou = morphD.getTargetsCount();
+
+	for (size_t i = 0; i < targetsCou; ++i) {
 		const sx::rectangle_class rect = m_MorphTargetsList[i]->get_frame_rectangle();
 		if (p.x >= rect.min.x && p.x <= rect.max.x && p.y >= rect.min.y && p.y <= rect.max.y) {
 			inTargetList = true;
@@ -123,30 +113,41 @@ bool CUIMorphTargetsWidget::mouse_down (int button, sx::ivec2 p, int key_down, i
  */
 void CUIMorphTargetsWidget::m_updateUI ()
 {
-	// Widgetを解放.
+	// Widgets(sxsdk::window_interface)を削除（delete/delete_self）は不安定なので、未使用のものは隠す.
 	if (!m_MorphTargetsList.empty()) {
 		const size_t cou = m_MorphTargetsList.size();
 		for (size_t i = 0; i < cou; ++i) {
-			m_MorphTargetsList[i]->deleteSelf();
+			m_MorphTargetsList[i]->hide();
 		}
-		m_MorphTargetsList.clear();
 	}
 
 	// Morph Targetsクラスより、targetの要素数を取得.
 	const CMorphTargetsCtrl& morphD = m_morphWindow->getMorphTargetsCtrl();
 	const int targetsCou = morphD.getTargetsCount();
 
+	// UIを追加/表示.
+	{
+		const int oldCou = (int)m_MorphTargetsList.size();
+		for (int i = oldCou; i < targetsCou; ++i) {
+			m_MorphTargetsList.push_back(new CUIMorphTargetGroupWidget(i, this, i + 1, ""));
+		}
+		for (int i = 0; i < targetsCou; ++i) {
+			m_MorphTargetsList[i]->show();
+			m_MorphTargetsList[i]->setSelect(false);
+		}
+	}
+
 	m_MorphTargetsList.resize(targetsCou, NULL);
 	for (int i = 0; i < targetsCou; ++i) {
 		const std::string name = morphD.getTargetName(i);
-		m_MorphTargetsList[i] = new CUIMorphTargetGroupWidget(i, this, i + 1, name);
-
-		const float weight = morphD.getTargetWeight(i);
-		m_MorphTargetsList[i]->setWeight(weight);
+		const float weight     = morphD.getTargetWeight(i);
+		CUIMorphTargetGroupWidget* widget = m_MorphTargetsList[i];
+		widget->setName(name);
+		widget->setWeight(weight);
 
 		// 選択状態の場合.
 		if (morphD.getSelectTargetIndex() == i) {
-			m_MorphTargetsList[i]->setSelect(true);
+			widget->setSelect(true);
 		}
 	}
 }

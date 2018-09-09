@@ -162,6 +162,11 @@ public:
 	 * 名前変更ダイアログボックスを表示.
 	 */
 	void showRenameDialog ();
+
+	/**
+	 * 名前を指定.
+	 */
+	void setName (const std::string& name);
 };
 
 #endif

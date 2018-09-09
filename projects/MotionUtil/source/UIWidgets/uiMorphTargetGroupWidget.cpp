@@ -76,7 +76,17 @@ CUIMorphTargetGroupWidget::CUIMorphTargetGroupWidget (const int index, CUIMorphT
 }
 
 /**
+ * 名前を指定.
+ */
+void CUIMorphTargetGroupWidget::setName (const std::string& name)
+{
+	if (!m_pSlider) return;
+	m_pSlider->setTitleText(name);
+}
+
+/**
  * ウィジットを削除.
+ * ※ これは呼ばないこと!。動作不安定なので、削除ではなくhideにして再利用する.
  */
 void CUIMorphTargetGroupWidget::deleteSelf ()
 {
@@ -196,7 +206,6 @@ void CUIMorphTargetGroupWidget::mouse_move (sx::vec<int, 2> p, void *)
  */
 void CUIMorphTargetGroupWidget::showRenameDialog ()
 {
-	shade.message("double_click");
 	m_morphTargetsWidget->renameTargetName(m_index);
 }
 

@@ -365,7 +365,7 @@ void CMorphWindowInterface::removeMorphTargetsData ()
 void CMorphWindowInterface::m_updateUI ()
 {
 	// ボタン部を更新.
-	m_pButtonsWidget->updateUI();
+	if (m_pButtonsWidget) m_pButtonsWidget->updateUI();
 
 	// Targetリスト部を更新.
 	if (m_pMorphTargetsWidget) m_pMorphTargetsWidget->updateUI(true);

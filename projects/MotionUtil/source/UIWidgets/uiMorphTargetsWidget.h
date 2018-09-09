@@ -47,8 +47,6 @@ public:
 	 */
 	explicit CUIMorphTargetsWidget (CMorphWindowInterface* pParent, const int control_id);
 
-	void clearData ();
-
 	/**
 	 * 指定の位置が表示されているMorph Targetsウィンドウ内かチェック.
 	 * mouse_downイベントから呼ばれる.

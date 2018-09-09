@@ -8,6 +8,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+namespace {
+	bool xcomp (const sxsdk::vec3& l, const sxsdk::vec3& r) { return l.x < r.x; }
+	bool ycomp (const sxsdk::vec3& l, const sxsdk::vec3& r) { return l.y < r.y; }
+	bool zcomp (const sxsdk::vec3& l, const sxsdk::vec3& r) { return l.z < r.z; }
+}
+
 CBSPPoint::CBSPPoint (const std::vector<sxsdk::vec3>& vertices)
 {
 	m_bbMin = m_bbMax = sxsdk::vec3(0.0f, 0.0f, 0.0f);
@@ -88,10 +94,6 @@ void CBSPPoint::build ()
 	m_build(0, 0);
 	m_temp_index.clear();
 }
-
-bool xcomp (const sxsdk::vec3& l, const sxsdk::vec3& r) { return l.x < r.x; }
-bool ycomp (const sxsdk::vec3& l, const sxsdk::vec3& r) { return l.y < r.y; }
-bool zcomp (const sxsdk::vec3& l, const sxsdk::vec3& r) { return l.z < r.z; }
 
 void CBSPPoint::m_build (const int depth, const int index)
 {
