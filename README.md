@@ -6,6 +6,9 @@ Morph Targets機能の追加/Bone補助/新しいモーションウィンドウ�
 
 現在(ver.0.0.0.x 段階)は、Morph Targets機能の追加/Bone補助機能が実装されています。    
 
+以下のプラグインで使用しています。
+* glTF Converter for Shade3D (https://github.com/ft-lab/Shade3D_GLTFConverter)
+
 ## 機能
 
 以下の機能があります。
