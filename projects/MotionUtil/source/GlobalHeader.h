@@ -17,7 +17,6 @@
 // CMotionWindowInterfaceクラス.
 #define MOTION_WINDOW_INTERFACE_ID sx::uuid_class("60B54E3B-93DF-4E8A-BF95-46EE7AEEBCF3")
 
-
 // CRenameDialogクラス.
 #define RENAME_DIALOG_ATTRIBUTE_INTERFACE_ID sx::uuid_class("2394DC4D-6FFE-4900-AD2C-9463075F22DC")
 

@@ -35,9 +35,9 @@ void CMotionWindowInterface::initialize (void *)
 void CMotionWindowInterface::clear (sxsdk::graphic_context_interface &gc, void *)
 {
 	sxsdk::window_interface::clear(gc);
-
 	const sx::vec<int,2> clientSize = this->get_client_size();
 
+	// 以下、テスト.
 	CGraphicUtil graphicUtil(gc);
 
 	std::vector<sxsdk::vec2> posA, posB, posC;

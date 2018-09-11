@@ -1,15 +1,14 @@
 ﻿/**
  * モーションの制御を行う機能。外部プラグインから機能にアクセスできるようにする.
- * 以下の機能がほしい。.
+ * 以下の機能を予定.
  *
    ・ Morph Target
        変形のストック表示と、モーショングラフ。.
 
-   ・ ボーン操作の関数（BoneUtilの一部の機能へのアクセス）
+   ・ ボーン操作の便利関数.
        ボーンの向きを調整、ボーンサイズをまとめて変更、など。.
 
-   ・ モーションウィンドウをフルスクラッチ.
-      UnityやMayaみたいな普通のUIに。.
+   ・ 新しいモーションウィンドウ.
  */
 
 #include "GlobalHeader.h"
@@ -120,7 +119,7 @@ extern "C" SXSDKEXPORT void STDCALL get_info (sxsdk::shade_plugin_info &info, sx
 	info.major_version = 0;
 	info.minor_version = 0;
 	info.micro_version = 0;
-	info.build_number =  1;
+	info.build_number =  2;
 }
 
 /**

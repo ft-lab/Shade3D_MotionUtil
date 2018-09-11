@@ -166,6 +166,11 @@ public:
 	void appendMorphTargetData ();
 
 	/**
+	 * ウエイト値をすべてクリア.
+	 */
+	void clearAllWeights ();
+
+	/**
 	 * Morph Targets情報を削除.
 	 */
 	void removeMorphTargetsData ();

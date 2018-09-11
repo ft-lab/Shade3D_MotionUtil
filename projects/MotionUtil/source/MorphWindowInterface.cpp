@@ -6,6 +6,9 @@
 #include "MeshUtil.h"
 #include "RenameDialog.h"
 
+// ボタンのウィジットの高さ.
+#define BUTTONS_WIDGHT_HEIGHT  110
+
 //--------------------------------------------------------------.
 CButtonsWidget::CButtonsWidget (CMorphWindowInterface* pParent) : sxsdk::window_interface(*pParent, 0), m_pParent(pParent)
 {
@@ -75,6 +78,10 @@ void CButtonsWidget::push_button_clicked (sxsdk::window_interface::push_button_c
 
 	if (name == "append_target_but") {		// Morph Target情報を追加登録.
 		m_pParent->appendMorphTargetData();
+	}
+
+	if (name == "clear_weights_but") {		// ウエイト値をすべてクリア.
+		m_pParent->clearAllWeights();
 	}
 
 	if (name == "remove_target_but") {		// Morph Target情報を削除.
@@ -154,7 +161,7 @@ void CMorphWindowInterface::initialize (void *)
 
 	this->set_title(CMorphWindowInterface::name(&shade));
 
-	const int minWidth  = 300;
+	const int minWidth  = 320;
 	const int minHeight = 280;
 	this->set_minimum_size(sx::vec<int,2>(minWidth, minHeight));
 	sx::vec<int,2> size = get_layout_bounds().size();
@@ -172,7 +179,7 @@ void CMorphWindowInterface::clear (sxsdk::graphic_context_interface &gc, void *)
 
 	sx::vec<int,2> clientSize = this->get_client_size();
 
-	const int buttonsHeight = 80;
+	const int buttonsHeight = BUTTONS_WIDGHT_HEIGHT;
 	const int targetsListHeight = clientSize.y - 24 - buttonsHeight;
 
 	// widgetリストの外枠.
@@ -197,7 +204,7 @@ void CMorphWindowInterface::resize (int x, int y, bool remake, void *)
 {
 	sx::vec<int,2> pos, size;
 
-	const int buttonsHeight = 80;
+	const int buttonsHeight = BUTTONS_WIDGHT_HEIGHT;
 	const int targetsListHeight = y - 24 - buttonsHeight;
 	pos.x = 8;
 	pos.y = 8;
@@ -359,6 +366,15 @@ void CMorphWindowInterface::appendMorphTargetData ()
 		m_updateUI();
 
 	} catch (...) { }
+}
+
+/**
+ * ウエイト値をすべてクリア.
+ */
+void CMorphWindowInterface::clearAllWeights ()
+{
+	m_morphTargetsData.setZeroAllWeight();
+	m_updateUI();
 }
 
 /**

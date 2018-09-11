@@ -4,6 +4,7 @@
 		<control size='2 4'/>
 		<push-button id="setup_target_but" label="Attach Morph Targets" />
 		<push-button id="append_target_but" label="Append Morph Target" />
+		<push-button id="clear_weights_but" label="Clear all weights" />
 		<push-button id="select_target_vertices_but" label="Select vertices on Morph Target" />
 		<control size='200 4'/>
 		<hbox>
