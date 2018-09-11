@@ -98,7 +98,15 @@ Morph Targetsウィンドウの「Morph Target対象の頂点を選択」ボタ�
 * ポリゴンメッシュの頂点数が変わった場合、正しく動作しません。    
 全てのモデリング工程が完了した段階でMorph Targetsの変形を使用するようにしてください。
 * アニメーションのキーフレーム割り当てにはまだ対応していません。    
-   
+
+## ビルド方法 (開発者向け)
+
+Shade3DプラグインSDK( https://github.com/shadedev/pluginsdk )をダウンロードします。  
+Shade3D_MotionUtil/projects/MotionUtilフォルダをShade3DのプラグインSDKのprojectsフォルダに複製します。  
+
+Windows環境の場合は、VS2017で「win_vs2017/MotionUtil.sln」を開いてビルドします。    
+Mac環境の場合は、Xcodeで「mac/plugins/Template.xcodeproj」を開いてビルドします。   
+
 ## ライセンス  
 
 This software is released under the MIT License, see [LICENSE](./LICENSE).  
