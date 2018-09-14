@@ -46,7 +46,7 @@ Morph Targetsとは、ポリゴンメッシュの頂点移動による変形を�
 ver.0.0.0.xでは、Morph Targetsの登録とウエイト値の割り当てのみに対応しています。    
 アニメーションでのキーフレーム登録はまだ未実装です。    
 
-<img src="https://github.com/ft-lab/Shade3D_MotionUtil/blob/master/wiki_images/gltfConverter_MorphTargets_01.png"/>   
+<img src="https://github.com/ft-lab/Shade3D_MotionUtil/blob/master/wiki_images/gltfConverter_MorphTargets_01.jpg"/>   
 メインメニューの「表示」-「Morph Targets」でMorph Targetsウィンドウを表示します。    
 
 ※ Morph Targets情報はUNDO/REDOに対応していません。    
