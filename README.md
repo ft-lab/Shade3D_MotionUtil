@@ -29,7 +29,8 @@ Morph Targets機能の追加/Bone補助/新しいモーションウィンドウ�
 
 ### プラグインダウンロード
 
-まだバイナリは準備中、、、、
+以下から最新版をダウンロードしてください。  
+https://github.com/ft-lab/Shade3D_MotionUtil/releases
 
 ### プラグインを配置し、Shade3Dを起動
 
@@ -80,6 +81,10 @@ Morph Targetsの動作を行う場合は、はじめにこの処理が必要に�
 ターゲットとして追加した頂点位置に変形します。    
 複数のターゲットがある場合は、変形は加算されます。    
 
+### ウエイト値をすべてクリア
+
+形状のすべてのウエイト値を0にします。    
+
 ### Morph Target対象の頂点を選択
 
 リストボックス部でターゲットを選択して    
@@ -112,6 +117,9 @@ Mac環境の場合は、Xcodeで「mac/plugins/Template.xcodeproj」を開いて
 This software is released under the MIT License, see [LICENSE](./LICENSE).  
 
 ## 更新履歴
+
+[2018/09/14] ver.0.0.0.3   
+* Morph Targets : 環境設定の「カラー」を変更した場合、Morph Targetsウィンドウへの反映が一部不正な問題を修正
 
 [2018/09/11] ver.0.0.0.2   
 * Morph Targets : 「ウエイト値をすべてクリア」ボタンを追加 
