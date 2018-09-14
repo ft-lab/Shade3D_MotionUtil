@@ -67,6 +67,9 @@
     <ClCompile Include="..\source\MotionData.cpp">
       <Filter>mysources</Filter>
     </ClCompile>
+    <ClCompile Include="..\source\UIWidgets\WidgetColor.cpp">
+      <Filter>mysources\UIWidgets</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
@@ -126,6 +129,9 @@
     </ClInclude>
     <ClInclude Include="..\source\MotionData.h">
       <Filter>mysources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\UIWidgets\WidgetColor.h">
+      <Filter>mysources\UIWidgets</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -172,15 +172,17 @@ namespace GraphicUtil {
 	 * 削除ボタンを描画する.
 	 * @param[in]  gc      graphic context.
 	 * @param[in]  rect    描画領域.
+	 * @param[in]  foreCol 描画色.
 	 */
-	void drawDeleteButton (sxsdk::graphic_context_interface &gc, const sx::rectangle_class& rect);
+	void drawDeleteButton (sxsdk::graphic_context_interface &gc, const sx::rectangle_class& rect, const sxsdk::rgb_class& foreCol);
 
 	/**
 	 * 更新ボタンを描画する.
 	 * @param[in]  gc      graphic context.
 	 * @param[in]  rect    描画領域.
+	 * @param[in]  foreCol 描画色.
 	 */
-	void drawUpdateButton (sxsdk::graphic_context_interface &gc, const sx::rectangle_class& rect);
+	void drawUpdateButton (sxsdk::graphic_context_interface &gc, const sx::rectangle_class& rect, const sxsdk::rgb_class& foreCol);
 
 	/**
 	 * 指定のイメージをリサイズした画像を生成する.

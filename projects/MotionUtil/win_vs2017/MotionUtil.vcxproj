@@ -296,6 +296,7 @@
     <ClCompile Include="..\source\UIWidgets\uiMorphTargetsWidget.cpp" />
     <ClCompile Include="..\source\UIWidgets\uiPanelWidget.cpp" />
     <ClCompile Include="..\source\UIWidgets\uiSliderWidget.cpp" />
+    <ClCompile Include="..\source\UIWidgets\WidgetColor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\BoneUtil.h" />
@@ -317,6 +318,7 @@
     <ClInclude Include="..\source\UIWidgets\uiMorphTargetsWidget.h" />
     <ClInclude Include="..\source\UIWidgets\uiPanelWidget.h" />
     <ClInclude Include="..\source\UIWidgets\uiSliderWidget.h" />
+    <ClInclude Include="..\source\UIWidgets\WidgetColor.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>

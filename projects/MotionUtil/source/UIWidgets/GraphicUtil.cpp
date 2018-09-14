@@ -762,8 +762,9 @@ void GraphicUtil::drawDownButton (sxsdk::graphic_context_interface &gc, const bo
  * 削除ボタンを描画する.
  * @param[in]  gc      graphic context.
  * @param[in]  rect    描画領域.
+ * @param[in]  foreCol 描画色.
  */
-void GraphicUtil::drawDeleteButton (sxsdk::graphic_context_interface &gc, const sx::rectangle_class& rect)
+void GraphicUtil::drawDeleteButton (sxsdk::graphic_context_interface &gc, const sx::rectangle_class& rect, const sxsdk::rgb_class& foreCol)
 {
 	sx::rectangle_class rect2;
 	rect2.min = sx::vec<int,2>(rect.min.x + 1, rect.min.y + 1);
@@ -790,8 +791,7 @@ void GraphicUtil::drawDeleteButton (sxsdk::graphic_context_interface &gc, const 
 	posB[2] = sxsdk::vec2(0.831f * wid, (1.0f - 0.094f) * hei) + minPos;
 	posB[3] = sxsdk::vec2(0.027f * wid, (1.0f - 0.863f) * hei) + minPos;
 
-	sxsdk::rgb_class col = sxsdk::rgb_class(1.0f, 1.0f, 1.0f);
-	gc.set_color(col);
+	gc.set_color(foreCol);
 	gc.paint_polygon(4, posA);
 	gc.paint_polygon(4, posB);
 	gc.restore_color();
@@ -810,8 +810,9 @@ void GraphicUtil::drawDeleteButton (sxsdk::graphic_context_interface &gc, const 
  * 更新ボタンを描画する.
  * @param[in]  gc      graphic context.
  * @param[in]  rect    描画領域.
+ * @param[in]  foreCol 描画色.
  */
-void GraphicUtil::drawUpdateButton (sxsdk::graphic_context_interface &gc, const sx::rectangle_class& rect)
+void GraphicUtil::drawUpdateButton (sxsdk::graphic_context_interface &gc, const sx::rectangle_class& rect, const sxsdk::rgb_class& foreCol)
 {
 	sx::rectangle_class rect2;
 	rect2.min = sx::vec<int,2>(rect.min.x + 1, rect.min.y + 1);
@@ -827,7 +828,7 @@ void GraphicUtil::drawUpdateButton (sxsdk::graphic_context_interface &gc, const 
 	sxsdk::vec2 minPos((float)rect3.min.x, (float)rect3.min.y);
 	const sxsdk::vec2 centerPos((rect.min.x + rect.max.x) * 0.5f, (rect.min.y + rect.max.y) * 0.5f);
 
-	gc.set_color(sxsdk::rgb_class(1.0f, 1.0f, 1.0f));
+	gc.set_color(foreCol);
 
 	// 円状のラインを描く.
 	std::vector<sxsdk::vec2> posA;

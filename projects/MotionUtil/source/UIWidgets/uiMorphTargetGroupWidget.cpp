@@ -5,6 +5,7 @@
 #include "uiMorphTargetsWidget.h"
 #include "uiSliderWidget.h"
 #include "GraphicUtil.h"
+#include "WidgetColor.h"
 #include "../MorphWindowInterface.h"
 
 //-----------------------------------------------------------------.
@@ -281,14 +282,24 @@ void CUIMorphTargetGroupWidget::clear (sxsdk::graphic_context_interface &gc, voi
 
 	compointer<sxsdk::scene_interface> scene(shade.get_scene_interface());
 	if (!scene) return;
-	compointer<sxsdk::preference_interface> prefer(scene->get_preference_interface());
-	if (!prefer) return;
+
+	// ウィジットの色情報を取得するクラス.
+	CWidgetColor widgetColor(scene);
 
 	// 背景選択色.
-	const sxsdk::rgb_class groupSelectCol(0.4f, 0.3f, 0.3f);
+	const sxsdk::rgb_class groupSelectCol = widgetColor.getSelectBackColor();
+
+	// ボタンの色.
+	const sxsdk::rgb_class buttonCol = widgetColor.getPushButtonBackColor();
 
 	// ボタンのハイライト色.
-	const sxsdk::rgb_class buttonLightCol(0.7f, 0.7f, 0.7f);
+	const sxsdk::rgb_class buttonLightCol = widgetColor.getPushButtonBackMouseOverColor();
+
+	// ボタンの前景色.
+	const sxsdk::rgb_class buttonForeCol = widgetColor.getPushButtonForeColor();
+
+	// 枠の色.
+	const sxsdk::rgb_class frameCol = widgetColor.getFrameColor();
 
 	// 背景.
 	if (m_select) {
@@ -300,30 +311,30 @@ void CUIMorphTargetGroupWidget::clear (sxsdk::graphic_context_interface &gc, voi
 	// 削除ボタン.
 	{
 		const sx::rectangle_class rec = m_getDeleteButtonRectangle();
-		if (m_selectDeleteButton != select_button_none) {
+		{
 			// ボタンのハイライトとして背景を描画.
-			gc.set_color(buttonLightCol);
+			gc.set_color((m_selectDeleteButton != select_button_none) ? buttonLightCol : buttonCol);
 			gc.paint_rectangle(rec);
 			gc.restore_color();
 		}
-		GraphicUtil::drawDeleteButton(gc, rec);
+		GraphicUtil::drawDeleteButton(gc, rec, buttonForeCol);
 	}
 
 	// 更新ボタン.
 	{
 		const sx::rectangle_class rec = m_getUpdateButtonRectangle();
-		if (m_selectUpdateButton != select_button_none) {
+		{
 			// ボタンのハイライトとして背景を描画.
-			gc.set_color(buttonLightCol);
+			gc.set_color((m_selectUpdateButton != select_button_none) ? buttonLightCol : buttonCol);
 			gc.paint_rectangle(rec);
 			gc.restore_color();
 		}
-		GraphicUtil::drawUpdateButton(gc, rec);
+		GraphicUtil::drawUpdateButton(gc, rec, buttonForeCol);
 	}
 
 	// 外枠.
 	{
-		gc.set_color(sxsdk::rgb_class(0.0f, 0.0f, 0.0f));
+		gc.set_color(frameCol);
 		gc.frame_rectangle(sx::rectangle_class(sx::vec<int,2>(0, 0), size));
 		gc.restore_color();
 	}

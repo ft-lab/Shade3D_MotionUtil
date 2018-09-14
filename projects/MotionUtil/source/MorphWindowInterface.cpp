@@ -55,6 +55,7 @@ bool CButtonsWidget::setup_push_button (sxsdk::window_interface::push_button_cla
 		if (!m_pSelectVerticesBut) m_pSelectVerticesBut = &push_button;
 		return true;
 	}
+	return false;
 }
 
 bool CButtonsWidget::setup_checkbox (sxsdk::window_interface::checkbox_class &checkbox, void *)

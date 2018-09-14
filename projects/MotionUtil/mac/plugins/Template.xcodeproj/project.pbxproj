@@ -45,6 +45,8 @@
 		9204FC5721442B1100E01791 /* uiPanelWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = 9204FC4B21442B1100E01791 /* uiPanelWidget.h */; };
 		9204FC5821442B1100E01791 /* uiSliderWidget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9204FC4C21442B1100E01791 /* uiSliderWidget.cpp */; };
 		9204FC5921442B1100E01791 /* uiSliderWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = 9204FC4D21442B1100E01791 /* uiSliderWidget.h */; };
+		920D40E5214BDA11005DB0F1 /* WidgetColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 920D40E3214BDA11005DB0F1 /* WidgetColor.cpp */; };
+		920D40E6214BDA11005DB0F1 /* WidgetColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 920D40E4214BDA11005DB0F1 /* WidgetColor.h */; };
 		92F6FC0A213E409F005655E6 /* MotionUtil.info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 92F6FC09213E409F005655E6 /* MotionUtil.info.plist */; };
 		FFE6EF5D1A6667E60006CB66 /* shdplugin.icns in Resources */ = {isa = PBXBuildFile; fileRef = 16F9E21A0546323A00F09F49 /* shdplugin.icns */; };
 		FFE6EF5E1A6667E60006CB66 /* sxuls in Resources */ = {isa = PBXBuildFile; fileRef = A31F019408BD316A00C322BE /* sxuls */; };
@@ -121,6 +123,8 @@
 		9204FC4B21442B1100E01791 /* uiPanelWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uiPanelWidget.h; sourceTree = "<group>"; };
 		9204FC4C21442B1100E01791 /* uiSliderWidget.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = uiSliderWidget.cpp; sourceTree = "<group>"; };
 		9204FC4D21442B1100E01791 /* uiSliderWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uiSliderWidget.h; sourceTree = "<group>"; };
+		920D40E3214BDA11005DB0F1 /* WidgetColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WidgetColor.cpp; sourceTree = "<group>"; };
+		920D40E4214BDA11005DB0F1 /* WidgetColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WidgetColor.h; sourceTree = "<group>"; };
 		92F6FC09213E409F005655E6 /* MotionUtil.info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = MotionUtil.info.plist; path = plists/MotionUtil.info.plist; sourceTree = "<group>"; };
 		A31F019508BD316A00C322BE /* en */ = {isa = PBXFileReference; lastKnownFileType = folder; name = en; path = ../../source/resources/en.lproj/sxuls; sourceTree = SOURCE_ROOT; };
 		A31F01A808BD318900C322BE /* ja */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ja; path = ../../source/resources/ja.lproj/sxuls; sourceTree = SOURCE_ROOT; };
@@ -251,6 +255,8 @@
 		9204FC4321442B1100E01791 /* UIWidgets */ = {
 			isa = PBXGroup;
 			children = (
+				920D40E3214BDA11005DB0F1 /* WidgetColor.cpp */,
+				920D40E4214BDA11005DB0F1 /* WidgetColor.h */,
 				9204FC4421442B1100E01791 /* GraphicUtil.cpp */,
 				9204FC4521442B1100E01791 /* GraphicUtil.h */,
 				9204FC4621442B1100E01791 /* uiMorphTargetGroupWidget.cpp */,
@@ -287,6 +293,7 @@
 				9204FC5121442B1100E01791 /* GraphicUtil.h in Headers */,
 				9204FC3F21442B0100E01791 /* HiddenBoneUtilInterface.h in Headers */,
 				9204FC5721442B1100E01791 /* uiPanelWidget.h in Headers */,
+				920D40E6214BDA11005DB0F1 /* WidgetColor.h in Headers */,
 				9204FC5521442B1100E01791 /* uiMorphTargetsWidget.h in Headers */,
 				9204FC2D21442B0100E01791 /* MorphTargetsCtrl.h in Headers */,
 				9204FC4F21442B1100E01791 /* StreamCtrl.h in Headers */,
@@ -378,6 +385,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9204FC3321442B0100E01791 /* MathUtil.cpp in Sources */,
+				920D40E5214BDA11005DB0F1 /* WidgetColor.cpp in Sources */,
 				9204FC2621442B0100E01791 /* BSPPoint.cpp in Sources */,
 				9204FC5421442B1100E01791 /* uiMorphTargetsWidget.cpp in Sources */,
 				9204FC3821442B0100E01791 /* main.cpp in Sources */,

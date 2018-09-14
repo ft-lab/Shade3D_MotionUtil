@@ -3,6 +3,7 @@
  */
 #include "uiSliderWidget.h"
 #include "GraphicUtil.h"
+#include "WidgetColor.h"
 
 #define WIDGET_SLIDER_HEIGHT 18					// Sliderの高さ.
 #define WIDGET_SLIDER_TUMAMI_WIDTH 8			// Sliderのつまみ部の幅.
@@ -291,14 +292,22 @@ void CUISliderWidgetBase::clear (sxsdk::graphic_context_interface &gc, void *aux
 
 	compointer<sxsdk::scene_interface> scene(shade.get_scene_interface());
 	if (!scene) return;
-	compointer<sxsdk::preference_interface> prefer(scene->get_preference_interface());
-	if (!prefer) return;
+
+	// ウィジットの色情報を取得するクラス.
+	CWidgetColor widgetColor(scene);
 
 	// テキスト色は環境設定のものを参照.
-	const sxsdk::rgb_class textColor = (prefer->get_base_brightness() <= 0.2f) ? sxsdk::rgb_class(1, 1, 1) : sxsdk::rgb_class(0, 0, 0);
+	sxsdk::rgb_class textColor = widgetColor.getTextColor();
+	if (m_select) textColor = widgetColor.getSelectTextColor();
+
+	const sxsdk::rgb_class sliderBackColor = widgetColor.getSliderBackColor();
+	const sxsdk::rgb_class sliderBackMouseOverColor = widgetColor.getSliderBackMouseOverColor();
+	const sxsdk::rgb_class sliderTabColor = widgetColor.getSliderTabColor();
+	const sxsdk::rgb_class selectColor = widgetColor.getSelectBackColor();
+	const sxsdk::rgb_class frameColor = widgetColor.getFrameColor();
 
 	if (m_select) {
-		gc.set_color(sxsdk::rgb_class(0.4f, 0.3f, 0.3f));
+		gc.set_color(selectColor);
 		gc.paint_rectangle(sx::rectangle_class(sx::vec<int,2>(0, 0), size));
 		gc.restore_color();
 	}
@@ -330,7 +339,7 @@ void CUISliderWidgetBase::clear (sxsdk::graphic_context_interface &gc, void *aux
 		sliderRect.min = sx::vec<int,2>(sliderPx, py);
 		sliderRect.max = sx::vec<int,2>(sliderPx + sliderWidth, py + dHeight);
 		{
-			sxsdk::rgb_class col = (m_sliderMouseOver) ? sxsdk::rgb_class(0.5f, 0.5f, 0.5f) : sxsdk::rgb_class(0.2f, 0.2f, 0.2f);
+			sxsdk::rgb_class col = (m_sliderMouseOver) ? sliderBackMouseOverColor : sliderBackColor;
 			gc.set_color(col);
 			gc.paint_rectangle(sliderRect);
 			gc.restore_color();
@@ -351,12 +360,12 @@ void CUISliderWidgetBase::clear (sxsdk::graphic_context_interface &gc, void *aux
 			rect.max = sx::vec<int,2>(sliderPx + px2, py + dHeight);
 
 			{
-				gc.set_color(sxsdk::rgb_class(0.6f, 0.6f, 0.6f));
+				gc.set_color(sliderTabColor);
 				gc.paint_rectangle(rect);
 				gc.restore_color();
 			}
 			{
-				gc.set_color(sxsdk::rgb_class(0.0f, 0.0f, 0.0f));
+				gc.set_color(frameColor);
 				gc.frame_rectangle(rect);
 				gc.restore_color();
 			}
@@ -364,7 +373,7 @@ void CUISliderWidgetBase::clear (sxsdk::graphic_context_interface &gc, void *aux
 
 		// 外枠.
 		{
-			gc.set_color(sxsdk::rgb_class(0.0f, 0.0f, 0.0f));
+			gc.set_color(frameColor);
 			gc.frame_rectangle(sliderRect);
 			gc.restore_color();
 		}
