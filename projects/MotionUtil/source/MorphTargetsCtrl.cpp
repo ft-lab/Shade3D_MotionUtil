@@ -5,6 +5,8 @@
 #include "MorphTargetsCtrl.h"
 #include "StreamCtrl.h"
 #include "BSPPoint.h"
+#include "MathUtil.h"
+#include "CalcMeshTransform.h"
 
 /*
 	ポリゴンメッシュのすべての変形前の頂点をあらかじめ保持.
@@ -66,7 +68,7 @@ void CMorphTargetsData::clear ()
 
 //-------------------------------------------------.
 namespace {
-	std::vector<CMorphTargetsWeightCache> g_shapeWeightCache;	// 形状ごとのMorph Targetsのウエイト値の一時保持用.
+	std::vector< std::vector<CMorphTargetsWeightCache> > g_shapeWeightCache;	// 形状ごとのMorph Targetsのウエイト値の一時保持用.
 }
 
 CMorphTargetsCtrl::CMorphTargetsCtrl ()
@@ -419,12 +421,11 @@ bool CMorphTargetsCtrl::cleanupRedundantVertices (sxsdk::shape_class& shape)
 /**
  * Morph Targetsの情報より、m_pTargetShapeのポリゴンメッシュを更新.
  */
-void CMorphTargetsCtrl::updateMesh ()
+void CMorphTargetsCtrl::m_updateMesh ()
 {
 	if (m_pTargetShape) {
 		if (m_orgVertices.size() != (m_pTargetShape->get_total_number_of_control_points())) return;
 	}
-
 	if (!m_pTargetShape || m_morphTargetsData.empty()) return;
 
 	try {
@@ -472,12 +473,38 @@ void CMorphTargetsCtrl::updateMesh ()
 }
 
 /**
+ * Morph Targetsの情報より、m_pTargetShapeのポリゴンメッシュを更新.
+ * @param[in] checkVerticesModify  頂点の移動や回転を補正.
+ */
+void CMorphTargetsCtrl::updateMesh (const bool checkVerticesModify)
+{
+	if (m_pTargetShape) {
+		if (m_orgVertices.size() != (m_pTargetShape->get_total_number_of_control_points())) return;
+	}
+	if (!m_pTargetShape || m_morphTargetsData.empty()) return;
+
+	if (!checkVerticesModify) {
+		// メッシュ情報を更新.
+		m_updateMesh();
+
+	} else {
+		// オリジナルの頂点より、移動/回転があるかチェック.
+		const bool ret = m_updateMeshVertices();
+
+		// メッシュ情報を更新.
+		m_updateMesh();
+	}
+}
+
+/**
  * シーンのすべての形状で、Morph Targets情報を持つ形状のウエイト値を一時保持.
  * (いったんすべてのウエイト値を0にして戻す、という操作で使用).
  */
 void CMorphTargetsCtrl::pushAllWeight (sxsdk::scene_interface* scene, const bool setZeroWeight)
 {
-	g_shapeWeightCache.clear();
+	g_shapeWeightCache.push_back(std::vector<CMorphTargetsWeightCache>());
+	std::vector<CMorphTargetsWeightCache>& wCache = g_shapeWeightCache.back();
+
 	try {
 		// Morph Targets情報を持つ形状を取得.
 		std::vector<sxsdk::shape_class *> shapeList;
@@ -486,9 +513,9 @@ void CMorphTargetsCtrl::pushAllWeight (sxsdk::scene_interface* scene, const bool
 		if (shapeList.empty()) return;
 
 		const size_t shapeCou = shapeList.size();
-		g_shapeWeightCache.resize(shapeCou);
+		wCache.resize(shapeCou);
 		for (size_t i = 0; i < shapeCou; ++i) {
-			CMorphTargetsWeightCache& weightC = g_shapeWeightCache[i];
+			CMorphTargetsWeightCache& weightC = wCache[i];
 			weightC.clear();
 			weightC.shapeHandle = shapeList[i]->get_handle();
 
@@ -504,7 +531,7 @@ void CMorphTargetsCtrl::pushAllWeight (sxsdk::scene_interface* scene, const bool
 		// ウエイト値を0にする.
 		if (setZeroWeight) {
 			for (size_t i = 0; i < shapeCou; ++i) {
-				const CMorphTargetsWeightCache& weightC = g_shapeWeightCache[i];
+				const CMorphTargetsWeightCache& weightC = wCache[i];
 
 				CMorphTargetsCtrl targetC;
 				StreamCtrl::readMorphTargetsData(*shapeList[i], targetC);
@@ -523,10 +550,11 @@ void CMorphTargetsCtrl::popAllWeight (sxsdk::scene_interface* scene)
 {
 	if (g_shapeWeightCache.empty()) return;
 
+	const std::vector<CMorphTargetsWeightCache>& wCache = g_shapeWeightCache.back();
 	try {
 		const size_t shapeCou = g_shapeWeightCache.size();
 		for (size_t i = 0; i < shapeCou; ++i) {
-			const CMorphTargetsWeightCache& weightC = g_shapeWeightCache[i];
+			const CMorphTargetsWeightCache& weightC = wCache[i];
 			sxsdk::shape_class* shape = scene->get_shape_by_handle(weightC.shapeHandle);
 			if (!shape) continue;
 
@@ -541,7 +569,7 @@ void CMorphTargetsCtrl::popAllWeight (sxsdk::scene_interface* scene)
 		}
 	} catch (...) { }
 
-	g_shapeWeightCache.clear();
+	g_shapeWeightCache.pop_back();
 }
 
 /**
@@ -554,11 +582,13 @@ bool CMorphTargetsCtrl::getShapeCurrentWeights (const sxsdk::shape_class* shape,
 	if (!shape) return false;
 	if (g_shapeWeightCache.empty()) return false;
 
+	const std::vector<CMorphTargetsWeightCache>& wCache = g_shapeWeightCache.back();
+
 	try {
 		bool ret = false;
 		const size_t shapeCou = g_shapeWeightCache.size();
 		for (size_t i = 0; i < shapeCou; ++i) {
-			const CMorphTargetsWeightCache& weightC = g_shapeWeightCache[i];
+			const CMorphTargetsWeightCache& weightC = wCache[i];
 			if (shape->get_handle() == weightC.shapeHandle) {
 				const size_t tCou = weightC.weights.size();
 				weights.resize(tCou);
@@ -571,6 +601,53 @@ bool CMorphTargetsCtrl::getShapeCurrentWeights (const sxsdk::shape_class* shape,
 	} catch (...) { }
 
 	return false;
+}
+
+/**
+ * 頂点が移動、回転する場合に仮想的なpivot(これはバウンディングボックスの中心座標)でどれだけ移動/回転するか推定し、.
+ * stream内の情報を更新.
+ * @return 頂点が正しく更新された場合はtrue。頂点数が変わったなど、更新できない場合はfalseを返す.
+ */
+bool CMorphTargetsCtrl::m_updateMeshVertices ()
+{
+	if (!m_pTargetShape) return false;
+	if (m_pTargetShape->get_type() != sxsdk::enums::polygon_mesh) return false;
+	if (m_orgVertices.size() != (m_pTargetShape->get_total_number_of_control_points())) return false;
+
+	try {
+		compointer<sxsdk::scene_interface> scene(m_pTargetShape->get_scene_interface());
+		sxsdk::polygon_mesh_class& pMesh = m_pTargetShape->get_polygon_mesh();
+		const int versCou = pMesh.get_total_number_of_control_points();
+
+		// 変換用の前処理計算.
+		// これは、Morph Targetsの変形の影響を受けない頂点座標を元に、変換後の姿勢を求めるための計算.
+		CCalcMeshTransform meshTransC;
+		if (!meshTransC.calcMeshTransform(m_pTargetShape)) return false;
+
+		// 変換の必要がない場合.
+		if (!meshTransC.hasTransform()) return false;
+
+		// ベース座標値を更新.
+		for (int i = 0; i < versCou; ++i) {
+			const sxsdk::vec3 v = m_orgVertices[i];
+			m_orgVertices[i] = meshTransC.calcMeshPos(v);		// ベース座標を、現在のメッシュの座標上に変換.
+		}
+
+		// 各targetごとの座標値を更新.
+		const int targetsCou = this->getTargetsCount();
+		for (int loop = 0; loop < targetsCou; ++loop) {
+			CMorphTargetsData& targetsD = m_morphTargetsData[loop];
+			const size_t vCou = targetsD.vertices.size();
+			for (int i = 0; i < vCou; ++i) {
+				targetsD.vertices[i] = meshTransC.calcMeshPos(targetsD.vertices[i]);
+			}
+		}
+
+		// streamを更新.
+		StreamCtrl::writeMorphTargetsData(*m_pTargetShape, *this);
+	} catch (...) { }
+
+	return true;
 }
 
 //---------------------------------------------------------------.

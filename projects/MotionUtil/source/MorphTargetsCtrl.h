@@ -82,6 +82,18 @@ private:
 	 */
 	void m_findMorphTargetsShape (sxsdk::shape_class* shape, std::vector<sxsdk::shape_class *>& shapeList);
 
+	/**
+	 * Morph Targetsの情報より、m_pTargetShapeのポリゴンメッシュを更新.
+	 */
+	void m_updateMesh ();
+
+	/**
+	 * 頂点が移動、回転する場合に仮想的なpivot(これはバウンディングボックスの中心座標)でどれだけ移動/回転するか推定し、.
+	 * stream内の情報を更新.
+	 * @return 頂点が正しく更新された場合はtrue。頂点数が変わったなど、更新できない場合はfalseを返す.
+	 */
+	bool m_updateMeshVertices ();
+
 public:
 	CMorphTargetsCtrl ();
 
@@ -225,8 +237,9 @@ public:
 
 	/**
 	 * Morph Targetsの情報より、m_pTargetShapeのポリゴンメッシュを更新.
+	 * @param[in] checkVerticesModify  頂点の移動や回転を補正.
 	 */
-	void updateMesh ();
+	void updateMesh (const bool checkVerticesModify = true);
 
 	//---------------------------------------------------------------.
 	// Stream保存/読み込み用.

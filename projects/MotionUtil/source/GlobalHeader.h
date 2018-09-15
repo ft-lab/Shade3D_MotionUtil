@@ -40,5 +40,4 @@
 // MorphTargetsAttributeAcessクラスのバージョン.
 #define MORPHTARGETS_ATTRIBUTE_ACCESS_VERSION	0x001
 
-
 #endif

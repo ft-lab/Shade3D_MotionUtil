@@ -18,6 +18,11 @@ namespace MathUtil {
 	bool isZero (const float v, const float fMin = (float)(1e-3));
 
 	/**
+	 * 単位行列か.
+	 */
+	bool isIdentity (const sxsdk::mat4& m);
+
+	/**
 	 * 三角形の法線を計算.
 	 */
 	sxsdk::vec3 calcTriangleNormal (const sxsdk::vec3& v1, const sxsdk::vec3& v2, const sxsdk::vec3& v3);
@@ -27,6 +32,10 @@ namespace MathUtil {
 	 */
 	double calcTriangleArea (const sxsdk::vec3& v1, const sxsdk::vec3& v2, const sxsdk::vec3& v3);
 
+	/**
+	 * バウンディングボックスの最小最大を計算.
+	 */
+	void calcBoundingBox (const std::vector<sxsdk::vec3>& vers, sxsdk::vec3& bbMin, sxsdk::vec3& bbMax);
 }
 
 #endif
