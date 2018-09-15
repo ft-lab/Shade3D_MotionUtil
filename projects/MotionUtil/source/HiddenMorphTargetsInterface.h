@@ -41,6 +41,11 @@ public:
 	 */
 	static const char *name (sxsdk::shade_interface *shade) { return shade->gettext("morph_targets_title"); }
 
+	/**
+	 * クラスバージョンを取得 (ver.0.0.0.4 - ).
+	 */
+	int getVersion ();
+
 	//------------------------------------------------------------------------------.
 	//---------------------------------------------------------------.
 	// Stream保存/読み込み用.

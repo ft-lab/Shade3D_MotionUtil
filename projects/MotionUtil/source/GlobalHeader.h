@@ -31,5 +31,14 @@
  */
 #define MORPH_TARGETS_STREAM_VERSION 0x100		// Morph Targets情報保存用.
 
+/**
+ * 外部公開クラスのバージョン.
+ */
+// BoneAttributeAcessクラスのバージョン.
+#define BONE_ATTRIBUTE_ACCESS_VERSION	0x001
+
+// MorphTargetsAttributeAcessクラスのバージョン.
+#define MORPHTARGETS_ATTRIBUTE_ACCESS_VERSION	0x001
+
 
 #endif

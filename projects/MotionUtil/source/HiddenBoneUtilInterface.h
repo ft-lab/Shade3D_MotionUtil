@@ -38,6 +38,11 @@ public:
 	 */
 	static const char *name (sxsdk::shade_interface *shade) { return shade->gettext("boneutil_title"); }
 
+	/**
+	 * クラスバージョンを取得 (ver.0.0.0.4 - ).
+	 */
+	int getVersion ();
+
 	//------------------------------------------------------------------------------.
 	/**
 	 * 指定の形状がボーンかどうか.

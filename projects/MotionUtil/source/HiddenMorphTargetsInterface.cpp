@@ -12,6 +12,14 @@ CHiddenMorphTargetsInterface::~CHiddenMorphTargetsInterface ()
 {
 }
 
+/**
+ * クラスバージョンを取得 (ver.0.0.0.4 - ).
+ */
+int CHiddenMorphTargetsInterface::getVersion ()
+{
+	return MORPHTARGETS_ATTRIBUTE_ACCESS_VERSION;
+}
+
 //---------------------------------------------------------------.
 // Stream保存/読み込み用.
 //---------------------------------------------------------------.

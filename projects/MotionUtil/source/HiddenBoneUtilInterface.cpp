@@ -13,6 +13,14 @@ CHiddenBoneUtilInterface::~CHiddenBoneUtilInterface ()
 }
 
 /**
+ * クラスバージョンを取得 (ver.0.0.0.4 - ).
+ */
+int CHiddenBoneUtilInterface::getVersion ()
+{
+	return BONE_ATTRIBUTE_ACCESS_VERSION;
+}
+
+/**
  * 指定の形状がボーンかどうか.
  */
 bool CHiddenBoneUtilInterface::isBone (sxsdk::shape_class& shape)
