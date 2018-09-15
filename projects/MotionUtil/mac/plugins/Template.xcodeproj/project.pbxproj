@@ -47,6 +47,8 @@
 		9204FC5921442B1100E01791 /* uiSliderWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = 9204FC4D21442B1100E01791 /* uiSliderWidget.h */; };
 		920D40E5214BDA11005DB0F1 /* WidgetColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 920D40E3214BDA11005DB0F1 /* WidgetColor.cpp */; };
 		920D40E6214BDA11005DB0F1 /* WidgetColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 920D40E4214BDA11005DB0F1 /* WidgetColor.h */; };
+		92AD693C214D5DE300141E4B /* CalcMeshTransform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92AD693A214D5DE300141E4B /* CalcMeshTransform.cpp */; };
+		92AD693D214D5DE300141E4B /* CalcMeshTransform.h in Headers */ = {isa = PBXBuildFile; fileRef = 92AD693B214D5DE300141E4B /* CalcMeshTransform.h */; };
 		92F6FC0A213E409F005655E6 /* MotionUtil.info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 92F6FC09213E409F005655E6 /* MotionUtil.info.plist */; };
 		FFE6EF5D1A6667E60006CB66 /* shdplugin.icns in Resources */ = {isa = PBXBuildFile; fileRef = 16F9E21A0546323A00F09F49 /* shdplugin.icns */; };
 		FFE6EF5E1A6667E60006CB66 /* sxuls in Resources */ = {isa = PBXBuildFile; fileRef = A31F019408BD316A00C322BE /* sxuls */; };
@@ -125,6 +127,8 @@
 		9204FC4D21442B1100E01791 /* uiSliderWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uiSliderWidget.h; sourceTree = "<group>"; };
 		920D40E3214BDA11005DB0F1 /* WidgetColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WidgetColor.cpp; sourceTree = "<group>"; };
 		920D40E4214BDA11005DB0F1 /* WidgetColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WidgetColor.h; sourceTree = "<group>"; };
+		92AD693A214D5DE300141E4B /* CalcMeshTransform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CalcMeshTransform.cpp; path = ../../source/CalcMeshTransform.cpp; sourceTree = "<group>"; };
+		92AD693B214D5DE300141E4B /* CalcMeshTransform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CalcMeshTransform.h; path = ../../source/CalcMeshTransform.h; sourceTree = "<group>"; };
 		92F6FC09213E409F005655E6 /* MotionUtil.info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = MotionUtil.info.plist; path = plists/MotionUtil.info.plist; sourceTree = "<group>"; };
 		A31F019508BD316A00C322BE /* en */ = {isa = PBXFileReference; lastKnownFileType = folder; name = en; path = ../../source/resources/en.lproj/sxuls; sourceTree = SOURCE_ROOT; };
 		A31F01A808BD318900C322BE /* ja */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ja; path = ../../source/resources/ja.lproj/sxuls; sourceTree = SOURCE_ROOT; };
@@ -233,6 +237,8 @@
 		4A3E5BC70B0029410006A4FF /* sources */ = {
 			isa = PBXGroup;
 			children = (
+				92AD693A214D5DE300141E4B /* CalcMeshTransform.cpp */,
+				92AD693B214D5DE300141E4B /* CalcMeshTransform.h */,
 				9204FC4121442B1000E01791 /* StreamCtrl.cpp */,
 				9204FC4321442B1100E01791 /* UIWidgets */,
 				9204FC0E21442AFF00E01791 /* BoneUtil.cpp */,
@@ -307,6 +313,7 @@
 				9204FC3A21442B0100E01791 /* GlobalHeader.h in Headers */,
 				9204FC3221442B0100E01791 /* BSPPoint.h in Headers */,
 				9204FC3521442B0100E01791 /* MorphWindowInterface.h in Headers */,
+				92AD693D214D5DE300141E4B /* CalcMeshTransform.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,6 +401,7 @@
 				9204FC5021442B1100E01791 /* GraphicUtil.cpp in Sources */,
 				9204FC2921442B0100E01791 /* BoneUtil.cpp in Sources */,
 				FFE6EF611A6667E60006CB66 /* com.cpp in Sources */,
+				92AD693C214D5DE300141E4B /* CalcMeshTransform.cpp in Sources */,
 				9204FC3921442B0100E01791 /* HiddenMorphTargetsInterface.cpp in Sources */,
 				9204FC5621442B1100E01791 /* uiPanelWidget.cpp in Sources */,
 				9204FC3721442B0100E01791 /* MeshUtil.cpp in Sources */,

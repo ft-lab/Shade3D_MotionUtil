@@ -279,6 +279,7 @@
     <ClCompile Include="..\..\..\include\sxcore\vectors.cpp" />
     <ClCompile Include="..\source\BoneUtil.cpp" />
     <ClCompile Include="..\source\BSPPoint.cpp" />
+    <ClCompile Include="..\source\CalcMeshTransform.cpp" />
     <ClCompile Include="..\source\MathUtil.cpp" />
     <ClCompile Include="..\source\MotionData.cpp" />
     <ClCompile Include="..\source\MotionExternalAccess.cpp" />
@@ -301,6 +302,7 @@
   <ItemGroup>
     <ClInclude Include="..\source\BoneUtil.h" />
     <ClInclude Include="..\source\BSPPoint.h" />
+    <ClInclude Include="..\source\CalcMeshTransform.h" />
     <ClInclude Include="..\source\MathUtil.h" />
     <ClInclude Include="..\source\MotionData.h" />
     <ClInclude Include="..\source\MotionExternalAccess.h" />

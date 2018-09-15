@@ -38,8 +38,8 @@ RENAME_DLG              SXUL                    "..\\source\\resources\\ja.lproj
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 0,0,0,3
- PRODUCTVERSION 0,0,0,3
+ FILEVERSION 0,0,0,4
+ PRODUCTVERSION 0,0,0,4
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -56,11 +56,11 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "ft-lab."
             VALUE "FileDescription", "MotionUtil"
-            VALUE "FileVersion", "0, 0, 0, 3"
+            VALUE "FileVersion", "0, 0, 0, 4"
             VALUE "InternalName", "MotionUtil"
             VALUE "LegalCopyright", "ft-lab."
             VALUE "ProductName", "MotionUtil"
-            VALUE "ProductVersion", "0, 0, 0, 3"
+            VALUE "ProductVersion", "0, 0, 0, 4"
         END
     END
     BLOCK "VarFileInfo"
