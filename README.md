@@ -102,6 +102,8 @@ Morph Targetsウィンドウの「Morph Target対象の頂点を選択」ボタ�
 
 * ポリゴンメッシュの頂点数が変わった場合、正しく動作しません。    
 全てのモデリング工程が完了した段階でMorph Targetsの変形を使用するようにしてください。
+* Morph Targetsを割り当て後、オブジェクトモードで形状を移動/回転する場合は正しく動作します(ver.0.0.0.4-)。     
+オブジェクトモードで形状を拡大縮小した場合は、正しく動作しません。
 * アニメーションのキーフレーム割り当てにはまだ対応していません。    
 
 ## ビルド方法 (開発者向け)
@@ -117,6 +119,10 @@ Mac環境の場合は、Xcodeで「mac/plugins/Template.xcodeproj」を開いて
 This software is released under the MIT License, see [LICENSE](./LICENSE).  
 
 ## 更新履歴
+
+[2018/09/16] ver.0.0.0.4   
+* 外部アクセス関数 : バージョンを取得する関数を追加
+* Morph Targets : Morph Targetsを割り当てたポリゴンメッシュを移動/回転させた場合に変形が不正になる問題を修正
 
 [2018/09/14] ver.0.0.0.3   
 * Morph Targets : 環境設定の「カラー」を変更した場合、Morph Targetsウィンドウへの反映が一部不正な問題を修正
