@@ -17,6 +17,7 @@ CButtonsWidget::CButtonsWidget (CMorphWindowInterface* pParent) : sxsdk::window_
 	m_pAppendTargetBut = NULL;
 	m_pRemoveMorphTargetsBut = NULL;
 	m_pSelectVerticesBut = NULL;
+	m_pClearAllWeightsBut = NULL;
 }
 
 /**
@@ -55,6 +56,11 @@ bool CButtonsWidget::setup_push_button (sxsdk::window_interface::push_button_cla
 		if (!m_pSelectVerticesBut) m_pSelectVerticesBut = &push_button;
 		return true;
 	}
+	if (name == "clear_weights_but") {
+		if (!m_pClearAllWeightsBut) m_pClearAllWeightsBut = &push_button;
+		return true;
+	}
+
 	return false;
 }
 
@@ -121,11 +127,15 @@ void CButtonsWidget::updateUI ()
 		m_pSelectVerticesBut->set_active(hasMorphTargets);
 		m_pSelectVerticesBut->invalidate();
 	}
-
 	if (m_pRemoveMorphTargetsBut) {
 		m_pRemoveMorphTargetsBut->set_active(hasMorphTargets);
 		m_pRemoveMorphTargetsBut->invalidate();
 	}
+	if (m_pClearAllWeightsBut) {
+		m_pClearAllWeightsBut->set_active(hasMorphTargets);
+		m_pClearAllWeightsBut->invalidate();
+	}
+
 	if (m_pRemoveRestoreCheckBox) {
 		m_pRemoveRestoreCheckBox->set_active(hasMorphTargets);
 		m_pRemoveRestoreCheckBox->invalidate();

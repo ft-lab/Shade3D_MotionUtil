@@ -25,6 +25,7 @@ private:
 	push_button_class* m_pAppendTargetBut;
 	push_button_class* m_pRemoveMorphTargetsBut;
 	push_button_class* m_pSelectVerticesBut;
+	push_button_class* m_pClearAllWeightsBut;
 
 
 protected:

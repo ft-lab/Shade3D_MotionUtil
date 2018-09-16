@@ -552,7 +552,7 @@ void CMorphTargetsCtrl::popAllWeight (sxsdk::scene_interface* scene)
 
 	const std::vector<CMorphTargetsWeightCache>& wCache = g_shapeWeightCache.back();
 	try {
-		const size_t shapeCou = g_shapeWeightCache.size();
+		const size_t shapeCou = wCache.size();
 		for (size_t i = 0; i < shapeCou; ++i) {
 			const CMorphTargetsWeightCache& weightC = wCache[i];
 			sxsdk::shape_class* shape = scene->get_shape_by_handle(weightC.shapeHandle);
