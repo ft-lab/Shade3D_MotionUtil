@@ -386,6 +386,7 @@ void CMorphWindowInterface::clearAllWeights ()
 {
 	m_morphTargetsData.setZeroAllWeight();
 	m_updateUI();
+	m_morphTargetsData.writeMorphTargetsData();
 }
 
 /**
