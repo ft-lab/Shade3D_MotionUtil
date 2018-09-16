@@ -120,6 +120,10 @@ This software is released under the MIT License, see [LICENSE](./LICENSE).
 
 ## 更新履歴
 
+[2018/09/16] ver.0.0.0.5   
+* glTFエクスポート時にクラッシュすることがある問題を修正(Morph Targetsのウエイトのキャッシュが不正に反映されていた)
+* MorphTargetsの「ウエイト値をすべてクリア」後に形状を切り替えると、ウエイト値が前の状態に戻る問題を修正
+
 [2018/09/16] ver.0.0.0.4   
 * 外部アクセス関数 : バージョンを取得する関数を追加
 * Morph Targets : Morph Targetsを割り当てたポリゴンメッシュを移動/回転させた場合に変形が不正になる問題を修正
