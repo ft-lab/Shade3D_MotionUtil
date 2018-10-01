@@ -170,14 +170,40 @@ bool CCalcMeshTransform::calcMeshTransform (sxsdk::shape_class* shape)
 	return false;
 }
 
+namespace {
+	/**
+	 * 回転行列が単位行列に限りなく近いかチェック.
+	 */
+	bool m_rotateMatrixIdentity (const sxsdk::mat4& m) {
+		if (MathUtil::isIdentity(m)) return true;
+
+		const sxsdk::vec3 xDir(1, 0, 0);
+		const sxsdk::vec3 yDir(0, 1, 0);
+
+		const sxsdk::vec3 xDir2 = xDir * m;
+		const sxsdk::vec3 yDir2 = yDir * m;
+
+		const float fMinAngle = 0.999f;
+		{
+			const float angleV = sx::inner_product(xDir, xDir2);
+			if (angleV < fMinAngle) return false;
+		}
+		{
+			const float angleV = sx::inner_product(yDir, yDir2);
+			if (angleV < fMinAngle) return false;
+		}
+		return true;
+	}
+}
+
 /**
  * 変換の必要があるか.
  */
 bool CCalcMeshTransform::hasTransform ()
 {
 	if (!MathUtil::isZero(m_srcCenterPos - m_dstCenterPos)) return true;
-	if (!MathUtil::isIdentity(m_rotM1)) return true;
-	if (!MathUtil::isIdentity(m_rotM2)) return true;
+	if (!::m_rotateMatrixIdentity(m_rotM1)) return true;
+	if (!::m_rotateMatrixIdentity(m_rotM2)) return true;
 	return false;
 }
 
