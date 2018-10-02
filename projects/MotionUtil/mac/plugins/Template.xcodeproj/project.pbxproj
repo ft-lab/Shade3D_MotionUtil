@@ -544,7 +544,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = MotionUtil;
-				SDKROOT = macosx10.13;
+				SDKROOT = macosx;
 				SECTORDER_FLAGS = "";
 				WARNING_CFLAGS = "-w";
 				WRAPPER_EXTENSION = shdplugin;
@@ -576,7 +576,7 @@
 				"MACOSX_DEPLOYMENT_TARGET[arch=i386]" = 10.13;
 				"MACOSX_DEPLOYMENT_TARGET[arch=x86_64]" = 10.11;
 				PRODUCT_NAME = MotionUtil;
-				SDKROOT = macosx10.13;
+				SDKROOT = macosx;
 				SECTORDER_FLAGS = "";
 				WARNING_CFLAGS = "-w";
 				WRAPPER_EXTENSION = shdplugin;
@@ -606,7 +606,7 @@
 				LIBRARY_STYLE = Bundle;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = MotionUtil;
-				SDKROOT = macosx10.13;
+				SDKROOT = macosx;
 				SECTORDER_FLAGS = "";
 				WARNING_CFLAGS = "-w";
 				WRAPPER_EXTENSION = shdplugin;
