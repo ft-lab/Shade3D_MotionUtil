@@ -119,6 +119,8 @@ Mac環境の場合は、Xcodeで「mac/plugins/Template.xcodeproj」を開いて
 This software is released under the MIT License, see [LICENSE](./LICENSE).  
 
 ## 更新履歴
+[2018/10/02] ver.0.0.0.6   
+* Morph Targetsのウエイト値変更時に、若干無駄な動きをすることがある問題を修正
 
 [2018/09/16] ver.0.0.0.5   
 * glTFエクスポート時にクラッシュすることがある問題を修正(Morph Targetsのウエイトのキャッシュが不正に反映されていた)
