@@ -490,9 +490,6 @@ void CMorphTargetsCtrl::updateMesh (sxsdk::scene_interface* scene, const bool ch
 	} else {
 		// オリジナルの頂点より、移動/回転があるかチェック.
 		const bool ret = m_updateMeshVertices();
-		if (ret) {
-			m_updateMeshVertices();
-		}
 
 		// メッシュ情報を更新.
 		m_updateMesh();
