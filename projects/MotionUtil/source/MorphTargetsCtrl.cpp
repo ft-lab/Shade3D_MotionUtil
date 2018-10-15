@@ -177,14 +177,14 @@ int CMorphTargetsCtrl::appendTargetVertices (const std::string& name, const std:
  * @param[in] vertices  更新する頂点座標.
  * @return Morph Targets番号.
  */
-int CMorphTargetsCtrl::updateTargetVertices (const int tIndex, const std::vector<int>& indices, const std::vector<sxsdk::vec3>& vertices)
+int CMorphTargetsCtrl::updateTargetVertices (sxsdk::scene_interface* scene, const int tIndex, const std::vector<int>& indices, const std::vector<sxsdk::vec3>& vertices)
 {
 	if (tIndex < 0 || tIndex >= (int)m_morphTargetsData.size()) return -1;
 
 	// tIndexのTargetを一度ウエイト0.0に戻す.
 	{
 		setTargetWeight(tIndex, 0.0f);
-		updateMesh();
+		updateMesh(scene);
 	}
 
 	CMorphTargetsData& targetData = m_morphTargetsData[tIndex];
@@ -307,12 +307,12 @@ bool CMorphTargetsCtrl::removeTarget (const int tIndex)
  * Morph Targets情報を削除して、元の頂点に戻す.
  * @param[in] restoreVertices  頂点を元に戻す場合はtrue.
  */
-void CMorphTargetsCtrl::removeMorphTargets (const bool restoreVertices)
+void CMorphTargetsCtrl::removeMorphTargets (sxsdk::scene_interface* scene, const bool restoreVertices)
 {
 	if (!m_pTargetShape) return;
 	if (restoreVertices) {
 		setZeroAllWeight();
-		updateMesh();
+		updateMesh(scene);
 	}
 	StreamCtrl::removeMorphTargetsData(*m_pTargetShape);
 	clear();
@@ -452,7 +452,7 @@ void CMorphTargetsCtrl::m_updateMesh ()
 			if (sx::zero(targetD.weight)) continue;
 
 			const int vCou = (int)targetD.vIndices.size();
-			const float weight = targetD.weight;
+			const float weight = std::min(1.0f, std::max(0.0f, targetD.weight));
 
 			for (int i = 0; i < vCou; ++i) {
 				const int vIndex = targetD.vIndices[i];
@@ -476,7 +476,7 @@ void CMorphTargetsCtrl::m_updateMesh ()
  * Morph Targetsの情報より、m_pTargetShapeのポリゴンメッシュを更新.
  * @param[in] checkVerticesModify  頂点の移動や回転を補正.
  */
-void CMorphTargetsCtrl::updateMesh (const bool checkVerticesModify)
+void CMorphTargetsCtrl::updateMesh (sxsdk::scene_interface* scene, const bool checkVerticesModify)
 {
 	if (m_pTargetShape) {
 		if (m_orgVertices.size() != (m_pTargetShape->get_total_number_of_control_points())) return;
@@ -490,6 +490,9 @@ void CMorphTargetsCtrl::updateMesh (const bool checkVerticesModify)
 	} else {
 		// オリジナルの頂点より、移動/回転があるかチェック.
 		const bool ret = m_updateMeshVertices();
+		if (ret) {
+			m_updateMeshVertices();
+		}
 
 		// メッシュ情報を更新.
 		m_updateMesh();
@@ -537,7 +540,7 @@ void CMorphTargetsCtrl::pushAllWeight (sxsdk::scene_interface* scene, const bool
 				StreamCtrl::readMorphTargetsData(*shapeList[i], targetC);
 				targetC.setZeroAllWeight();
 				StreamCtrl::writeMorphTargetsData(*shapeList[i], targetC);
-				targetC.updateMesh();
+				targetC.updateMesh(scene);
 			}
 		}
 	} catch (...) { }
@@ -565,7 +568,7 @@ void CMorphTargetsCtrl::popAllWeight (sxsdk::scene_interface* scene)
 				targetC.setTargetWeight(j, weightC.weights[j]);
 			}
 			StreamCtrl::writeMorphTargetsData(*shape, targetC);
-			targetC.updateMesh();
+			targetC.updateMesh(scene);
 		}
 	} catch (...) { }
 

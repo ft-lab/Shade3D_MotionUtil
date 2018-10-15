@@ -145,7 +145,7 @@ public:
 	 * @param[in] vertices  更新する頂点座標.
 	 * @return Morph Targets番号.
 	 */
-	int updateTargetVertices (const int tIndex, const std::vector<int>& indices, const std::vector<sxsdk::vec3>& vertices);
+	int updateTargetVertices (sxsdk::scene_interface* scene, const int tIndex, const std::vector<int>& indices, const std::vector<sxsdk::vec3>& vertices);
 
 	/**
 	 * Morph Targetsの数.
@@ -210,7 +210,7 @@ public:
 	 * Morph Targets情報を削除して、元の頂点に戻す.
 	 * @param[in] restoreVertices  頂点を元に戻す場合はtrue.
 	 */
-	void removeMorphTargets (const bool restoreVertices = true);
+	void removeMorphTargets (sxsdk::scene_interface* scene, const bool restoreVertices = true);
 
 	/**
 	 * すべてのウエイト値を0にする。.
@@ -239,7 +239,7 @@ public:
 	 * Morph Targetsの情報より、m_pTargetShapeのポリゴンメッシュを更新.
 	 * @param[in] checkVerticesModify  頂点の移動や回転を補正.
 	 */
-	void updateMesh (const bool checkVerticesModify = true);
+	void updateMesh (sxsdk::scene_interface* scene, const bool checkVerticesModify = true);
 
 	//---------------------------------------------------------------.
 	// Stream保存/読み込み用.

@@ -216,7 +216,12 @@ bool CHiddenMorphTargetsInterface::removeTarget (const int tIndex)
  */
 void CHiddenMorphTargetsInterface::removeMorphTargets (const bool restoreVertices)
 {
-	m_morphTargetsData.removeMorphTargets(restoreVertices);
+	try {
+		compointer<sxsdk::scene_interface> scene(shade.get_scene_interface());
+		if (scene) {
+			m_morphTargetsData.removeMorphTargets(scene, restoreVertices);
+		}
+	} catch (...) { }
 }
 
 /**
@@ -272,5 +277,10 @@ bool CHiddenMorphTargetsInterface::cleanupRedundantVertices (sxsdk::shape_class&
  */
 void CHiddenMorphTargetsInterface::updateMesh ()
 {
-	m_morphTargetsData.updateMesh();
+	try {
+		compointer<sxsdk::scene_interface> scene(shade.get_scene_interface());
+		if (scene) {
+			m_morphTargetsData.updateMesh(scene);
+		}
+	} catch (...) { }
 }

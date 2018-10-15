@@ -31,8 +31,9 @@ bool CCalcMeshTransform::calcMeshTransform (sxsdk::shape_class* shape)
 		std::vector<bool> useIList;
 		useIList.resize(versCou, true);
 		for (int i = 0; i < targetsCou; ++i) {
-			const float weight = morphCtrl.getTargetWeight(i);
-			if (MathUtil::isZero(weight)) continue;
+			// Morph変形時に図形ウィンドウで更新中の頂点を取得する可能性があるため、以下はコメントアウト.
+			//const float weight = morphCtrl.getTargetWeight(i);
+			//if (MathUtil::isZero(weight)) continue;
 
 			const CMorphTargetsData& targetD = morphCtrl.getMorphTargetData(i);
 			const size_t vCou = targetD.vIndices.size();
@@ -56,6 +57,8 @@ bool CCalcMeshTransform::calcMeshTransform (sxsdk::shape_class* shape)
 
 		sxsdk::vec3 bbMin, bbMax;
 		MathUtil::calcBoundingBox(tSrcVertices, bbMin, bbMax);
+		const float bbMaxDist = sxsdk::absolute(bbMax - bbMin);
+		const float bbChkDist = bbMaxDist * 0.001f;
 
 		// 回転の中心とする座標を取得.
 		// これは、bbMinに一番近い頂点を採用とする.
@@ -76,14 +79,18 @@ bool CCalcMeshTransform::calcMeshTransform (sxsdk::shape_class* shape)
 		// bbMaxに一番近い頂点を回転の先の頂点とする.
 		int tPosI = -1;
 		{
+			const sxsdk::vec3 stPos = tSrcVertices[centerPosI];
 			float minDist = 0.0f;
 			for (int i = 0; i < tVersCou; ++i) {
 				if (i == centerPosI) continue;
 				const sxsdk::vec3& v = tSrcVertices[i];
-				const float dist = sxsdk::absolute(v - bbMax);
-				if (tPosI < 0 || dist < minDist) {
-					tPosI = i;
-					minDist = dist;
+				const float bbDist = sxsdk::absolute(v - stPos);
+				if (bbDist > bbChkDist) {
+					const float dist = sxsdk::absolute(v - bbMax);
+					if (tPosI < 0 || dist < minDist) {
+						tPosI = i;
+						minDist = dist;
+					}
 				}
 			}
 		}

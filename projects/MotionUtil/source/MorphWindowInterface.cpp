@@ -394,8 +394,11 @@ void CMorphWindowInterface::clearAllWeights ()
  */
 void CMorphWindowInterface::removeMorphTargetsData ()
 {
+	compointer<sxsdk::scene_interface> scene(shade.get_scene_interface());
+	if (!scene) return;
+
 	// カレント形状でのMorph Targets情報を削除.
-	m_morphTargetsData.removeMorphTargets(m_removeRestoreCheck);
+	m_morphTargetsData.removeMorphTargets(scene, m_removeRestoreCheck);
 	m_updateUI();
 }
 
@@ -410,8 +413,11 @@ void CMorphWindowInterface::m_updateUI ()
 	// Targetリスト部を更新.
 	if (m_pMorphTargetsWidget) m_pMorphTargetsWidget->updateUI(true);
 
+	compointer<sxsdk::scene_interface> scene(shade.get_scene_interface());
+	if (!scene) return;
+
 	// ウエイト値によりメッシュを更新.
-	m_morphTargetsData.updateMesh();
+	m_morphTargetsData.updateMesh(scene);
 }
 
 /**
@@ -490,8 +496,11 @@ void CMorphWindowInterface::updateMorph ()
 	if (shape) {
 		StreamCtrl::writeMorphTargetsData(*shape, m_morphTargetsData);
 
+		compointer<sxsdk::scene_interface> scene(shade.get_scene_interface());
+		if (!scene) return;
+
 		// ウエイト値によりメッシュを更新.
-		m_morphTargetsData.updateMesh();
+		m_morphTargetsData.updateMesh(scene);
 	}
 }
 
@@ -527,7 +536,7 @@ void CMorphWindowInterface::updateMorphTarget (const int index)
 
 		// 選択頂点をMorph Target情報として登録.
 		const std::vector<sxsdk::vec3> vers = MeshUtil::getMeshVertex(*shape, vIndices);
-		const int tIndex = m_morphTargetsData.updateTargetVertices(index, vIndices, vers);
+		const int tIndex = m_morphTargetsData.updateTargetVertices(scene, index, vIndices, vers);
 
 		// 追加された要素を選択状態にする.
 		m_morphTargetsData.setSelectTargetIndex(tIndex);
@@ -549,9 +558,12 @@ void CMorphWindowInterface::removeMorphTarget (const int index)
 {
 	sxsdk::shape_class* shape = MeshUtil::getActivePolygonMesh(shade);
 	if (shape) {
+		compointer<sxsdk::scene_interface> scene(shade.get_scene_interface());
+		if (!scene) return;
+
 		// 一度ウエイト値を0に戻す.
 		m_morphTargetsData.setTargetWeight(index, 0.0f);
-		m_morphTargetsData.updateMesh();
+		m_morphTargetsData.updateMesh(scene);
 
 		if (m_morphTargetsData.removeTarget(index)) {
 			StreamCtrl::writeMorphTargetsData(*shape, m_morphTargetsData);
