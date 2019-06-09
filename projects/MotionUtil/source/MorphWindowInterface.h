@@ -22,6 +22,7 @@ private:
 
 	checkbox_class* m_pRemoveRestoreCheckBox;
 	push_button_class* m_pSetupMorphTargetsBut;
+	push_button_class* m_pUpdateMorphTargetsBaseBut;
 	push_button_class* m_pAppendTargetBut;
 	push_button_class* m_pRemoveMorphTargetsBut;
 	push_button_class* m_pSelectVerticesBut;
@@ -160,6 +161,11 @@ public:
 	 * Morph Target情報を割り当て開始.
 	 */
 	void setupMorphTargetData ();
+
+	/**
+	 * Morph Targetのベース情報を更新.
+	 */
+	void updateMorphTargetData ();
 
 	/**
 	 * Morph Target情報を新たに追加.

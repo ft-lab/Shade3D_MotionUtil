@@ -125,6 +125,11 @@ public:
 	bool setupShape (sxsdk::shape_class* pShape);
 
 	/**
+	 * Morph Targetsのベースの頂点座標を更新.
+	 */
+	bool updateMorphTargetsBase (sxsdk::shape_class* pShape);
+
+	/**
 	 * baseの頂点座標を格納。streamからの読み込み時に呼ばれる.
 	 */
 	void setOrgVertices (const std::vector<sxsdk::vec3>& vertices);

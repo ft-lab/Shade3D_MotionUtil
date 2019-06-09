@@ -140,6 +140,31 @@ bool CMorphTargetsCtrl::setupShape (sxsdk::shape_class* pShape)
 }
 
 /**
+ * Morph Targetsのベースの頂点座標を更新.
+ */
+bool CMorphTargetsCtrl::updateMorphTargetsBase (sxsdk::shape_class* pShape)
+{
+	if (pShape->get_type() != sxsdk::enums::polygon_mesh) return false;
+	try {
+		sxsdk::polygon_mesh_class& pMesh = pShape->get_polygon_mesh();
+		const int versCou = pMesh.get_total_number_of_control_points();
+
+		// 頂点座標を効率よく取得するためのsaverクラス.
+		sxsdk::polygon_mesh_saver_class* pMeshSaver = pMesh.get_polygon_mesh_saver();
+
+		m_orgVertices.resize(versCou);
+		for (int i = 0; i < versCou; ++i) m_orgVertices[i] = pMeshSaver->get_point(i);
+
+		pMeshSaver->release();
+
+		m_pTargetShape = pShape;
+
+		return true;
+	} catch (...) { }
+	return false;
+}
+
+/**
  * baseの頂点座標を格納。streamからの読み込み時に呼ばれる.
  */
 void CMorphTargetsCtrl::setOrgVertices (const std::vector<sxsdk::vec3>& vertices)

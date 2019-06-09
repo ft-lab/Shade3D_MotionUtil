@@ -3,6 +3,7 @@
 	<vbox>
 		<control size='2 4'/>
 		<push-button id="setup_target_but" label="Morph Target情報を割り当て" />
+		<push-button id="update_target_but" label="Morph Targetのベース情報を更新" />
 		<push-button id="append_target_but" label="Morph Target情報を追加登録" />
 		<push-button id="clear_weights_but" label="ウエイト値をすべてクリア" />
 		<push-button id="select_target_vertices_but" label="Morph Target対象の頂点を選択" />

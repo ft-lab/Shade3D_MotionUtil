@@ -7,13 +7,14 @@
 #include "RenameDialog.h"
 
 // ボタンのウィジットの高さ.
-#define BUTTONS_WIDGHT_HEIGHT  110
+#define BUTTONS_WIDGHT_HEIGHT  120
 
 //--------------------------------------------------------------.
 CButtonsWidget::CButtonsWidget (CMorphWindowInterface* pParent) : sxsdk::window_interface(*pParent, 0), m_pParent(pParent)
 {
 	m_pRemoveRestoreCheckBox = NULL;
 	m_pSetupMorphTargetsBut = NULL;
+	m_pUpdateMorphTargetsBaseBut = NULL;
 	m_pAppendTargetBut = NULL;
 	m_pRemoveMorphTargetsBut = NULL;
 	m_pSelectVerticesBut = NULL;
@@ -42,6 +43,10 @@ bool CButtonsWidget::setup_push_button (sxsdk::window_interface::push_button_cla
 	const std::string name(push_button.get_control_idname());
 	if (name == "setup_target_but") {
 		if (!m_pSetupMorphTargetsBut) m_pSetupMorphTargetsBut = &push_button;
+		return true;
+	}
+	if (name == "update_target_but") {
+		if (!m_pUpdateMorphTargetsBaseBut) m_pUpdateMorphTargetsBaseBut = &push_button;
 		return true;
 	}
 	if (name == "append_target_but") {
@@ -82,6 +87,9 @@ void CButtonsWidget::push_button_clicked (sxsdk::window_interface::push_button_c
 	if (name == "setup_target_but") {		// Morph Target情報を割り当て.
 		m_pParent->setupMorphTargetData();
 	}
+	if (name == "update_target_but") {		// Morph Targetのベース情報を更新.
+		m_pParent->updateMorphTargetData();
+	}
 
 	if (name == "append_target_but") {		// Morph Target情報を追加登録.
 		m_pParent->appendMorphTargetData();
@@ -118,6 +126,10 @@ void CButtonsWidget::updateUI ()
 	if (m_pSetupMorphTargetsBut) {
 		m_pSetupMorphTargetsBut->set_active(!hasMorphTargets);
 		m_pSetupMorphTargetsBut->invalidate();
+	}
+	if (m_pUpdateMorphTargetsBaseBut) {
+		m_pUpdateMorphTargetsBaseBut->set_active(hasMorphTargets);
+		m_pUpdateMorphTargetsBaseBut->invalidate();
 	}
 	if (m_pAppendTargetBut) {
 		m_pAppendTargetBut->set_active(hasMorphTargets);
@@ -173,7 +185,7 @@ void CMorphWindowInterface::initialize (void *)
 	this->set_title(CMorphWindowInterface::name(&shade));
 
 	const int minWidth  = 320;
-	const int minHeight = 280;
+	const int minHeight = 290;
 	this->set_minimum_size(sx::vec<int,2>(minWidth, minHeight));
 	sx::vec<int,2> size = get_layout_bounds().size();
 	if (size.x < minWidth) size.x = minWidth;
@@ -328,6 +340,29 @@ void CMorphWindowInterface::setupMorphTargetData ()
 
 	} catch (...) { }
 }
+
+/**
+ * Morph Targetのベース情報を更新.
+ */
+void CMorphWindowInterface::updateMorphTargetData ()
+{
+	// 選択されたポリゴンメッシュ形状を取得.
+	sxsdk::shape_class* shape = MeshUtil::getActivePolygonMesh(shade);
+	if (!shape) return;
+
+	try {
+		// 選択形状をMorph Targetsの対象として指定.
+		m_morphTargetsData.updateMorphTargetsBase(shape);
+
+		// streamにMorph Targets情報を保存.
+		StreamCtrl::writeMorphTargetsData(*shape, m_morphTargetsData);
+
+		// UIの更新.
+		m_updateUI();
+
+	} catch (...) { }
+}
+
 
 /**
  * Morph Target情報を新たに追加.
